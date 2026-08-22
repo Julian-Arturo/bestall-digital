@@ -232,9 +232,7 @@ export function AgencyLanding() {
               >
                 <a
                   className="sign-plate-hot"
-                  href={waUrl(
-                    "Hola Bestall Digital, quiero que me pinten el letrero. Les cuento qué vendo:",
-                  )}
+                  href={waUrl()}
                 >
                   Escribir por WhatsApp
                 </a>
@@ -325,7 +323,7 @@ export function AgencyLanding() {
                       <a
                         className="sign-row-cta"
                         href={waUrl(
-                          `Hola Bestall Digital, me interesa el servicio ${s.code} — ${s.title}.`,
+                          `Hola Bestall Digital 👋 Vengo de bestalldigital.com y me interesa el servicio ${s.code} — ${s.title}. Quiero cotizar.`,
                         )}
                       >
                         Cotizar {s.title.toLowerCase()}
@@ -449,7 +447,7 @@ export function AgencyLanding() {
                     <div>
                       <h3>
                         {step.pass}
-                        <span> · {step.title}</span>
+                        <span>{step.title}</span>
                       </h3>
                       <p className="sign-pass-desc">{step.desc}</p>
                     </div>
@@ -523,7 +521,7 @@ export function AgencyLanding() {
             <div className="sign-actions sign-actions-center">
               <a
                 className="sign-plate-hot sign-plate-hot-invert"
-                href={waUrl("Hola Bestall Digital, quiero una conversación.")}
+                href={waUrl()}
               >
                 Escribir por WhatsApp
               </a>

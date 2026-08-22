@@ -7,16 +7,20 @@ export const AGENCY = {
   name: "Bestall Digital",
   tagline: "Marketing · Tecnología · Crecimiento",
   email: "hola@bestalldigital.com",
-  /** PENDIENTE: reemplazar por el número real — código país + número, sin + ni espacios. */
-  whatsapp: "573000000000",
-  whatsappPending: true,
+  /** Colombia +57 · número de la agencia */
+  whatsapp: "573003550715",
+  whatsappPending: false,
   domain: "bestalldigital.com",
   /** Año en que el taller abrió su primer letrero digital. */
   since: "2024",
 } as const;
 
+/** Mensaje por defecto: identifica lead desde la web */
+export const WA_PREFILL =
+  "Hola Bestall Digital 👋 Vengo de la página web bestalldigital.com y quiero información de la agencia (páginas, tráfico o tecnología).";
+
 export function waUrl(text?: string) {
-  const q = text ? `?text=${encodeURIComponent(text)}` : "";
+  const q = `?text=${encodeURIComponent(text ?? WA_PREFILL)}`;
   return `https://wa.me/${AGENCY.whatsapp}${q}`;
 }
 
