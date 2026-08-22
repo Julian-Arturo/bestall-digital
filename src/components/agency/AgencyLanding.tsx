@@ -116,60 +116,81 @@ export function AgencyLanding() {
           </p>
         </section>
 
-        <section id="dolor" className="close-section">
-          <div className="close-head">
-            <h2>¿Te suena familiar?</h2>
-            <p>
-              Estos son los dolores con los que llegan la mayoría de quienes
-              nos escriben.
-            </p>
-          </div>
-          <div className="close-pains">
-            {PAINS.map((p, i) => (
-              <motion.article
-                key={p.title}
-                initial={reduce ? false : { opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-8%" }}
-                transition={{ delay: i * 0.06, duration: 0.45, ease }}
-              >
-                <span aria-hidden>{String(i + 1).padStart(2, "0")}</span>
-                <h3>{p.title}</h3>
-                <p>{p.desc}</p>
-              </motion.article>
-            ))}
+        <section id="dolor" className="close-band close-band-pain">
+          <div className="close-band-inner">
+            <div className="close-head close-head-on-dark">
+              <h2>¿Te suena familiar?</h2>
+              <p>
+                Si reconoces alguno, no estás solo. Es exactamente lo que
+                resolvemos cada semana.
+              </p>
+            </div>
+            <div className="close-pains">
+              {PAINS.map((p, i) => (
+                <motion.article
+                  key={p.title}
+                  className="close-pain-tile"
+                  initial={reduce ? false : { opacity: 0, y: 22 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-8%" }}
+                  transition={{ delay: i * 0.07, duration: 0.5, ease }}
+                >
+                  <div className="close-pain-top">
+                    <span className="close-pain-n" aria-hidden>
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="close-pain-tag">Dolor real</span>
+                  </div>
+                  <h3>{p.title}</h3>
+                  <p>{p.desc}</p>
+                </motion.article>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section id="servicios" className="close-section close-section-soft">
-          <div className="close-head">
-            <h2>Cómo te ayudamos</h2>
-            <p>
-              Siete formas de pasar del dolor a un sistema que trabaja por ti.
-            </p>
-          </div>
-          <ul className="close-services">
-            {SERVICES.map((s, i) => (
-              <motion.li
-                key={s.code}
-                initial={reduce ? false : { opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-8%" }}
-                transition={{ delay: i * 0.04, duration: 0.45, ease }}
-              >
-                <span>{s.code}</span>
-                <div>
-                  <h3>{s.title}</h3>
-                  <p className="close-service-pain">{s.pain}</p>
-                  <p>{s.desc}</p>
-                </div>
-              </motion.li>
-            ))}
-          </ul>
-          <div className="close-section-cta">
-            <a className="close-btn" href={waUrl()}>
-              Contarnos mi caso por WhatsApp
-            </a>
+        <section id="servicios" className="close-band close-band-help">
+          <div className="close-band-inner">
+            <div className="close-head">
+              <h2>Cómo te ayudamos</h2>
+              <p>
+                Cada servicio ataca un dolor concreto y deja un resultado que
+                puedes tocar.
+              </p>
+            </div>
+            <ul className="close-services">
+              {SERVICES.map((s, i) => (
+                <motion.li
+                  key={s.code}
+                  className="close-service-tile"
+                  initial={reduce ? false : { opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-8%" }}
+                  transition={{ delay: i * 0.045, duration: 0.45, ease }}
+                >
+                  <div className="close-service-index">
+                    <span>{s.code}</span>
+                  </div>
+                  <div className="close-service-body">
+                    <h3>{s.title}</h3>
+                    <p className="close-service-pain">
+                      <em>El problema:</em> {s.pain}
+                    </p>
+                    <p className="close-service-fix">
+                      <em>Lo que hacemos:</em> {s.desc}
+                    </p>
+                  </div>
+                </motion.li>
+              ))}
+            </ul>
+            <div className="close-section-cta">
+              <a className="close-btn" href={waUrl()}>
+                Contarnos mi caso por WhatsApp
+              </a>
+              <p className="close-section-cta-note">
+                Respuesta humana. Sin formularios eternos.
+              </p>
+            </div>
           </div>
         </section>
 
