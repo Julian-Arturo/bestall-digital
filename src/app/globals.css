@@ -559,11 +559,14 @@ a {
   line-height: 1;
   text-transform: uppercase;
 }
-/* el rojo es del oficio, no de la marca: arriba la palabra va en hueso
-   apagado para que la única placa caliente de la pantalla sea el WhatsApp */
+/* el rojo es del oficio, no de la marca. Las dos palabras se separan por
+   ancho y peso, como las pinta un rotulista, nunca bajándole el valor a una:
+   el nombre tiene que leerse entero. */
 .sign-wordmark span {
-  color: color-mix(in srgb, var(--hueso) 58%, var(--muro));
-  margin-left: 0.28em;
+  color: var(--hueso);
+  margin-left: 0.3em;
+  font-variation-settings: "wdth" 108, "wght" 400;
+  letter-spacing: 0.02em;
 }
 
 .sign-nav {
@@ -602,21 +605,22 @@ a {
 .sign-nav a:hover::after {
   right: 0;
 }
-/* placa de contorno, nunca esmaltada: no compite con la acción principal */
+/* placa de hueso macizo: distinta del contorno del hero, y sin esmalte rojo,
+   que queda reservado a la acción principal de la lámina */
 .sign-nav .sign-nav-hot {
   padding: 0.5rem 0.95rem;
-  background: transparent;
-  color: var(--hueso);
-  border: 2px solid color-mix(in srgb, var(--hueso) 52%, transparent);
+  background: var(--hueso);
+  color: var(--tinta);
+  border: 2px solid var(--tinta);
   border-radius: 2px;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.55);
 }
 .sign-nav .sign-nav-hot::after {
   display: none;
 }
 .sign-nav .sign-nav-hot:hover {
-  border-color: var(--hueso);
-  background: color-mix(in srgb, var(--hueso) 12%, transparent);
-  transform: translateY(-1px);
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.55);
 }
 .sign-nav-hot {
   transition: transform 160ms ease, box-shadow 160ms ease;
@@ -1408,7 +1412,14 @@ a {
 }
 .sign-pass.is-wet {
   border-bottom-color: var(--tinta);
-  transform: translateX(clamp(0.5rem, 1.6vw, 1.1rem));
+}
+/* se adelanta el bloque de texto, no el renglón: el filete tiene que
+   quedarse en columna con los de arriba */
+.sign-pass > div {
+  transition: transform 460ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sign-pass.is-wet > div {
+  transform: translateX(clamp(0.4rem, 1.4vw, 0.95rem));
 }
 /* la muestra: una pincelada que se llena cuando la pasada entra */
 .sign-pass-mark {
@@ -1454,6 +1465,19 @@ a {
 .sign-pass h3 span {
   font-variation-settings: "wdth" 90, "wght" 600;
   color: var(--letra-2);
+}
+.sign-pass h3 span::before {
+  content: " · ";
+}
+/* en pantalla angosta el encabezado parte en dos renglones limpios,
+   sin dejar el punto medio colgando al final de la primera línea */
+@media (max-width: 620px) {
+  .sign-pass h3 span {
+    display: block;
+  }
+  .sign-pass h3 span::before {
+    content: none;
+  }
 }
 .sign-pass-desc {
   margin: 0.55rem 0 0;
