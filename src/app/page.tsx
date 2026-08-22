@@ -15,13 +15,13 @@ const body = Karla({
 });
 
 export const metadata: Metadata = {
-  title: "Bestall Digital | Marketing y tecnología que convierte",
+  title: "Bestall Digital | Más clientes, no solo páginas bonitas",
   description:
-    "Agencia Bestall Digital: páginas web, tráfico, apps y sistemas que convierten visitas en clientes. Productos reales en vivo.",
+    "Si inviertes y el teléfono no suena, te ayudamos a ordenar mensaje, página y tráfico para conseguir clientes. Proyectos reales. WhatsApp.",
   openGraph: {
     title: "Bestall Digital — Clientes, no solo páginas bonitas",
     description:
-      "Marketing y tecnología con prueba en vivo. Escríbenos por WhatsApp.",
+      "Claridad, conversaciones y ventas que se pueden medir. Escríbenos por WhatsApp.",
     locale: "es_CO",
     type: "website",
   },

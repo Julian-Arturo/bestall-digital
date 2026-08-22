@@ -603,6 +603,79 @@ a {
   line-height: 1.5;
 }
 
+.close-service-pain {
+  margin: 0.35rem 0 0 !important;
+  color: var(--c-coral) !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.close-section-cta {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.close-pains {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 800px) {
+  .close-pains {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 2rem;
+  }
+}
+
+.close-pains article {
+  padding: 1.35rem 0 1.15rem;
+  border-top: 2px solid var(--c-teal);
+}
+
+.close-pains article > span {
+  display: block;
+  font-family: var(--font-close-display), sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: var(--c-teal);
+  margin-bottom: 0.55rem;
+}
+
+.close-pains h3 {
+  margin: 0;
+  font-family: var(--font-close-display), sans-serif;
+  font-size: clamp(1.15rem, 2.2vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.close-pains p {
+  margin: 0.55rem 0 0;
+  color: var(--c-mute);
+  line-height: 1.55;
+  font-size: 0.98rem;
+}
+
+.close-hero h1 {
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+}
+
+.close-strip {
+  position: relative;
+  overflow: hidden;
+}
+
+.close-strip::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--c-coral);
+}
+
 .close-cases {
   display: grid;
   gap: 2.25rem;

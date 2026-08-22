@@ -1,15 +1,11 @@
 "use client";
 
 /*
-  THESIS: Bestall turns strangers into clients in one sitting — a closing-room
-  home, not enamel signboards or purple agency templates.
-  OWN-WORLD: cool paper #f4f5f7, ink #12151c, teal #0f766e, coral CTA #ea580c;
-  Bricolage Grotesque + Karla; full-bleed hero photo; list rows not card grids.
-  STORY: recognize the offer → trust via two live products → WhatsApp.
-  FIRST VIEWPORT: edge-to-edge hero, Bestall mark, one headline, one lead,
-  one WhatsApp CTA group — no stats strip, no cards on the photo.
-  FORM: grounded #6 closing room (seed ff5a5e9e); raised by jackfield amber
-  link discipline (process rail), drum-machine step cadence, papercut layers.
+  THESIS: Bestall turns strangers into clients — closing-room clarity, pain-first copy.
+  OWN-WORLD: cool paper, ink, teal, coral CTA; Bricolage + Karla; full-bleed hero.
+  STORY: feel the pain → see what we fix → trust live proof → WhatsApp.
+  FIRST VIEWPORT: brand, one headline, one lead, dual CTA — no tech jargon.
+  FORM: Sala de Cierre (seed ff5a5e9e).
   FINISH: unreviewed and undocumented is unfinished; this build ends with the
   finish review, the verdict, DESIGN.md, and every shipping raster carrying
   its provenance
@@ -20,6 +16,7 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   AGENCY,
+  PAINS,
   PROCESS,
   REVIEWS,
   REVIEWS_DISCLAIMER,
@@ -43,7 +40,7 @@ export function AgencyLanding() {
         <Link href="/" className="close-brand">
           <Image
             src={AGENCY.mark}
-            alt=""
+            alt="Bestall Digital"
             width={40}
             height={40}
             className="close-mark"
@@ -54,9 +51,9 @@ export function AgencyLanding() {
           </span>
         </Link>
         <nav aria-label="Principal">
+          <a href="#dolor">El problema</a>
           <a href="#servicios">Servicios</a>
-          <a href="#prueba">Prueba</a>
-          <a href="#proceso">Proceso</a>
+          <a href="#prueba">Casos</a>
           <a href="#contacto" className="close-nav-cta">
             Hablar
           </a>
@@ -91,9 +88,10 @@ export function AgencyLanding() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15, duration: 0.65, ease }}
             >
-              Bestall Digital construye páginas, tráfico y sistemas que
-              convierten visitas en conversaciones de venta. Mira dos productos
-              reales ya publicados en este dominio — y escríbenos.
+              Si ya invertiste y el teléfono sigue en silencio, aquí ordenamos
+              el mensaje, la página y el tráfico para que lleguen personas
+              listas para comprar. Mira dos proyectos reales nuestros — y
+              escríbenos.
             </motion.p>
             <motion.div
               className="close-actions"
@@ -102,10 +100,10 @@ export function AgencyLanding() {
               transition={{ delay: 0.28, duration: 0.55, ease }}
             >
               <a className="close-btn" href={waUrl()}>
-                WhatsApp ahora
+                Quiero más clientes
               </a>
               <a className="close-btn-ghost" href="#prueba">
-                Ver prueba en vivo
+                Ver proyectos reales
               </a>
             </motion.div>
           </div>
@@ -113,16 +111,41 @@ export function AgencyLanding() {
 
         <section className="close-strip">
           <p>
-            Llegas frío. En minutos entiendes qué hacemos, ves prueba real y
-            tienes un botón claro para hablar. Eso es el trabajo.
+            No vendemos “presencia digital”. Vendemos claridad, conversaciones
+            y ventas que se pueden medir.
           </p>
         </section>
 
-        <section id="servicios" className="close-section">
+        <section id="dolor" className="close-section">
           <div className="close-head">
-            <h2>Lo que hacemos</h2>
+            <h2>¿Te suena familiar?</h2>
             <p>
-              Siete capacidades. Un estándar: claridad, conversión y ejecución.
+              Estos son los dolores con los que llegan la mayoría de quienes
+              nos escriben.
+            </p>
+          </div>
+          <div className="close-pains">
+            {PAINS.map((p, i) => (
+              <motion.article
+                key={p.title}
+                initial={reduce ? false : { opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-8%" }}
+                transition={{ delay: i * 0.06, duration: 0.45, ease }}
+              >
+                <span aria-hidden>{String(i + 1).padStart(2, "0")}</span>
+                <h3>{p.title}</h3>
+                <p>{p.desc}</p>
+              </motion.article>
+            ))}
+          </div>
+        </section>
+
+        <section id="servicios" className="close-section close-section-soft">
+          <div className="close-head">
+            <h2>Cómo te ayudamos</h2>
+            <p>
+              Siete formas de pasar del dolor a un sistema que trabaja por ti.
             </p>
           </div>
           <ul className="close-services">
@@ -137,18 +160,24 @@ export function AgencyLanding() {
                 <span>{s.code}</span>
                 <div>
                   <h3>{s.title}</h3>
+                  <p className="close-service-pain">{s.pain}</p>
                   <p>{s.desc}</p>
                 </div>
               </motion.li>
             ))}
           </ul>
+          <div className="close-section-cta">
+            <a className="close-btn" href={waUrl()}>
+              Contarnos mi caso por WhatsApp
+            </a>
+          </div>
         </section>
 
         <section id="prueba" className="close-section close-section-ink">
           <div className="close-head close-head-light">
-            <h2>Prueba en vivo</h2>
+            <h2>Proyectos que ya están trabajando</h2>
             <p>
-              No son mockups. Son landings reales en este mismo dominio.
+              No son demos inventadas. Entra, siente el nivel y imagina el tuyo.
             </p>
           </div>
           <div className="close-cases">
@@ -171,11 +200,11 @@ export function AgencyLanding() {
                     />
                   </div>
                   <div className="close-case-body">
-                    <p className="close-case-live">Publicado · en vivo</p>
+                    <p className="close-case-live">{item.result}</p>
                     <h3>{item.title}</h3>
                     <p className="close-case-sub">{item.subtitle}</p>
                     <p>{item.blurb}</p>
-                    <span>Abrir landing →</span>
+                    <span>Ver cómo se siente →</span>
                   </div>
                 </Link>
               </motion.div>
@@ -185,8 +214,10 @@ export function AgencyLanding() {
 
         <section id="proceso" className="close-section">
           <div className="close-head">
-            <h2>Cómo trabajamos</h2>
-            <p>De la primera llamada al tráfico midiendo.</p>
+            <h2>Así trabajamos juntos</h2>
+            <p>
+              Del primer mensaje a un plan que se puede tocar — sin teatro.
+            </p>
           </div>
           <ol className="close-process">
             {PROCESS.map((step, i) => (
@@ -236,16 +267,19 @@ export function AgencyLanding() {
             viewport={{ once: true }}
             transition={{ duration: 0.55, ease }}
           >
-            <h2>Si vendes algo, hablemos.</h2>
+            <h2>Si estás cansado de invertir sin ver clientes, hablemos.</h2>
             <p>
-              Cuéntanos qué ofreces. En la primera conversación te decimos si
-              podemos ayudarte — y cómo.
+              Cuéntanos qué vendes y qué te está doliendo. En la primera
+              conversación te decimos si podemos ayudarte — y cómo.
             </p>
             <div className="close-actions">
               <a className="close-btn" href={waUrl()}>
                 Escribir por WhatsApp
               </a>
-              <a className="close-btn-ghost close-btn-ghost-dark" href={`mailto:${AGENCY.email}`}>
+              <a
+                className="close-btn-ghost close-btn-ghost-dark"
+                href={`mailto:${AGENCY.email}`}
+              >
                 {AGENCY.email}
               </a>
             </div>
@@ -265,7 +299,9 @@ export function AgencyLanding() {
           <Link href="/vip">Mecánica VIP</Link>
           <Link href="/diabetes">Diabetes 21 días</Link>
         </nav>
-        <p>© {new Date().getFullYear()} {AGENCY.name}</p>
+        <p>
+          © {new Date().getFullYear()} {AGENCY.name}
+        </p>
       </footer>
     </div>
   );
