@@ -1,21 +1,20 @@
 /**
- * Bestall Digital — hechos del producto para la home de agencia.
- * Mundo visual: EL AVISO PINTADO (rotulación comercial pintada a mano).
- * Verdad de producto: sin cifras de clientes inventadas, sin ratings falsos.
+ * Bestall Digital — product truth for the agency home.
+ * Visual world: LA SALA DE CIERRE (conversion-first closing room).
+ * Keep WhatsApp real. No invented client counts.
  */
 export const AGENCY = {
   name: "Bestall Digital",
   tagline: "Marketing · Tecnología · Crecimiento",
   email: "hola@bestalldigital.com",
-  /** Colombia +57 · número de la agencia */
   whatsapp: "573003550715",
   whatsappPending: false,
   domain: "bestalldigital.com",
-  /** Año en que el taller abrió su primer letrero digital. */
   since: "2024",
+  mark: "/brand/agency/mark.webp",
+  hero: "/brand/agency/hero.webp",
 } as const;
 
-/** Mensaje por defecto: identifica lead desde la web */
 export const WA_PREFILL =
   "Hola Bestall Digital 👋 Vengo de la página web bestalldigital.com y quiero información de la agencia (páginas, tráfico o tecnología).";
 
@@ -24,130 +23,79 @@ export function waUrl(text?: string) {
   return `https://wa.me/${AGENCY.whatsapp}${q}`;
 }
 
-/** Titular del letrero: tres renglones, cada uno se condensa para caber en la lámina. */
-export const SIGN_LINES = [
-  "PÁGINAS QUE VENDEN.",
-  "TRÁFICO QUE LLEGA.",
-  "TECNOLOGÍA QUE AGUANTA.",
-] as const;
-
-export const SIGN_FLOURISH = "pintado a mano, medido a diario";
-
-/**
- * Los 7 servicios, cada uno como un renglón del letrero.
- * `entra` / `sale` van en la misma banda: la instrucción y su resultado.
- */
 export const SERVICES = [
   {
-    code: "101",
+    code: "01",
     title: "Páginas web",
-    icon: "pagina" as const,
-    entra: "Una oferta que nadie termina de entender",
-    sale: "Una página que la explica y la cobra",
-    detail:
-      "Landings y sitios armados sobre el argumento de venta, no sobre una plantilla. Carga rápida, texto que se lee de un tirón y una sola acción evidente.",
+    desc: "Landings y sitios pensados para explicar tu oferta y cobrarla.",
   },
   {
-    code: "102",
+    code: "02",
     title: "Tráfico",
-    icon: "trafico" as const,
-    entra: "Presupuesto quemado sin lectura",
-    sale: "Campañas con un número que revisas cada día",
-    detail:
-      "Meta y Google con píxeles bien puestos, creativos en rotación y un tablero honesto: cuánto entró, cuánto costó, qué se apaga mañana.",
+    desc: "Ads y embudos con lectura diaria: qué entra, qué cuesta, qué se apaga.",
   },
   {
-    code: "103",
+    code: "03",
     title: "Gurú Partner",
-    icon: "socio" as const,
-    entra: "Decisiones que llevan meses aplazadas",
-    sale: "Una cabeza más en tu mesa cada semana",
-    detail:
-      "Acompañamiento estratégico fijo: prioridades, precios, oferta y siguiente movimiento. Te sentamos a decidir, no a escuchar teoría.",
+    desc: "Una cabeza más en tu mesa para decidir prioridades y siguiente paso.",
   },
   {
-    code: "104",
+    code: "04",
     title: "Apps",
-    icon: "app" as const,
-    entra: "Una operación viviendo en cuadernos y WhatsApp",
-    sale: "Un producto digital que la sostiene",
-    detail:
-      "Aplicaciones web y móviles a la medida de cómo trabajas hoy, no de cómo debería trabajar una empresa de folleto.",
+    desc: "Productos digitales a la medida de cómo opera tu negocio hoy.",
   },
   {
-    code: "105",
+    code: "05",
     title: "Soluciones tecnológicas",
-    icon: "engranaje" as const,
-    entra: "Tareas repetidas a mano todos los días",
-    sale: "Automatizaciones que no piden permiso",
-    detail:
-      "Integraciones, flujos automáticos y sistemas que conectan lo que ya usas para que el equipo deje de copiar y pegar.",
+    desc: "Automatizaciones e integraciones que quitan trabajo repetido.",
   },
   {
-    code: "106",
+    code: "06",
     title: "Creamos negocios",
-    icon: "brocha" as const,
-    entra: "Una idea dando vueltas en la cabeza",
-    sale: "Marca, oferta y primer embudo vendiendo",
-    detail:
-      "De cero a algo cobrable: nombre, promesa, precio, página y primer canal de entrada. El letrero completo, no el boceto.",
+    desc: "De idea a oferta vendible: marca, promesa, página y primer canal.",
   },
   {
-    code: "107",
+    code: "07",
     title: "Influencer marketing",
-    icon: "megafono" as const,
-    entra: "Audiencia prestada que no deja nada",
-    sale: "Contenido que mueve gente a comprar",
-    detail:
-      "Selección de creadores por encaje real, guiones con intención comercial y medición de lo que pasó después del video.",
+    desc: "Creadores con encaje real y contenido que mueve a compra.",
   },
 ] as const;
 
-export type ServiceIconName = (typeof SERVICES)[number]["icon"];
-
-/** Letreros que ya están colgados: productos reales publicados en este mismo dominio. */
 export const SHOWCASES = [
   {
     href: "/vip",
     title: "Mecánica VIP",
     subtitle: "Embudo de membresía · Hotmart",
     blurb:
-      "Landing de conversión con video, prueba social y checkout de afiliado para Academia Mecánica MOTOS.",
+      "Landing con video, prueba social y checkout afiliado — publicada y vendiendo en este dominio.",
     image: "/brand/agency/case-moto.webp",
-    stamp: "EN LÍNEA",
   },
   {
     href: "/diabetes",
     title: "Toma el Control",
     subtitle: "Programa 21 días · Hotmart",
     blurb:
-      "Landing de bienestar con oferta clara, reseñas y CTA a US$4.99 — lista para tráfico pago.",
+      "Landing de bienestar con oferta clara y CTA a US$4.99, lista para tráfico pago.",
     image: "/brand/agency/case-well.webp",
-    stamp: "EN LÍNEA",
   },
 ] as const;
 
-/** La secuencia del rotulista, aplicada al trabajo. */
 export const PROCESS = [
   {
-    pass: "Boceto",
     title: "Diagnóstico",
-    desc: "Miramos tu oferta, tu cliente y dónde exactamente se cae la venta. Sin PowerPoint eterno.",
+    desc: "Oferta, cliente y fricción real. Sin PowerPoint eterno.",
   },
   {
-    pass: "Cuadrícula",
     title: "Arquitectura",
-    desc: "Mensaje, página y embudo cuadriculados antes de pintar una sola línea.",
+    desc: "Mensaje, página y embudo antes de gastar en ads.",
   },
   {
-    pass: "Fondo",
     title: "Lanzamiento",
-    desc: "Tráfico, píxeles y creativos arriba, con lectura desde el primer día.",
+    desc: "Tráfico, píxeles y creativos con lectura desde el día uno.",
   },
   {
-    pass: "Letra y sombra",
     title: "Optimización",
-    desc: "Iteramos lo que mueve plata. Lo que se ve bonito y no vende, se raspa.",
+    desc: "Iteramos lo que mueve plata. Lo demás se corta.",
   },
 ] as const;
 
@@ -156,32 +104,21 @@ export const REVIEWS = [
     name: "Camila R.",
     role: "Fundadora · e-commerce",
     quote:
-      "Pasamos de un sitio que nadie entendía a un embudo que sí cierra. El equipo piensa en venta, no solo en “bonito”.",
+      "Pasamos de un sitio que nadie entendía a un embudo que sí cierra. Piensan en venta, no solo en “bonito”.",
   },
   {
     name: "Andrés M.",
     role: "Coach online",
     quote:
-      "En dos semanas teníamos landing, píxeles y creativos. Empezamos a medir y a optimizar de verdad.",
+      "En dos semanas: landing, píxeles y creativos. Empezamos a medir y a optimizar de verdad.",
   },
   {
     name: "Valentina S.",
     role: "Clínica privada",
     quote:
-      "Nos ordenaron el mensaje y la página. Hoy el WhatsApp llega más caliente y con menos fricción.",
+      "Ordenaron el mensaje y la página. El WhatsApp llega más caliente y con menos fricción.",
   },
 ] as const;
 
-/** Aviso honesto: las citas de arriba son de muestra hasta que lleguen clientes reales. */
 export const REVIEWS_DISCLAIMER =
-  "Citas de muestra, puestas aquí para mostrar la estructura. Se reemplazan por clientes reales cuando autoricen su nombre.";
-
-/** Índice del muro: secciones de la página, en orden de recorrido. */
-export const WALL = [
-  { id: "letrero", label: "Letrero" },
-  { id: "servicios", label: "Servicios" },
-  { id: "colgados", label: "Colgados" },
-  { id: "taller", label: "Taller" },
-  { id: "voces", label: "Voces" },
-  { id: "contacto", label: "Contacto" },
-] as const;
+  "Citas de muestra para estructura. Se reemplazan por clientes reales cuando autoricen su nombre.";

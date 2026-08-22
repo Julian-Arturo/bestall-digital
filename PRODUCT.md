@@ -43,8 +43,8 @@ Not a template agency brochure: a studio that **ships conversion landings and gr
   6. Creamos negocios
   7. Influencer marketing
 - Slogan line from reference board kept as service framing only: marketing · tecnología · crecimiento
-- Contact CTA: **open** — WhatsApp / email / form not confirmed; use placeholder until provided
-- Visual constraint volunteered by user: phenomenal motion/transitions; agency landing must feel hire-worthy on first viewport. Reference board aesthetic is inspiration for energy only — not the logo or name.
+- Contact CTA: WhatsApp `573003550715` with prefilled “vengo de bestalldigital.com” message
+- Visual world: **La Sala de Cierre** (replaces enamel “Aviso Pintado”)
 
 ## Capabilities and Constraints
 
