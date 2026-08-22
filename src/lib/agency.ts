@@ -5,7 +5,6 @@
 export const AGENCY = {
   name: "Bestall Digital",
   tagline: "Marketing · Tecnología · Crecimiento",
-  email: "hola@bestalldigital.com",
   whatsapp: "573003550715",
   whatsappPending: false,
   since: "2024",

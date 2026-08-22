@@ -297,12 +297,6 @@ export function AgencyLanding() {
               <a className="close-btn" href={waUrl()}>
                 Escribir por WhatsApp
               </a>
-              <a
-                className="close-btn-ghost close-btn-ghost-dark"
-                href={`mailto:${AGENCY.email}`}
-              >
-                {AGENCY.email}
-              </a>
             </div>
           </motion.div>
         </section>
