@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 import { waUrl } from "@/lib/agency";
 
 const DISCOUNT = 15;
-const STORAGE_DISMISS = "bd-lead-modal-dismissed-v2";
+const STORAGE_DISMISS = "bd-lead-drawer-dismissed-v3";
 
 type TimeLeft = { days: number; hours: number; minutes: number; seconds: number };
 
@@ -33,6 +33,7 @@ const BUDGETS = [
 export function AgencyLeadModal() {
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
+  const [visible, setVisible] = useState(false);
   const [left, setLeft] = useState<TimeLeft>(() => calcLeft(endOfMonthMs()));
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -75,7 +76,6 @@ export function AgencyLeadModal() {
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    // If already scrolled (e.g. refresh mid-page)
     if (window.scrollY >= 180) openOnce();
 
     const fallback = window.setTimeout(openOnce, 9000);
@@ -87,9 +87,13 @@ export function AgencyLeadModal() {
   }, []);
 
   useEffect(() => {
-    if (!open) return;
+    if (!open) {
+      setVisible(false);
+      return;
+    }
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    const id = window.requestAnimationFrame(() => setVisible(true));
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") close();
     };
@@ -97,16 +101,20 @@ export function AgencyLeadModal() {
     return () => {
       document.body.style.overflow = prev;
       window.removeEventListener("keydown", onKey);
+      window.cancelAnimationFrame(id);
     };
   }, [open]);
 
   function close() {
-    try {
-      sessionStorage.setItem(STORAGE_DISMISS, "1");
-    } catch {
-      /* ignore */
-    }
-    setOpen(false);
+    setVisible(false);
+    window.setTimeout(() => {
+      try {
+        sessionStorage.setItem(STORAGE_DISMISS, "1");
+      } catch {
+        /* ignore */
+      }
+      setOpen(false);
+    }, 420);
   }
 
   function submit(e: FormEvent) {
@@ -135,18 +143,22 @@ export function AgencyLeadModal() {
   ];
 
   return createPortal(
-    <div className="bd-modal-root" role="dialog" aria-modal="true" aria-labelledby="bd-modal-title">
+    <div
+      className={`bd-modal-root${visible ? " is-open" : ""}`}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="bd-modal-title"
+    >
       <button type="button" className="bd-modal-backdrop" aria-label="Cerrar" onClick={close} />
-      <div className="bd-modal">
+      <aside className="bd-modal">
         <button type="button" className="bd-modal-x" onClick={close} aria-label="Cerrar">
           ×
         </button>
         <span className="bd-modal-badge">Asesoría gratuita</span>
         <h2 id="bd-modal-title">Agenda tu asesoría gratuita</h2>
         <p className="bd-modal-offer">
-          Este mes tenemos <strong>{DISCOUNT}% de descuento</strong> en
-          proyectos de marketing, tecnología y crecimiento (páginas, tráfico,
-          apps y más).
+          Este mes tenemos <strong>{DISCOUNT}% de descuento</strong> en marketing,
+          tecnología y crecimiento.
         </p>
 
         <div className="bd-countdown" aria-live="polite">
@@ -186,7 +198,7 @@ export function AgencyLeadModal() {
             <span className="sr-only">A qué se dedica</span>
             <textarea
               name="biz"
-              rows={3}
+              rows={2}
               placeholder="Cuéntanos brevemente sobre tu negocio"
               value={biz}
               onChange={(e) => setBiz(e.target.value)}
@@ -225,7 +237,7 @@ export function AgencyLeadModal() {
             Quiero mi asesoría
           </button>
         </form>
-      </div>
+      </aside>
     </div>,
     document.body,
   );

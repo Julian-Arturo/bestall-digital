@@ -1328,68 +1328,82 @@ a {
   position: fixed !important;
   inset: 0;
   z-index: 200 !important;
-  display: grid;
-  place-items: center;
-  padding: 1rem;
+  display: block;
+  padding: 0;
+  pointer-events: none;
+}
+
+.bd-modal-root.is-open {
+  pointer-events: auto;
 }
 
 .bd-modal-backdrop {
   position: absolute;
   inset: 0;
   border: 0;
-  background: rgba(3, 8, 18, 0.72);
-  backdrop-filter: blur(6px);
+  background: rgba(18, 24, 38, 0.28);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   cursor: pointer;
+  opacity: 0;
+  transition: opacity 420ms ease;
+}
+
+.bd-modal-root.is-open .bd-modal-backdrop {
+  opacity: 1;
 }
 
 .bd-modal {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   z-index: 1;
-  width: min(440px, 100%);
-  max-height: min(92vh, 760px);
+  width: min(420px, 92vw);
+  height: 100%;
+  max-height: 100dvh;
   overflow: auto;
-  padding: 1.35rem 1.25rem 1.4rem;
-  border-radius: 1.35rem;
-  background: linear-gradient(165deg, #101b30, #0a1324 60%, #0c182c);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
-  animation: bd-modal-in 360ms cubic-bezier(0.22, 1, 0.36, 1);
+  padding: 1.35rem 1.25rem 1.5rem;
+  border: 0;
+  border-right: 1px solid rgba(18, 24, 38, 0.08);
+  border-radius: 0 1.25rem 1.25rem 0;
+  background: linear-gradient(180deg, #ffffff 0%, #f7f8fb 100%);
+  color: #141820;
+  box-shadow: 12px 0 48px rgba(10, 16, 28, 0.18);
+  transform: translateX(-105%);
+  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@keyframes bd-modal-in {
-  from {
-    opacity: 0;
-    transform: translateY(16px) scale(0.97);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
+.bd-modal-root.is-open .bd-modal {
+  transform: translateX(0);
 }
 
 .bd-modal-x {
   position: absolute;
-  top: 0.7rem;
-  right: 0.75rem;
-  width: 2.1rem;
-  height: 2.1rem;
+  top: 0.85rem;
+  right: 0.85rem;
+  width: 2.2rem;
+  height: 2.2rem;
   border: 0;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  color: #fff;
-  font-size: 1.4rem;
+  background: #eef1f6;
+  color: #141820;
+  font-size: 1.35rem;
   line-height: 1;
   cursor: pointer;
 }
 
+.bd-modal-x:hover {
+  background: #e4e8ef;
+}
+
 .bd-modal-badge {
   display: inline-flex;
-  margin-bottom: 0.65rem;
-  padding: 0.28rem 0.7rem;
+  margin-bottom: 0.7rem;
+  padding: 0.32rem 0.75rem;
   border-radius: 999px;
-  background: rgba(255, 106, 43, 0.16);
-  color: var(--bd-accent);
-  font-size: 0.75rem;
+  background: rgba(255, 106, 43, 0.12);
+  color: #d45516;
+  font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -1398,81 +1412,83 @@ a {
 .bd-modal h2 {
   margin: 0;
   font-family: var(--font-close-display), sans-serif;
-  font-size: clamp(1.45rem, 3.5vw, 1.75rem);
+  font-size: clamp(1.45rem, 3.5vw, 1.8rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.15;
-  padding-right: 1.5rem;
+  padding-right: 2rem;
+  color: #12151c;
 }
 
 .bd-modal-offer {
   margin: 0.65rem 0 0;
-  color: var(--bd-mute);
+  color: #5c6570;
   font-size: 0.95rem;
   line-height: 1.45;
 }
 
 .bd-modal-offer strong {
-  color: var(--bd-accent);
+  color: #d45516;
 }
 
 .bd-countdown {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.45rem;
-  margin: 1.1rem 0 1rem;
+  margin: 1rem 0 0.95rem;
 }
 
 .bd-countdown-cell {
   text-align: center;
-  padding: 0.55rem 0.25rem;
-  border-radius: 0.75rem;
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.55rem 0.2rem;
+  border-radius: 0.85rem;
+  background: #fff;
+  border: 1px solid #e6e9ef;
+  box-shadow: 0 4px 14px rgba(18, 24, 38, 0.04);
 }
 
 .bd-countdown-cell strong {
   display: block;
   font-family: var(--font-close-display), sans-serif;
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-variant-numeric: tabular-nums;
-  color: #fff;
+  color: #12151c;
 }
 
 .bd-countdown-cell span {
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: var(--bd-mute);
+  color: #7a8494;
 }
 
 .bd-modal-form {
   display: grid;
-  gap: 0.65rem;
+  gap: 0.55rem;
 }
 
 .bd-modal-form input,
 .bd-modal-form textarea,
 .bd-modal-form select {
   width: 100%;
-  padding: 0.85rem 0.95rem;
+  padding: 0.8rem 0.9rem;
   border-radius: 0.85rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.04);
-  color: #fff;
+  border: 1px solid #d9dee6;
+  background: #fff;
+  color: #12151c;
   font: inherit;
   font-size: 0.95rem;
 }
 
 .bd-modal-form textarea {
   resize: vertical;
-  min-height: 4.5rem;
+  min-height: 3.6rem;
 }
 
 .bd-modal-form select {
   appearance: none;
-  background-image: linear-gradient(45deg, transparent 50%, #9aa8bc 50%),
-    linear-gradient(135deg, #9aa8bc 50%, transparent 50%);
+  background-image: linear-gradient(45deg, transparent 50%, #7a8494 50%),
+    linear-gradient(135deg, #7a8494 50%, transparent 50%);
   background-position: calc(100% - 18px) calc(50% - 3px), calc(100% - 12px) calc(50% - 3px);
   background-size: 6px 6px, 6px 6px;
   background-repeat: no-repeat;
@@ -1480,37 +1496,39 @@ a {
 
 .bd-modal-form input::placeholder,
 .bd-modal-form textarea::placeholder {
-  color: #7f8ea3;
+  color: #9aa3b0;
 }
 
 .bd-modal-form input:focus,
 .bd-modal-form textarea:focus,
 .bd-modal-form select:focus {
-  outline: 2px solid var(--bd-accent);
+  outline: 2px solid #ff6a2b;
   outline-offset: 1px;
+  border-color: transparent;
 }
 
 .bd-modal-check {
   display: flex;
   align-items: flex-start;
   gap: 0.55rem;
-  font-size: 0.82rem;
-  color: var(--bd-mute);
+  font-size: 0.8rem;
+  color: #5c6570;
   line-height: 1.4;
 }
 
 .bd-modal-check input {
   width: auto;
   margin-top: 0.15rem;
-  accent-color: var(--bd-accent);
+  accent-color: #ff6a2b;
 }
 
 .bd-modal-submit {
   width: 100%;
-  min-height: 3.25rem;
+  min-height: 3.1rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
+  color: #111 !important;
 }
 
 .bd-fab-wa {
@@ -1548,7 +1566,7 @@ a {
   font-weight: 800;
   display: grid;
   place-items: center;
-  border: 2px solid var(--bd-bg);
+  border: 2px solid #070d18;
 }
 
 .bd-root .sr-only,
@@ -1564,9 +1582,17 @@ a {
   border: 0;
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media (max-width: 520px) {
   .bd-modal {
-    animation: none;
+    width: min(100vw, 100%);
+    border-radius: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bd-modal,
+  .bd-modal-backdrop {
+    transition: none;
   }
   .bd-cursor-layer {
     display: none;
