@@ -127,8 +127,9 @@ export function AgencyLeadModal() {
         <span className="bd-modal-badge">Asesoría gratuita</span>
         <h2 id="bd-modal-title">Agenda tu asesoría gratuita</h2>
         <p className="bd-modal-offer">
-          Este mes tenemos <strong>{DISCOUNT}% de descuento</strong> en desarrollo de páginas y
-          landings.
+          Este mes tenemos <strong>{DISCOUNT}% de descuento</strong> en
+          proyectos de marketing, tecnología y crecimiento (páginas, tráfico,
+          apps y más).
         </p>
 
         <div className="bd-countdown" aria-live="polite">

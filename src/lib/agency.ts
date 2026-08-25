@@ -5,7 +5,7 @@
 
 export const AGENCY = {
   name: "Bestall Digital",
-  tagline: "Páginas · Tráfico · Sistemas que convierten",
+  tagline: "Marketing · Tecnología · Crecimiento",
   whatsapp: "573003550714",
   whatsappPending: false,
   since: "2024",
@@ -16,11 +16,11 @@ export const AGENCY = {
   demoDiabetes: "/brand/agency/demo-diabetes.png",
   demoCollage: "/brand/agency/demo-collage.png",
   priceFrom: "$2.200.000",
-  priceFromNote: "COP · landing que convierte",
+  priceFromNote: "COP · según el servicio",
 } as const;
 
 export const WA_PREFILL =
-  "Hola Bestall Digital 👋 Vi su página y quiero ayuda para conseguir más clientes. Les cuento qué vendo:";
+  "Hola Bestall Digital 👋 Vi su página y quiero ayuda con marketing, tecnología o crecimiento. Les cuento mi caso:";
 
 export function waUrl(text?: string) {
   const q = `?text=${encodeURIComponent(text ?? WA_PREFILL)}`;
@@ -29,103 +29,111 @@ export function waUrl(text?: string) {
 
 export const TRUST = [
   {
-    title: "Entrega ágil",
-    desc: "Landing lista en 7 a 15 días según alcance.",
+    title: "Marketing que vende",
+    desc: "Mensaje, oferta y campañas orientadas a clientes, no a vanidad.",
   },
   {
-    title: "Lista para ads",
-    desc: "Estructura pensada para Google y Meta Ads.",
+    title: "Tecnología útil",
+    desc: "Páginas, apps y automatizaciones al servicio de tu operación.",
   },
   {
-    title: "100% celular",
-    desc: "Se ve y convierte primero en el teléfono.",
+    title: "Crecimiento medible",
+    desc: "Sabes qué entra, qué cuesta y qué apagamos mañana.",
   },
   {
     title: "WhatsApp al centro",
-    desc: "Cada visita tiene un solo camino: escribirte.",
+    desc: "El sistema termina en conversaciones listas para cerrar.",
   },
 ] as const;
 
 export const PRICE_BULLETS = [
-  "Diseño enfocado en conversión",
-  "100% responsive",
-  "Mensaje claro + CTA a WhatsApp",
-  "Lista para campañas de tráfico",
-  "SEO básico de lanzamiento",
-  "Acompañamiento al publicar",
+  "Diagnóstico de qué te está frenando",
+  "Propuesta clara por servicio o pack",
+  "Páginas, tráfico, apps o automatización",
+  "Enfoque en clientes, no en humo",
+  "Acompañamiento al lanzar",
+  "Opcional: gestión de campañas",
 ] as const;
 
 export const PAINS = [
   {
-    title: "Tu página se ve desactualizada",
-    desc: "Y genera desconfianza antes de que digas una palabra.",
-  },
-  {
-    title: "Pagas anuncios y nadie te escribe",
+    title: "Inviertes y el teléfono no suena",
     desc: "El presupuesto se va; las métricas “se ven bien”, pero no hay clientes.",
   },
   {
-    title: "El visitante no entiende qué vendes",
-    desc: "Se confunde, se va y nunca abre WhatsApp.",
+    title: "Tu presencia digital confunde",
+    desc: "Nadie entiende qué vendes ni qué hacer después. Se van sin escribirte.",
+  },
+  {
+    title: "Decides solo y todo se atrasa",
+    desc: "Hay mil ideas y cero orden: sin prioridad ni plan que se pueda medir.",
   },
   {
     title: "Tu competencia se ve más profesional",
     desc: "Y se está llevando a quien debería escribirte a ti.",
   },
   {
-    title: "Todo depende de tareas manuales",
+    title: "El equipo se ahoga en lo repetido",
     desc: "WhatsApp, Excel y copiar-pegar: el negocio no escala.",
   },
 ] as const;
 
+/** Siete pilares (misma oferta del logo anterior) */
 export const SERVICES = [
   {
-    code: "LP",
-    title: "Landing page",
-    desc: "Páginas para campañas: una oferta, una acción, más conversaciones de venta.",
+    code: "01",
+    title: "Páginas web",
+    desc: "Landings y sitios que explican tu oferta en segundos y empujan a una sola acción: escribirte o comprar.",
     image: "/brand/agency/demo-moto.png",
     href: "/vip",
   },
   {
-    code: "TR",
-    title: "Tráfico & campañas",
-    desc: "Anuncios con lectura diaria: qué entra, qué cuesta y qué apagamos mañana.",
+    code: "02",
+    title: "Tráfico",
+    desc: "Campañas con lectura diaria: qué entra, qué cuesta y qué apagamos mañana. Menos humo, más clientes.",
     image: "/brand/agency/demo-collage.png",
     href: "#contacto",
   },
   {
-    code: "WEB",
-    title: "Página informativa",
-    desc: "Presencia clara y confiable para que te tomen en serio desde el primer scroll.",
+    code: "03",
+    title: "Gurú Partner",
+    desc: "Una cabeza más en tu mesa cada semana: prioridades, precios, oferta y el siguiente paso concreto.",
+    image: "/brand/agency/demo-collage.png",
+    href: "#contacto",
+  },
+  {
+    code: "04",
+    title: "Apps",
+    desc: "Productos digitales a la medida de cómo trabajas hoy: ventas, agenda o servicio sin Excel eterno.",
     image: "/brand/agency/demo-diabetes.png",
-    href: "/diabetes",
-  },
-  {
-    code: "APP",
-    title: "Apps y paneles",
-    desc: "Productos a la medida para ordenar ventas, agenda o servicio sin Excel eterno.",
-    image: "/brand/agency/demo-collage.png",
     href: "#contacto",
   },
   {
-    code: "TEC",
-    title: "Automatizaciones",
-    desc: "Integraciones que conectan lo que ya usas y liberan tiempo para vender.",
+    code: "05",
+    title: "Soluciones tecnológicas",
+    desc: "Automatizaciones e integraciones que conectan lo que ya usas y liberan tiempo para vender.",
     image: "/brand/agency/demo-moto.png",
     href: "#contacto",
   },
   {
-    code: "GO",
+    code: "06",
     title: "Creamos negocios",
-    desc: "De idea a oferta vendible: marca, promesa, precio, página y primer canal.",
+    desc: "De idea a oferta vendible: marca, promesa, precio, página y primer canal de clientes.",
     image: "/brand/agency/demo-diabetes.png",
+    href: "#contacto",
+  },
+  {
+    code: "07",
+    title: "Influencer marketing",
+    desc: "Creadores con encaje real y contenido pensado para que la gente compre, no solo mire.",
+    image: "/brand/agency/demo-collage.png",
     href: "#contacto",
   },
 ] as const;
 
 export const SERVICE_PERKS = [
-  { title: "Diseño estratégico", desc: "Enfocado en resultados" },
-  { title: "Rápido y limpio", desc: "Velocidad y claridad" },
+  { title: "Estrategia primero", desc: "Antes de diseñar, ordenamos" },
+  { title: "Siete frentes", desc: "Marketing + tech + crecimiento" },
   { title: "Medible", desc: "Sabes qué trae clientes" },
   { title: "Acompañamiento", desc: "Soporte cercano" },
 ] as const;

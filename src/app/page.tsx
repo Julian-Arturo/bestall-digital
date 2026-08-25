@@ -15,13 +15,13 @@ const body = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Bestall Digital | Páginas web que convierten visitas en clientes",
+  title: "Bestall Digital | Marketing · Tecnología · Crecimiento",
   description:
-    "Landing pages, tráfico y sistemas en Colombia. Desde $2.200.000 COP. Anuncio → página → WhatsApp. Agenda por WhatsApp.",
+    "Páginas, tráfico, apps, automatización, Gurú Partner e influencer marketing. Sistemas que traen clientes. WhatsApp.",
   openGraph: {
-    title: "Bestall Digital — Convertir visitas en clientes",
+    title: "Bestall Digital — Marketing · Tecnología · Crecimiento",
     description:
-      "Diseñamos páginas y campañas para que te escriban personas listas para comprar.",
+      "No solo páginas: armamos el sistema completo para que te escriban personas listas para comprar.",
     locale: "es_CO",
     type: "website",
   },

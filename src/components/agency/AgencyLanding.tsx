@@ -96,14 +96,14 @@ export function AgencyLanding() {
         <section id="inicio" className="bd-hero">
           <div className="bd-hero-grid">
             <div className="bd-hero-copy">
-              <p className="bd-pill">+50 negocios impulsados digitalmente</p>
+              <p className="bd-pill">Marketing · Tecnología · Crecimiento</p>
               <motion.h1
                 initial={reduce ? false : { opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, ease }}
               >
-                Creamos tu página web para{" "}
-                <span>convertir visitas en clientes</span>.
+                Tu negocio necesita{" "}
+                <span>clientes</span>, no otro paquete digital.
               </motion.h1>
               <motion.p
                 className="bd-lead"
@@ -111,9 +111,9 @@ export function AgencyLanding() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.12, duration: 0.55, ease }}
               >
-                Landing, tráfico y sistemas en Colombia: el anuncio atrae, la
-                página convence y WhatsApp cierra. Sin páginas bonitas que no
-                venden.
+                En Bestall armamos el sistema completo: páginas, tráfico, apps,
+                automatización, partner estratégico e influencer marketing.
+                El anuncio atrae, el mensaje convence y WhatsApp cierra.
               </motion.p>
               <motion.div
                 className="bd-actions"
@@ -122,10 +122,10 @@ export function AgencyLanding() {
                 transition={{ delay: 0.22, duration: 0.5, ease }}
               >
                 <a className="bd-btn" href={waUrl()}>
-                  Agendar una asesoría
+                  Contarnos mi caso
                 </a>
-                <a className="bd-btn-ghost" href="#casos">
-                  Ver proyectos
+                <a className="bd-btn-ghost" href="#servicios">
+                  Ver los 7 servicios
                 </a>
               </motion.div>
             </div>
@@ -188,19 +188,28 @@ export function AgencyLanding() {
         <section className="bd-price" aria-labelledby="precio-title">
           <div className="bd-price-inner">
             <div>
-              <p className="bd-price-kicker">Precio de creación de página web</p>
+              <p className="bd-price-kicker">Inversión según lo que necesitas</p>
               <h2 id="precio-title">
-                Tu nueva página web desde{" "}
+                Proyectos desde{" "}
                 <span>{AGENCY.priceFrom} COP</span>
               </h2>
+              <p className="bd-price-note">
+                La página web es solo uno de siete servicios. Cotizamos packs de
+                tráfico, apps, automatización o acompañamiento.
+              </p>
             </div>
             <ul>
               {PRICE_BULLETS.map((b) => (
                 <li key={b}>{b}</li>
               ))}
             </ul>
-            <a className="bd-btn" href={waUrl("Hola Bestall 👋 Quiero cotizar una landing desde el precio publicado.")}>
-              Lo quiero ya
+            <a
+              className="bd-btn"
+              href={waUrl(
+                "Hola Bestall 👋 Quiero cotizar. No solo página: les cuento qué necesito.",
+              )}
+            >
+              Cotizar mi caso
             </a>
           </div>
         </section>
@@ -238,12 +247,13 @@ export function AgencyLanding() {
             <div>
               <p className="bd-kicker">Nuestros servicios</p>
               <h2>
-                Soluciones que impulsan tu negocio{" "}
-                <span>con clientes reales</span>
+                Siete formas de crecer —{" "}
+                <span>no solo una página web</span>
               </h2>
               <p className="bd-sub">
-                Diseñamos el sistema completo: página que convence + tráfico que
-                llega + WhatsApp que cierra.
+                Marketing, tecnología y crecimiento: eliges el frente o armamos
+                el pack. Páginas, tráfico, apps, automatización, partner e
+                influencers.
               </p>
             </div>
             <div className="bd-car-nav">
