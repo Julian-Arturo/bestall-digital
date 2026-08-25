@@ -48,6 +48,11 @@ export const metadata: Metadata = {
   },
   description:
     "Agencia Bestall Digital: páginas web, tráfico, apps y crecimiento. Productos en vivo en bestalldigital.com.",
+  icons: {
+    icon: [{ url: "/brand/agency/favicon.png", type: "image/png" }],
+    apple: [{ url: "/brand/agency/mark.png" }],
+    shortcut: ["/brand/agency/favicon.png"],
+  },
   openGraph: {
     title: "Bestall Digital",
     description: "Marketing · Tecnología · Crecimiento",

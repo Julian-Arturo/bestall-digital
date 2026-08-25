@@ -23,6 +23,8 @@ import {
   TRUST,
   waUrl,
 } from "@/lib/agency";
+import { AgencyCursorLight } from "./AgencyCursorLight";
+import { AgencyLeadModal } from "./AgencyLeadModal";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -60,6 +62,7 @@ export function AgencyLanding() {
 
   return (
     <div className="bd-root">
+      <AgencyCursorLight />
       <a className="bd-skip" href="#contacto">
         Ir al contacto
       </a>
@@ -135,27 +138,27 @@ export function AgencyLanding() {
             >
               <div className="bd-device bd-device-desk">
                 <Image
-                  src={SHOWCASES[0].image}
-                  alt="Ejemplo desktop Mecánica VIP"
+                  src={AGENCY.demoMoto}
+                  alt="Landing Mecánica VIP — ejemplo real"
                   fill
                   sizes="(max-width: 900px) 90vw, 420px"
-                  className="object-cover"
+                  className="object-cover object-top"
                   priority
                 />
               </div>
               <div className="bd-device bd-device-phone">
                 <Image
-                  src={SHOWCASES[1].image}
-                  alt="Ejemplo móvil Toma el Control"
+                  src={AGENCY.demoDiabetes}
+                  alt="Landing Toma el Control — ejemplo real"
                   fill
                   sizes="180px"
-                  className="object-cover"
+                  className="object-cover object-top"
                 />
               </div>
               <div className="bd-device bd-device-float">
                 <Image
-                  src={AGENCY.hero}
-                  alt=""
+                  src={AGENCY.demoCollage}
+                  alt="Ejemplos de páginas y proyectos Bestall"
                   fill
                   sizes="220px"
                   className="object-cover"
@@ -514,6 +517,26 @@ export function AgencyLanding() {
           © {new Date().getFullYear()} {AGENCY.name}
         </p>
       </footer>
+
+      <a
+        className="bd-fab-wa"
+        href={waUrl()}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Escribir por WhatsApp"
+      >
+        <span className="bd-fab-badge" aria-hidden>
+          1
+        </span>
+        <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden>
+          <path
+            fill="currentColor"
+            d="M16.01 3C9.4 3 4 8.35 4 14.9c0 2.1.56 4.07 1.53 5.78L4 29l8.55-1.5A12.1 12.1 0 0 0 16.01 27C22.63 27 28 21.65 28 15.1S22.63 3 16.01 3zm6.97 16.68c-.29.82-1.7 1.51-2.38 1.61-.61.09-1.39.13-2.24-.14-.52-.16-1.18-.38-2.03-.75-3.57-1.55-5.9-5.15-6.08-5.39-.18-.24-1.46-1.94-1.46-3.7 0-1.76.92-2.63 1.25-2.99.33-.36.72-.45.96-.45h.7c.22 0 .52-.08.81.62.29.72.99 2.48 1.08 2.66.09.18.14.39.03.63-.12.24-.18.39-.35.6-.18.21-.37.47-.53.63-.18.18-.36.37-.15.72.21.36.93 1.53 2 2.48 1.38 1.22 2.54 1.6 2.9 1.78.36.18.57.15.78-.09.21-.24.9-1.05 1.14-1.41.24-.36.48-.3.81-.18.33.12 2.1.99 2.46 1.17.36.18.6.27.69.42.09.15.09.87-.2 1.69z"
+          />
+        </svg>
+      </a>
+
+      <AgencyLeadModal />
     </div>
   );
 }

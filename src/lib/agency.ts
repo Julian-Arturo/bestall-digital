@@ -6,12 +6,15 @@
 export const AGENCY = {
   name: "Bestall Digital",
   tagline: "Páginas · Tráfico · Sistemas que convierten",
-  whatsapp: "573003550715",
+  whatsapp: "573003550714",
   whatsappPending: false,
   since: "2024",
   mark: "/brand/agency/mark.webp",
   markPng: "/brand/agency/mark.png",
-  hero: "/brand/agency/hero.webp",
+  hero: "/brand/agency/demo-collage.png",
+  demoMoto: "/brand/agency/demo-moto.png",
+  demoDiabetes: "/brand/agency/demo-diabetes.png",
+  demoCollage: "/brand/agency/demo-collage.png",
   priceFrom: "$2.200.000",
   priceFromNote: "COP · landing que convierte",
 } as const;
@@ -80,42 +83,42 @@ export const SERVICES = [
     code: "LP",
     title: "Landing page",
     desc: "Páginas para campañas: una oferta, una acción, más conversaciones de venta.",
-    image: "/brand/agency/case-moto.webp",
+    image: "/brand/agency/demo-moto.png",
     href: "/vip",
   },
   {
     code: "TR",
     title: "Tráfico & campañas",
     desc: "Anuncios con lectura diaria: qué entra, qué cuesta y qué apagamos mañana.",
-    image: "/brand/agency/hero.webp",
+    image: "/brand/agency/demo-collage.png",
     href: "#contacto",
   },
   {
     code: "WEB",
     title: "Página informativa",
     desc: "Presencia clara y confiable para que te tomen en serio desde el primer scroll.",
-    image: "/brand/agency/case-well.webp",
+    image: "/brand/agency/demo-diabetes.png",
     href: "/diabetes",
   },
   {
     code: "APP",
     title: "Apps y paneles",
     desc: "Productos a la medida para ordenar ventas, agenda o servicio sin Excel eterno.",
-    image: "/brand/agency/case-moto.webp",
+    image: "/brand/agency/demo-collage.png",
     href: "#contacto",
   },
   {
     code: "TEC",
     title: "Automatizaciones",
     desc: "Integraciones que conectan lo que ya usas y liberan tiempo para vender.",
-    image: "/brand/agency/hero.webp",
+    image: "/brand/agency/demo-moto.png",
     href: "#contacto",
   },
   {
     code: "GO",
     title: "Creamos negocios",
     desc: "De idea a oferta vendible: marca, promesa, precio, página y primer canal.",
-    image: "/brand/agency/case-well.webp",
+    image: "/brand/agency/demo-diabetes.png",
     href: "#contacto",
   },
 ] as const;
@@ -131,10 +134,10 @@ export const SHOWCASES = [
   {
     href: "/vip",
     title: "Mecánica VIP",
-    subtitle: "Curso / membresía que ya está vendiendo",
+    subtitle: "Landing de membresía que ya está vendiendo",
     blurb:
       "Página hecha para que el motero entienda el valor, confíe y pague — con video, prueba social y compra en minutos.",
-    image: "/brand/agency/case-moto.webp",
+    image: "/brand/agency/demo-moto.png",
     result: "De la duda al pago, sin rodeos",
   },
   {
@@ -143,7 +146,7 @@ export const SHOWCASES = [
     subtitle: "Programa de 21 días · oferta clara",
     blurb:
       "Landing calmada y directa: el problema, el plan y un precio accesible. Lista para que el anuncio traiga gente que sí escribe.",
-    image: "/brand/agency/case-well.webp",
+    image: "/brand/agency/demo-diabetes.png",
     result: "Mensaje simple → decisión rápida",
   },
 ] as const;
