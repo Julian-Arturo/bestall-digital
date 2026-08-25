@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Karla } from "next/font/google";
+import { Bricolage_Grotesque, Manrope } from "next/font/google";
 import { AgencyLanding } from "@/components/agency/AgencyLanding";
 
 const display = Bricolage_Grotesque({
@@ -8,20 +8,20 @@ const display = Bricolage_Grotesque({
   weight: ["600", "700", "800"],
 });
 
-const body = Karla({
+const body = Manrope({
   variable: "--font-close-body",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "Bestall Digital | Más clientes, no solo páginas bonitas",
+  title: "Bestall Digital | Páginas web que convierten visitas en clientes",
   description:
-    "Si inviertes y el teléfono no suena, te ayudamos a ordenar mensaje, página y tráfico para conseguir clientes. Proyectos reales. WhatsApp.",
+    "Landing pages, tráfico y sistemas en Colombia. Desde $2.200.000 COP. Anuncio → página → WhatsApp. Agenda por WhatsApp.",
   openGraph: {
-    title: "Bestall Digital — Clientes, no solo páginas bonitas",
+    title: "Bestall Digital — Convertir visitas en clientes",
     description:
-      "Claridad, conversaciones y ventas que se pueden medir. Escríbenos por WhatsApp.",
+      "Diseñamos páginas y campañas para que te escriban personas listas para comprar.",
     locale: "es_CO",
     type: "website",
   },

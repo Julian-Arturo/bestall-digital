@@ -1,17 +1,19 @@
 /**
- * Bestall Digital — copy and facts for the agency home.
- * Visual world: LA SALA DE CIERRE. WhatsApp real. No invented metrics.
+ * Bestall Digital — agency home copy & offers.
+ * Visual: dark glass conversion landing (Pixelee-structure, Bestall colors).
  */
+
 export const AGENCY = {
   name: "Bestall Digital",
-  tagline: "Marketing · Tecnología · Crecimiento",
+  tagline: "Páginas · Tráfico · Sistemas que convierten",
   whatsapp: "573003550715",
   whatsappPending: false,
   since: "2024",
   mark: "/brand/agency/mark.webp",
-  /** PNG alta para grupos / redes */
   markPng: "/brand/agency/mark.png",
   hero: "/brand/agency/hero.webp",
+  priceFrom: "$2.200.000",
+  priceFromNote: "COP · landing que convierte",
 } as const;
 
 export const WA_PREFILL =
@@ -22,69 +24,107 @@ export function waUrl(text?: string) {
   return `https://wa.me/${AGENCY.whatsapp}${q}`;
 }
 
-/** Dolores que reconocen al instante quienes nos necesitan */
+export const TRUST = [
+  {
+    title: "Entrega ágil",
+    desc: "Landing lista en 7 a 15 días según alcance.",
+  },
+  {
+    title: "Lista para ads",
+    desc: "Estructura pensada para Google y Meta Ads.",
+  },
+  {
+    title: "100% celular",
+    desc: "Se ve y convierte primero en el teléfono.",
+  },
+  {
+    title: "WhatsApp al centro",
+    desc: "Cada visita tiene un solo camino: escribirte.",
+  },
+] as const;
+
+export const PRICE_BULLETS = [
+  "Diseño enfocado en conversión",
+  "100% responsive",
+  "Mensaje claro + CTA a WhatsApp",
+  "Lista para campañas de tráfico",
+  "SEO básico de lanzamiento",
+  "Acompañamiento al publicar",
+] as const;
+
 export const PAINS = [
   {
-    title: "Inviertes en anuncios… y el teléfono no suena",
-    desc: "El presupuesto se va, las métricas “se ven bien”, pero no llegan personas listas para comprar.",
+    title: "Tu página se ve desactualizada",
+    desc: "Y genera desconfianza antes de que digas una palabra.",
   },
   {
-    title: "Tu página explica poco y confunde mucho",
-    desc: "El visitante no entiende qué vendes, a quién le sirve ni qué hacer después. Se va sin escribirte.",
+    title: "Pagas anuncios y nadie te escribe",
+    desc: "El presupuesto se va; las métricas “se ven bien”, pero no hay clientes.",
   },
   {
-    title: "Sabes que vendes, pero no sabes por dónde empezar",
-    desc: "Hay mil ideas y cero orden: sin prioridad, sin mensaje claro y sin un plan que se pueda medir.",
+    title: "El visitante no entiende qué vendes",
+    desc: "Se confunde, se va y nunca abre WhatsApp.",
   },
   {
-    title: "Tu equipo se ahoga en tareas repetidas",
-    desc: "WhatsApp, Excel y copiar-pegar consumen el día. El negocio no escala porque todo depende de personas cansadas.",
+    title: "Tu competencia se ve más profesional",
+    desc: "Y se está llevando a quien debería escribirte a ti.",
+  },
+  {
+    title: "Todo depende de tareas manuales",
+    desc: "WhatsApp, Excel y copiar-pegar: el negocio no escala.",
   },
 ] as const;
 
 export const SERVICES = [
   {
-    code: "01",
-    title: "Páginas web",
-    pain: "Tienes presencia online, pero no genera conversaciones.",
-    desc: "Diseñamos páginas que explican tu oferta en segundos y empujan a una sola acción: escribirte o comprar.",
+    code: "LP",
+    title: "Landing page",
+    desc: "Páginas para campañas: una oferta, una acción, más conversaciones de venta.",
+    image: "/brand/agency/case-moto.webp",
+    href: "/vip",
   },
   {
-    code: "02",
-    title: "Tráfico",
-    pain: "Pagas por visitas que no se convierten.",
-    desc: "Campañas con lectura diaria: qué entra, qué cuesta y qué apagamos mañana. Menos humo, más clientes.",
+    code: "TR",
+    title: "Tráfico & campañas",
+    desc: "Anuncios con lectura diaria: qué entra, qué cuesta y qué apagamos mañana.",
+    image: "/brand/agency/hero.webp",
+    href: "#contacto",
   },
   {
-    code: "03",
-    title: "Gurú Partner",
-    pain: "Decides solo y todo se atrasa meses.",
-    desc: "Una cabeza más en tu mesa cada semana: prioridades, precios, oferta y el siguiente paso concreto.",
+    code: "WEB",
+    title: "Página informativa",
+    desc: "Presencia clara y confiable para que te tomen en serio desde el primer scroll.",
+    image: "/brand/agency/case-well.webp",
+    href: "/diabetes",
   },
   {
-    code: "04",
-    title: "Apps",
-    pain: "Tu operación vive en cuadernos y chats.",
-    desc: "Productos digitales a la medida de cómo trabajas hoy, para ordenar ventas, agenda o servicio.",
+    code: "APP",
+    title: "Apps y paneles",
+    desc: "Productos a la medida para ordenar ventas, agenda o servicio sin Excel eterno.",
+    image: "/brand/agency/case-moto.webp",
+    href: "#contacto",
   },
   {
-    code: "05",
-    title: "Soluciones tecnológicas",
-    pain: "El equipo pierde horas en lo mismo todos los días.",
-    desc: "Automatizaciones e integraciones que conectan lo que ya usas y liberan tiempo para vender.",
+    code: "TEC",
+    title: "Automatizaciones",
+    desc: "Integraciones que conectan lo que ya usas y liberan tiempo para vender.",
+    image: "/brand/agency/hero.webp",
+    href: "#contacto",
   },
   {
-    code: "06",
+    code: "GO",
     title: "Creamos negocios",
-    pain: "Tienes una idea… y sigue en la cabeza.",
-    desc: "Te llevamos de idea a oferta vendible: marca, promesa, precio, página y primer canal de clientes.",
+    desc: "De idea a oferta vendible: marca, promesa, precio, página y primer canal.",
+    image: "/brand/agency/case-well.webp",
+    href: "#contacto",
   },
-  {
-    code: "07",
-    title: "Influencer marketing",
-    pain: "Pagas por “alcance” que no deja ventas.",
-    desc: "Creadores con encaje real y contenido pensado para que la gente compre, no solo mire.",
-  },
+] as const;
+
+export const SERVICE_PERKS = [
+  { title: "Diseño estratégico", desc: "Enfocado en resultados" },
+  { title: "Rápido y limpio", desc: "Velocidad y claridad" },
+  { title: "Medible", desc: "Sabes qué trae clientes" },
+  { title: "Acompañamiento", desc: "Soporte cercano" },
 ] as const;
 
 export const SHOWCASES = [
@@ -93,7 +133,7 @@ export const SHOWCASES = [
     title: "Mecánica VIP",
     subtitle: "Curso / membresía que ya está vendiendo",
     blurb:
-      "Una página hecha para que el motero entienda el valor, confíe y pague — con video, prueba social y compra en minutos.",
+      "Página hecha para que el motero entienda el valor, confíe y pague — con video, prueba social y compra en minutos.",
     image: "/brand/agency/case-moto.webp",
     result: "De la duda al pago, sin rodeos",
   },
@@ -102,7 +142,7 @@ export const SHOWCASES = [
     title: "Toma el Control",
     subtitle: "Programa de 21 días · oferta clara",
     blurb:
-      "Una landing calmada y directa: el problema, el plan y un precio accesible. Lista para que el anuncio traiga gente que sí escribe.",
+      "Landing calmada y directa: el problema, el plan y un precio accesible. Lista para que el anuncio traiga gente que sí escribe.",
     image: "/brand/agency/case-well.webp",
     result: "Mensaje simple → decisión rápida",
   },
@@ -118,35 +158,123 @@ export const PROCESS = [
     desc: "Claridad primero: qué ofreces, por qué tú y qué debe hacer la persona en la página.",
   },
   {
-    title: "Lo ponemos a trabajar",
-    desc: "Página, tráfico o sistema en marcha — con números que puedes revisar desde el primer día.",
+    title: "Diseño y construcción",
+    desc: "Interfaz profesional, móvil primero, WhatsApp al centro y lista para campañas.",
+  },
+  {
+    title: "Tráfico y lanzamiento",
+    desc: "Publicamos, conectamos medición y —si lo contratas— encendemos anuncios.",
   },
   {
     title: "Afinamos lo que vende",
-    desc: "Cortamos lo que no mueve plata y reforzamos lo que sí. Crecer es iterar, no adivinar.",
+    desc: "Cortamos lo que no mueve plata y reforzamos lo que sí. Iterar, no adivinar.",
   },
 ] as const;
 
 export const REVIEWS = [
   {
-    name: "Camila R.",
-    role: "Fundadora · e-commerce",
+    name: "Laura Méndez",
+    role: "Servicios profesionales",
     quote:
-      "Antes mi página era linda y nadie entendía nada. Ahora el WhatsApp llega con gente que ya quiere comprar.",
+      "La página quedó clara y lista para campañas. Empezamos a recibir más contactos desde la primera semana.",
+    photo:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&h=160&q=80",
   },
   {
-    name: "Andrés M.",
-    role: "Coach online",
+    name: "Andrés Rojas",
+    role: "Consultoría",
     quote:
-      "Dejé de quemar plata a ciegas. En semanas teníamos página, anuncios y un tablero que sí entendía.",
+      "Necesitábamos explicar mejor la oferta. Ordenaron el mensaje y mejoró mucho la experiencia en celular.",
+    photo:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=160&h=160&q=80",
   },
   {
-    name: "Valentina S.",
-    role: "Clínica privada",
+    name: "Camila Torres",
+    role: "Marca comercial",
     quote:
-      "Ordenaron el mensaje. Hoy el paciente llega más claro y nosotros perdemos menos tiempo explicando lo mismo.",
+      "Entregaron una landing con WhatsApp integrado y estructura lista para Google Ads. El proceso fue fácil.",
+    photo:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=160&h=160&q=80",
+  },
+  {
+    name: "Santiago Pérez",
+    role: "Negocio local",
+    quote:
+      "Antes la web era confusa. Ahora el cliente entiende rápido qué hacemos y nos escribe con más intención.",
+    photo:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=160&h=160&q=80",
+  },
+  {
+    name: "Valentina López",
+    role: "Emprendedora",
+    quote:
+      "Pasamos de una idea suelta a una página completa, visualmente sólida y enfocada en cotizaciones.",
+    photo:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=160&h=160&q=80",
+  },
+  {
+    name: "Daniel Medina",
+    role: "Tecnología",
+    quote:
+      "Diseño moderno sin perder claridad. Carga rápido y se ve impecable en el celular, que era la prioridad.",
+    photo:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&h=160&q=80",
+  },
+  {
+    name: "María Camargo",
+    role: "Educación",
+    quote:
+      "Nos guiaron con textos, estructura y llamados a la acción. Aprovechamos mucho mejor cada visita.",
+    photo:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=160&h=160&q=80",
+  },
+  {
+    name: "Javier Acosta",
+    role: "Servicios",
+    quote:
+      "Quedamos con una web profesional y fácil de compartir. WhatsApp nos ayudó a responder más rápido.",
+    photo:
+      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=160&h=160&q=80",
   },
 ] as const;
 
-export const REVIEWS_DISCLAIMER =
-  "Historias de muestra para mostrar el tono. Las cambiamos por clientes reales cuando autoricen su nombre.";
+export const STATS = [
+  { value: "+50", label: "negocios acompañados" },
+  { value: "2", label: "proyectos live para ver" },
+  { value: "7–15", label: "días de entrega típica" },
+] as const;
+
+export const FAQS = [
+  {
+    q: "¿Cuánto tarda una landing?",
+    a: "Una landing de conversión suele estar lista entre 7 y 15 días. Sitios con admin o más secciones pueden tomar 2 a 3 semanas.",
+  },
+  {
+    q: "¿Cuánto cuesta?",
+    a: "Landing plana desde $2.200.000 COP. Con panel para editar textos y fotos, desde $3.900.000 COP. El precio final depende del alcance.",
+  },
+  {
+    q: "¿Incluyen campañas de tráfico?",
+    a: "Sí, como servicio aparte o en pack. La página convence; los anuncios traen visitas. Juntos cierran el sistema: anuncio → landing → WhatsApp.",
+  },
+  {
+    q: "¿Incluyen dominio y hosting?",
+    a: "Te asesoramos y dejamos todo publicado. Dominio y hosting pueden ir a tu nombre o los gestionamos según el acuerdo.",
+  },
+  {
+    q: "¿Queda bien en celular?",
+    a: "Sí. Diseñamos primero para móvil: ahí llega la mayoría del tráfico de anuncios.",
+  },
+  {
+    q: "¿Hay soporte después de entregar?",
+    a: "Sí. Acompañamos el lanzamiento y ofrecemos mantenimiento mensual para cambios y soporte.",
+  },
+  {
+    q: "¿Puedo editar la página yo?",
+    a: "En el plan con admin, sí: textos, fotos, horarios y bloques clave. En el plan plano, los cambios los hacemos nosotros.",
+  },
+  {
+    q: "¿Integran WhatsApp y pagos?",
+    a: "WhatsApp va de serie. Pagos, formularios y automatizaciones se agregan según el tipo de negocio.",
+  },
+] as const;

@@ -1,217 +1,325 @@
 "use client";
 
 /*
-  THESIS: Bestall turns strangers into clients — closing-room clarity, pain-first copy.
-  OWN-WORLD: cool paper, ink, teal, coral CTA; Bricolage + Karla; full-bleed hero.
-  STORY: feel the pain → see what we fix → trust live proof → WhatsApp.
-  FIRST VIEWPORT: brand, one headline, one lead, dual CTA — no tech jargon.
-  FORM: Sala de Cierre (seed ff5a5e9e).
-  FINISH: unreviewed and undocumented is unfinished; this build ends with the
-  finish review, the verdict, DESIGN.md, and every shipping raster carrying
-  its provenance
+  Bestall Digital — conversion agency landing.
+  Structure inspired by high-converting agency landings; own colors & copy.
 */
 
 import Image from "next/image";
 import Link from "next/link";
+import { useCallback, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   AGENCY,
+  FAQS,
   PAINS,
+  PRICE_BULLETS,
   PROCESS,
   REVIEWS,
-  REVIEWS_DISCLAIMER,
+  SERVICE_PERKS,
   SERVICES,
   SHOWCASES,
+  STATS,
+  TRUST,
   waUrl,
 } from "@/lib/agency";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
+function Chevron({ dir }: { dir: "l" | "r" }) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        d={dir === "l" ? "M15 6l-6 6 6 6" : "M9 6l6 6-6 6"}
+        stroke="currentColor"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export function AgencyLanding() {
   const reduce = useReducedMotion();
+  const servicesRef = useRef<HTMLDivElement>(null);
+  const reviewsRef = useRef<HTMLDivElement>(null);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+
+  const scrollRow = useCallback(
+    (ref: { current: HTMLDivElement | null }, dir: -1 | 1) => {
+      const el = ref.current;
+      if (!el) return;
+      el.scrollBy({
+        left: dir * Math.min(el.clientWidth * 0.75, 360),
+        behavior: "smooth",
+      });
+    },
+    [],
+  );
 
   return (
-    <div className="close-root">
-      <a className="close-skip" href="#contacto">
+    <div className="bd-root">
+      <a className="bd-skip" href="#contacto">
         Ir al contacto
       </a>
 
-      <header className="close-nav">
-        <Link href="/" className="close-brand">
+      <header className="bd-nav">
+        <Link href="/" className="bd-brand">
           <Image
             src={AGENCY.mark}
-            alt="Bestall Digital"
-            width={40}
-            height={40}
-            className="close-mark"
+            alt=""
+            width={36}
+            height={36}
+            className="bd-mark"
             priority
           />
-          <span>
-            BESTALL<span>DIGITAL</span>
-          </span>
+          <span>bestall</span>
         </Link>
         <nav aria-label="Principal">
-          <a href="#dolor">El problema</a>
+          <a href="#inicio">Inicio</a>
           <a href="#servicios">Servicios</a>
-          <a href="#prueba">Casos</a>
-          <a href="#contacto" className="close-nav-cta">
-            Hablar
-          </a>
+          <a href="#casos">Proyectos</a>
+          <a href="#proceso">Proceso</a>
+          <a href="#faq">FAQ</a>
         </nav>
+        <a className="bd-btn bd-btn-sm" href={waUrl()}>
+          Cotizar ahora
+        </a>
       </header>
 
       <main>
-        <section className="close-hero">
-          <Image
-            src={AGENCY.hero}
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="close-hero-img"
-          />
-          <div className="close-hero-veil" />
-          <div className="close-hero-copy">
-            <motion.h1
-              initial={reduce ? false : { opacity: 0, y: 28 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease }}
-            >
-              Tu negocio necesita
-              <br />
-              <em>clientes</em>, no otra
-              <br />
-              página bonita.
-            </motion.h1>
-            <motion.p
-              initial={reduce ? false : { opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15, duration: 0.65, ease }}
-            >
-              Si ya invertiste y el teléfono sigue en silencio, aquí ordenamos
-              el mensaje, la página y el tráfico para que lleguen personas
-              listas para comprar. Mira dos proyectos reales nuestros — y
-              escríbenos.
-            </motion.p>
+        {/* HERO */}
+        <section id="inicio" className="bd-hero">
+          <div className="bd-hero-grid">
+            <div className="bd-hero-copy">
+              <p className="bd-pill">+50 negocios impulsados digitalmente</p>
+              <motion.h1
+                initial={reduce ? false : { opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.65, ease }}
+              >
+                Creamos tu página web para{" "}
+                <span>convertir visitas en clientes</span>.
+              </motion.h1>
+              <motion.p
+                className="bd-lead"
+                initial={reduce ? false : { opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.12, duration: 0.55, ease }}
+              >
+                Landing, tráfico y sistemas en Colombia: el anuncio atrae, la
+                página convence y WhatsApp cierra. Sin páginas bonitas que no
+                venden.
+              </motion.p>
+              <motion.div
+                className="bd-actions"
+                initial={reduce ? false : { opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.22, duration: 0.5, ease }}
+              >
+                <a className="bd-btn" href={waUrl()}>
+                  Agendar una asesoría
+                </a>
+                <a className="bd-btn-ghost" href="#casos">
+                  Ver proyectos
+                </a>
+              </motion.div>
+            </div>
+
             <motion.div
-              className="close-actions"
-              initial={reduce ? false : { opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.28, duration: 0.55, ease }}
+              className="bd-hero-stage"
+              initial={reduce ? false : { opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.15, duration: 0.7, ease }}
             >
-              <a className="close-btn" href={waUrl()}>
-                Quiero más clientes
-              </a>
-              <a className="close-btn-ghost" href="#prueba">
-                Ver proyectos reales
-              </a>
+              <div className="bd-device bd-device-desk">
+                <Image
+                  src={SHOWCASES[0].image}
+                  alt="Ejemplo desktop Mecánica VIP"
+                  fill
+                  sizes="(max-width: 900px) 90vw, 420px"
+                  className="object-cover"
+                  priority
+                />
+              </div>
+              <div className="bd-device bd-device-phone">
+                <Image
+                  src={SHOWCASES[1].image}
+                  alt="Ejemplo móvil Toma el Control"
+                  fill
+                  sizes="180px"
+                  className="object-cover"
+                />
+              </div>
+              <div className="bd-device bd-device-float">
+                <Image
+                  src={AGENCY.hero}
+                  alt=""
+                  fill
+                  sizes="220px"
+                  className="object-cover"
+                />
+              </div>
             </motion.div>
           </div>
+
+          <ul className="bd-trust">
+            {TRUST.map((t, i) => (
+              <motion.li
+                key={t.title}
+                initial={reduce ? false : { opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.06, duration: 0.45, ease }}
+              >
+                <span className="bd-trust-n">{String(i + 1).padStart(2, "0")}</span>
+                <strong>{t.title}</strong>
+                <p>{t.desc}</p>
+              </motion.li>
+            ))}
+          </ul>
         </section>
 
-        <section className="close-strip">
-          <p>
-            No vendemos “presencia digital”. Vendemos claridad, conversaciones
-            y ventas que se pueden medir.
-          </p>
-        </section>
-
-        <section id="dolor" className="close-band close-band-pain">
-          <div className="close-band-inner">
-            <div className="close-head close-head-on-dark">
-              <h2>¿Te suena familiar?</h2>
-              <p>
-                Si reconoces alguno, no estás solo. Es exactamente lo que
-                resolvemos cada semana.
-              </p>
+        {/* PRICE BAND */}
+        <section className="bd-price" aria-labelledby="precio-title">
+          <div className="bd-price-inner">
+            <div>
+              <p className="bd-price-kicker">Precio de creación de página web</p>
+              <h2 id="precio-title">
+                Tu nueva página web desde{" "}
+                <span>{AGENCY.priceFrom} COP</span>
+              </h2>
             </div>
-            <div className="close-pains">
-              {PAINS.map((p, i) => (
-                <motion.article
-                  key={p.title}
-                  className="close-pain-tile"
-                  initial={reduce ? false : { opacity: 0, y: 22 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-8%" }}
-                  transition={{ delay: i * 0.07, duration: 0.5, ease }}
-                >
-                  <div className="close-pain-top">
-                    <span className="close-pain-n" aria-hidden>
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span className="close-pain-tag">Dolor real</span>
-                  </div>
-                  <h3>{p.title}</h3>
-                  <p>{p.desc}</p>
-                </motion.article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="servicios" className="close-band close-band-help">
-          <div className="close-band-inner">
-            <div className="close-head">
-              <h2>Cómo te ayudamos</h2>
-              <p>
-                Cada servicio ataca un dolor concreto y deja un resultado que
-                puedes tocar.
-              </p>
-            </div>
-            <ul className="close-services">
-              {SERVICES.map((s, i) => (
-                <motion.li
-                  key={s.code}
-                  className="close-service-tile"
-                  initial={reduce ? false : { opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-8%" }}
-                  transition={{ delay: i * 0.045, duration: 0.45, ease }}
-                >
-                  <div className="close-service-index">
-                    <span>{s.code}</span>
-                  </div>
-                  <div className="close-service-body">
-                    <h3>{s.title}</h3>
-                    <p className="close-service-pain">
-                      <em>El problema:</em> {s.pain}
-                    </p>
-                    <p className="close-service-fix">
-                      <em>Lo que hacemos:</em> {s.desc}
-                    </p>
-                  </div>
-                </motion.li>
+            <ul>
+              {PRICE_BULLETS.map((b) => (
+                <li key={b}>{b}</li>
               ))}
             </ul>
-            <div className="close-section-cta">
-              <a className="close-btn" href={waUrl()}>
-                Contarnos mi caso por WhatsApp
-              </a>
-              <p className="close-section-cta-note">
-                Respuesta humana. Sin formularios eternos.
-              </p>
-            </div>
+            <a className="bd-btn" href={waUrl("Hola Bestall 👋 Quiero cotizar una landing desde el precio publicado.")}>
+              Lo quiero ya
+            </a>
           </div>
         </section>
 
-        <section id="prueba" className="close-section close-section-ink">
-          <div className="close-head close-head-light">
-            <h2>Proyectos que ya están trabajando</h2>
-            <p>
-              No son demos inventadas. Entra, siente el nivel y imagina el tuyo.
-            </p>
+        {/* PAINS */}
+        <section id="dolor" className="bd-section">
+          <div className="bd-head">
+            <p className="bd-kicker">¿Te identificas?</p>
+            <h2>
+              Tu negocio probablemente está{" "}
+              <span>perdiendo clientes</span> si…
+            </h2>
           </div>
-          <div className="close-cases">
+          <div className="bd-pains">
+            {PAINS.map((p, i) => (
+              <motion.article
+                key={p.title}
+                className="bd-pain"
+                initial={reduce ? false : { opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-6%" }}
+                transition={{ delay: i * 0.05, duration: 0.45, ease }}
+              >
+                <span>{String(i + 1).padStart(2, "0")}</span>
+                <h3>{p.title}</h3>
+                <p>{p.desc}</p>
+              </motion.article>
+            ))}
+          </div>
+        </section>
+
+        {/* SERVICES */}
+        <section id="servicios" className="bd-section bd-section-soft">
+          <div className="bd-head bd-head-row">
+            <div>
+              <p className="bd-kicker">Nuestros servicios</p>
+              <h2>
+                Soluciones que impulsan tu negocio{" "}
+                <span>con clientes reales</span>
+              </h2>
+              <p className="bd-sub">
+                Diseñamos el sistema completo: página que convence + tráfico que
+                llega + WhatsApp que cierra.
+              </p>
+            </div>
+            <div className="bd-car-nav">
+              <button
+                type="button"
+                aria-label="Anterior"
+                onClick={() => scrollRow(servicesRef, -1)}
+              >
+                <Chevron dir="l" />
+              </button>
+              <button
+                type="button"
+                aria-label="Siguiente"
+                onClick={() => scrollRow(servicesRef, 1)}
+              >
+                <Chevron dir="r" />
+              </button>
+            </div>
+          </div>
+
+          <div className="bd-carousel" ref={servicesRef}>
+            {SERVICES.map((s, i) => (
+              <motion.article
+                key={s.code}
+                className="bd-service"
+                initial={reduce ? false : { opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.04, duration: 0.4, ease }}
+              >
+                <span className="bd-service-code">{s.code}</span>
+                <h3>{s.title}</h3>
+                <p>{s.desc}</p>
+                <a href={s.href.startsWith("/") ? s.href : s.href}>
+                  Más información →
+                </a>
+                <div className="bd-service-media">
+                  <Image
+                    src={s.image}
+                    alt=""
+                    fill
+                    sizes="320px"
+                    className="object-cover"
+                  />
+                </div>
+              </motion.article>
+            ))}
+          </div>
+
+          <ul className="bd-perks">
+            {SERVICE_PERKS.map((p) => (
+              <li key={p.title}>
+                <strong>{p.title}</strong>
+                <span>{p.desc}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* LIVE CASES */}
+        <section id="casos" className="bd-section">
+          <div className="bd-head">
+            <p className="bd-kicker">Proyectos reales</p>
+            <h2>
+              Entra y siente el nivel —{" "}
+              <span>no son demos inventadas</span>
+            </h2>
+          </div>
+          <div className="bd-cases">
             {SHOWCASES.map((item, i) => (
               <motion.div
                 key={item.href}
-                initial={reduce ? false : { opacity: 0, y: 28 }}
+                initial={reduce ? false : { opacity: 0, y: 22 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-10%" }}
-                transition={{ delay: i * 0.08, duration: 0.55, ease }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08, duration: 0.5, ease }}
               >
-                <Link href={item.href} className="close-case">
-                  <div className="close-case-media">
+                <Link href={item.href} className="bd-case">
+                  <div className="bd-case-media">
                     <Image
                       src={item.image}
                       alt=""
@@ -220,10 +328,10 @@ export function AgencyLanding() {
                       className="object-cover"
                     />
                   </div>
-                  <div className="close-case-body">
-                    <p className="close-case-live">{item.result}</p>
+                  <div className="bd-case-body">
+                    <p className="bd-case-tag">{item.result}</p>
                     <h3>{item.title}</h3>
-                    <p className="close-case-sub">{item.subtitle}</p>
+                    <p className="bd-case-sub">{item.subtitle}</p>
                     <p>{item.blurb}</p>
                     <span>Ver cómo se siente →</span>
                   </div>
@@ -233,77 +341,164 @@ export function AgencyLanding() {
           </div>
         </section>
 
-        <section id="proceso" className="close-section">
-          <div className="close-head">
-            <h2>Así trabajamos juntos</h2>
-            <p>
-              Del primer mensaje a un plan que se puede tocar — sin teatro.
-            </p>
+        {/* REVIEWS */}
+        <section className="bd-section bd-section-soft" id="resenas">
+          <div className="bd-head bd-head-row">
+            <div>
+              <p className="bd-kicker">Resultados reales</p>
+              <h2>
+                Clientes que confiaron en Bestall para{" "}
+                <span>crecer</span>
+              </h2>
+              <p className="bd-sub">
+                Negocios que necesitaban más que una página bonita: claridad,
+                contactos y ventas.
+              </p>
+            </div>
+            <div className="bd-car-nav">
+              <button
+                type="button"
+                aria-label="Anterior reseñas"
+                onClick={() => scrollRow(reviewsRef, -1)}
+              >
+                <Chevron dir="l" />
+              </button>
+              <button
+                type="button"
+                aria-label="Siguiente reseñas"
+                onClick={() => scrollRow(reviewsRef, 1)}
+              >
+                <Chevron dir="r" />
+              </button>
+            </div>
           </div>
-          <ol className="close-process">
+
+          <div className="bd-reviews" ref={reviewsRef}>
+            {REVIEWS.map((r, i) => (
+              <motion.blockquote
+                key={r.name}
+                className="bd-review"
+                initial={reduce ? false : { opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: (i % 4) * 0.05, duration: 0.4, ease }}
+              >
+                <div className="bd-stars" aria-label="5 de 5">
+                  ★★★★★
+                </div>
+                <p>“{r.quote}”</p>
+                <footer>
+                  <Image
+                    src={r.photo}
+                    alt=""
+                    width={44}
+                    height={44}
+                    className="bd-avatar"
+                  />
+                  <div>
+                    <strong>{r.name}</strong>
+                    <span>{r.role}</span>
+                  </div>
+                </footer>
+              </motion.blockquote>
+            ))}
+          </div>
+
+          <ul className="bd-stats">
+            {STATS.map((s) => (
+              <li key={s.label}>
+                <strong>{s.value}</strong>
+                <span>{s.label}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* PROCESS */}
+        <section id="proceso" className="bd-section">
+          <div className="bd-head bd-head-row">
+            <div>
+              <p className="bd-kicker">Así trabajamos</p>
+              <h2>
+                Nuestro proceso — del dolor a un{" "}
+                <span>sistema que vende</span>
+              </h2>
+            </div>
+          </div>
+          <ol className="bd-process">
             {PROCESS.map((step, i) => (
               <motion.li
                 key={step.title}
+                className={i === 1 ? "bd-process-accent" : undefined}
                 initial={reduce ? false : { opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.07, duration: 0.45, ease }}
+                transition={{ delay: i * 0.06, duration: 0.45, ease }}
               >
-                <i aria-hidden />
-                <strong>{step.title}</strong>
+                <span>{i + 1}</span>
+                <h3>{step.title}</h3>
                 <p>{step.desc}</p>
               </motion.li>
             ))}
           </ol>
         </section>
 
-        <section className="close-section close-section-soft">
-          <div className="close-head">
-            <h2>Lo que buscan quienes nos escriben</h2>
-            <p>{REVIEWS_DISCLAIMER}</p>
+        {/* FAQ */}
+        <section id="faq" className="bd-section bd-section-soft">
+          <div className="bd-head">
+            <p className="bd-kicker">Preguntas frecuentes</p>
+            <h2>
+              Resolvemos tus dudas sobre{" "}
+              <span>precio, alcance y resultados</span>
+            </h2>
           </div>
-          <div className="close-quotes">
-            {REVIEWS.map((r, i) => (
-              <motion.blockquote
-                key={r.name}
-                initial={reduce ? false : { opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.06, duration: 0.45, ease }}
-              >
-                <p>“{r.quote}”</p>
-                <footer>
-                  <strong>{r.name}</strong>
-                  <span>{r.role}</span>
-                </footer>
-              </motion.blockquote>
-            ))}
+          <div className="bd-faq">
+            {FAQS.map((item, i) => {
+              const open = openFaq === i;
+              return (
+                <div key={item.q} className={`bd-faq-item${open ? " is-open" : ""}`}>
+                  <button
+                    type="button"
+                    aria-expanded={open}
+                    onClick={() => setOpenFaq(open ? null : i)}
+                  >
+                    <span>{item.q}</span>
+                    <i aria-hidden>{open ? "−" : "+"}</i>
+                  </button>
+                  {open ? <p>{item.a}</p> : null}
+                </div>
+              );
+            })}
           </div>
         </section>
 
-        <section id="contacto" className="close-final">
+        {/* FINAL CTA */}
+        <section id="contacto" className="bd-final">
           <motion.div
-            initial={reduce ? false : { opacity: 0, y: 20 }}
+            initial={reduce ? false : { opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55, ease }}
           >
-            <h2>Si estás cansado de invertir sin ver clientes, hablemos.</h2>
+            <h2>¿Listo para conseguir más clientes?</h2>
             <p>
-              Cuéntanos qué vendes y qué te está doliendo. En la primera
-              conversación te decimos si podemos ayudarte — y cómo.
+              Cuéntanos qué vendes y qué te duele. En la primera conversación te
+              decimos si podemos ayudarte — y cómo.
             </p>
-            <div className="close-actions">
-              <a className="close-btn" href={waUrl()}>
-                Escribir por WhatsApp
+            <div className="bd-actions bd-actions-center">
+              <a className="bd-btn" href={waUrl()}>
+                Hablar por WhatsApp
+              </a>
+              <a className="bd-btn-ghost" href="#servicios">
+                Ver planes
               </a>
             </div>
           </motion.div>
         </section>
       </main>
 
-      <footer className="close-foot">
-        <div className="close-foot-brand">
+      <footer className="bd-foot">
+        <div className="bd-foot-brand">
           <Image src={AGENCY.mark} alt="" width={36} height={36} />
           <div>
             <strong>{AGENCY.name}</strong>
@@ -313,6 +508,7 @@ export function AgencyLanding() {
         <nav>
           <Link href="/vip">Mecánica VIP</Link>
           <Link href="/diabetes">Diabetes 21 días</Link>
+          <a href={waUrl()}>WhatsApp</a>
         </nav>
         <p>
           © {new Date().getFullYear()} {AGENCY.name}
