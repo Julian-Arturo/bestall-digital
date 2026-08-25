@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 import { waUrl } from "@/lib/agency";
 
 const DISCOUNT = 15;
-const STORAGE_DISMISS = "bd-lead-drawer-dismissed-v3";
+const STORAGE_DISMISS = "bd-lead-card-dismissed-v4";
 
 type TimeLeft = { days: number; hours: number; minutes: number; seconds: number };
 
@@ -67,22 +67,25 @@ export function AgencyLeadModal() {
       opened = true;
       setOpen(true);
       window.removeEventListener("scroll", onScroll);
-      window.clearTimeout(fallback);
+    };
+
+    const scrollProgress = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      if (max <= 0) return 0;
+      return window.scrollY / max;
     };
 
     const onScroll = () => {
-      if (window.scrollY < 180) return;
+      // Mostrar hacia la segunda mitad / ~65–80% del recorrido
+      if (scrollProgress() < 0.65) return;
       openOnce();
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    if (window.scrollY >= 180) openOnce();
-
-    const fallback = window.setTimeout(openOnce, 9000);
+    onScroll();
 
     return () => {
       window.removeEventListener("scroll", onScroll);
-      window.clearTimeout(fallback);
     };
   }, []);
 
@@ -91,15 +94,12 @@ export function AgencyLeadModal() {
       setVisible(false);
       return;
     }
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
     const id = window.requestAnimationFrame(() => setVisible(true));
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") close();
     };
     window.addEventListener("keydown", onKey);
     return () => {
-      document.body.style.overflow = prev;
       window.removeEventListener("keydown", onKey);
       window.cancelAnimationFrame(id);
     };
@@ -171,29 +171,31 @@ export function AgencyLeadModal() {
         </div>
 
         <form className="bd-modal-form" onSubmit={submit}>
-          <label>
-            <span className="sr-only">Nombre completo</span>
-            <input
-              required
-              name="name"
-              autoComplete="name"
-              placeholder="Nombre completo"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </label>
-          <label>
-            <span className="sr-only">Número de WhatsApp</span>
-            <input
-              required
-              name="phone"
-              type="tel"
-              autoComplete="tel"
-              placeholder="Número de WhatsApp"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-            />
-          </label>
+          <div className="bd-modal-row">
+            <label>
+              <span className="sr-only">Nombre completo</span>
+              <input
+                required
+                name="name"
+                autoComplete="name"
+                placeholder="Nombre completo"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </label>
+            <label>
+              <span className="sr-only">Número de WhatsApp</span>
+              <input
+                required
+                name="phone"
+                type="tel"
+                autoComplete="tel"
+                placeholder="Número de WhatsApp"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+            </label>
+          </div>
           <label>
             <span className="sr-only">A qué se dedica</span>
             <textarea

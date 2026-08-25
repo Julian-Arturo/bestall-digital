@@ -1341,9 +1341,9 @@ a {
   position: absolute;
   inset: 0;
   border: 0;
-  background: rgba(18, 24, 38, 0.28);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(18, 24, 38, 0.22);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   cursor: pointer;
   opacity: 0;
   transition: opacity 420ms ease;
@@ -1355,39 +1355,39 @@ a {
 
 .bd-modal {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: clamp(0.75rem, 3vw, 1.5rem);
   z-index: 1;
-  width: min(420px, 92vw);
-  height: 100%;
-  max-height: 100dvh;
+  width: min(400px, calc(100vw - 1.5rem));
+  max-height: min(78vh, 640px);
   overflow: auto;
-  padding: 1.35rem 1.25rem 1.5rem;
-  border: 0;
-  border-right: 1px solid rgba(18, 24, 38, 0.08);
-  border-radius: 0 1.25rem 1.25rem 0;
-  background: linear-gradient(180deg, #ffffff 0%, #f7f8fb 100%);
+  padding: 1.25rem 1.15rem 1.25rem;
+  border: 1px solid rgba(18, 24, 38, 0.08);
+  border-radius: 1.35rem;
+  background: linear-gradient(180deg, #ffffff 0%, #f6f8fb 100%);
   color: #141820;
-  box-shadow: 12px 0 48px rgba(10, 16, 28, 0.18);
-  transform: translateX(-105%);
-  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow:
+    0 24px 60px rgba(10, 16, 28, 0.22),
+    0 0 0 1px rgba(255, 255, 255, 0.4) inset;
+  transform: translate(-110%, -50%);
+  transition: transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .bd-modal-root.is-open .bd-modal {
-  transform: translateX(0);
+  transform: translate(0, -50%);
 }
 
 .bd-modal-x {
   position: absolute;
   top: 0.85rem;
   right: 0.85rem;
-  width: 2.2rem;
-  height: 2.2rem;
+  width: 2.1rem;
+  height: 2.1rem;
   border: 0;
   border-radius: 999px;
   background: #eef1f6;
   color: #141820;
-  font-size: 1.35rem;
+  font-size: 1.3rem;
   line-height: 1;
   cursor: pointer;
 }
@@ -1398,12 +1398,12 @@ a {
 
 .bd-modal-badge {
   display: inline-flex;
-  margin-bottom: 0.7rem;
-  padding: 0.32rem 0.75rem;
+  margin-bottom: 0.65rem;
+  padding: 0.3rem 0.7rem;
   border-radius: 999px;
-  background: rgba(255, 106, 43, 0.12);
+  background: rgba(255, 106, 43, 0.14);
   color: #d45516;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -1412,7 +1412,7 @@ a {
 .bd-modal h2 {
   margin: 0;
   font-family: var(--font-close-display), sans-serif;
-  font-size: clamp(1.45rem, 3.5vw, 1.8rem);
+  font-size: clamp(1.35rem, 3.2vw, 1.65rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.15;
@@ -1421,10 +1421,10 @@ a {
 }
 
 .bd-modal-offer {
-  margin: 0.65rem 0 0;
+  margin: 0.55rem 0 0;
   color: #5c6570;
-  font-size: 0.95rem;
-  line-height: 1.45;
+  font-size: 0.9rem;
+  line-height: 1.4;
 }
 
 .bd-modal-offer strong {
@@ -1434,29 +1434,29 @@ a {
 .bd-countdown {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0.45rem;
-  margin: 1rem 0 0.95rem;
+  gap: 0.4rem;
+  margin: 0.9rem 0 0.85rem;
 }
 
 .bd-countdown-cell {
   text-align: center;
-  padding: 0.55rem 0.2rem;
-  border-radius: 0.85rem;
+  padding: 0.45rem 0.15rem;
+  border-radius: 0.75rem;
   background: #fff;
   border: 1px solid #e6e9ef;
-  box-shadow: 0 4px 14px rgba(18, 24, 38, 0.04);
+  box-shadow: 0 4px 12px rgba(18, 24, 38, 0.04);
 }
 
 .bd-countdown-cell strong {
   display: block;
   font-family: var(--font-close-display), sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-variant-numeric: tabular-nums;
   color: #12151c;
 }
 
 .bd-countdown-cell span {
-  font-size: 0.62rem;
+  font-size: 0.58rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: #7a8494;
@@ -1464,25 +1464,36 @@ a {
 
 .bd-modal-form {
   display: grid;
-  gap: 0.55rem;
+  gap: 0.5rem;
+}
+
+.bd-modal-row {
+  display: grid;
+  gap: 0.5rem;
+}
+
+@media (min-width: 420px) {
+  .bd-modal-row {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .bd-modal-form input,
 .bd-modal-form textarea,
 .bd-modal-form select {
   width: 100%;
-  padding: 0.8rem 0.9rem;
-  border-radius: 0.85rem;
+  padding: 0.72rem 0.8rem;
+  border-radius: 0.75rem;
   border: 1px solid #d9dee6;
   background: #fff;
   color: #12151c;
   font: inherit;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
 .bd-modal-form textarea {
   resize: vertical;
-  min-height: 3.6rem;
+  min-height: 3.2rem;
 }
 
 .bd-modal-form select {
@@ -1510,63 +1521,69 @@ a {
 .bd-modal-check {
   display: flex;
   align-items: flex-start;
-  gap: 0.55rem;
-  font-size: 0.8rem;
+  gap: 0.5rem;
+  font-size: 0.78rem;
   color: #5c6570;
-  line-height: 1.4;
+  line-height: 1.35;
 }
 
 .bd-modal-check input {
   width: auto;
-  margin-top: 0.15rem;
+  margin-top: 0.12rem;
   accent-color: #ff6a2b;
 }
 
 .bd-modal-submit {
   width: 100%;
-  min-height: 3.1rem;
+  min-height: 2.95rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  font-size: 0.9rem;
+  font-size: 0.86rem;
   color: #111 !important;
 }
 
 .bd-fab-wa {
   position: fixed !important;
-  right: 1rem;
-  bottom: calc(1rem + env(safe-area-inset-bottom));
+  right: 1.1rem;
+  bottom: calc(1.1rem + env(safe-area-inset-bottom));
   z-index: 190 !important;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 3.75rem;
+  height: 3.75rem;
   display: grid;
   place-items: center;
   border-radius: 999px;
   background: #25d366;
   color: #fff;
-  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.45);
+  box-shadow:
+    0 0 0 6px rgba(37, 211, 102, 0.18),
+    0 14px 32px rgba(37, 211, 102, 0.45);
   text-decoration: none;
-  transition: transform 160ms ease;
+  transition: transform 160ms ease, box-shadow 160ms ease;
 }
 
 .bd-fab-wa:hover {
-  transform: translateY(-2px) scale(1.04);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow:
+    0 0 0 8px rgba(37, 211, 102, 0.22),
+    0 16px 36px rgba(37, 211, 102, 0.5);
 }
 
 .bd-fab-badge {
   position: absolute;
-  top: -0.15rem;
-  right: -0.1rem;
-  min-width: 1.15rem;
-  height: 1.15rem;
-  padding: 0 0.25rem;
+  top: -0.2rem;
+  right: -0.15rem;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 0.28rem;
   border-radius: 999px;
   background: #ef4444;
   color: #fff;
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 800;
   display: grid;
   place-items: center;
-  border: 2px solid #070d18;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.45);
 }
 
 .bd-root .sr-only,
@@ -1584,8 +1601,10 @@ a {
 
 @media (max-width: 520px) {
   .bd-modal {
-    width: min(100vw, 100%);
-    border-radius: 0;
+    left: 0.65rem;
+    right: 0.65rem;
+    width: auto;
+    max-height: min(82vh, 680px);
   }
 }
 
