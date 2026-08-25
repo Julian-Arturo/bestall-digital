@@ -15,13 +15,13 @@ const body = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Bestall Digital | Marketing · Tecnología · Crecimiento",
+  title: "Bestall Digital | Si inviertes y nadie te escribe",
   description:
-    "Páginas, tráfico, apps, automatización, Gurú Partner e influencer marketing. Sistemas que traen clientes. WhatsApp.",
+    "Inviertes y el teléfono no suena. Bestall arma marketing, tecnología y crecimiento para que te escriban clientes. WhatsApp.",
   openGraph: {
-    title: "Bestall Digital — Marketing · Tecnología · Crecimiento",
+    title: "Bestall Digital — Inviertes… y el teléfono no suena",
     description:
-      "No solo páginas: armamos el sistema completo para que te escriban personas listas para comprar.",
+      "No es otro paquete digital. Es el sistema: mensaje, tráfico, conversión y seguimiento.",
     locale: "es_CO",
     type: "website",
   },

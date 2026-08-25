@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useState, type FormEvent } from "react";
+import { createPortal } from "react-dom";
 import { waUrl } from "@/lib/agency";
 
 const DISCOUNT = 15;
-const STORAGE_DISMISS = "bd-lead-modal-dismissed";
-const STORAGE_SHOWN = "bd-lead-modal-shown";
+const STORAGE_DISMISS = "bd-lead-modal-dismissed-v2";
 
 type TimeLeft = { days: number; hours: number; minutes: number; seconds: number };
 
@@ -31,6 +31,7 @@ const BUDGETS = [
 ] as const;
 
 export function AgencyLeadModal() {
+  const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
   const [left, setLeft] = useState<TimeLeft>(() => calcLeft(endOfMonthMs()));
   const [name, setName] = useState("");
@@ -38,6 +39,10 @@ export function AgencyLeadModal() {
   const [biz, setBiz] = useState("");
   const [budget, setBudget] = useState("");
   const [ok, setOk] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const target = endOfMonthMs();
@@ -49,23 +54,31 @@ export function AgencyLeadModal() {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (sessionStorage.getItem(STORAGE_DISMISS) === "1") return;
-    if (sessionStorage.getItem(STORAGE_SHOWN) === "1") return;
+    try {
+      if (sessionStorage.getItem(STORAGE_DISMISS) === "1") return;
+    } catch {
+      /* ignore */
+    }
 
-    const onScroll = () => {
-      if (window.scrollY < 420) return;
-      sessionStorage.setItem(STORAGE_SHOWN, "1");
+    let opened = false;
+    const openOnce = () => {
+      if (opened) return;
+      opened = true;
       setOpen(true);
       window.removeEventListener("scroll", onScroll);
+      window.clearTimeout(fallback);
+    };
+
+    const onScroll = () => {
+      if (window.scrollY < 180) return;
+      openOnce();
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    const fallback = window.setTimeout(() => {
-      if (sessionStorage.getItem(STORAGE_SHOWN) === "1") return;
-      if (sessionStorage.getItem(STORAGE_DISMISS) === "1") return;
-      sessionStorage.setItem(STORAGE_SHOWN, "1");
-      setOpen(true);
-    }, 18000);
+    // If already scrolled (e.g. refresh mid-page)
+    if (window.scrollY >= 180) openOnce();
+
+    const fallback = window.setTimeout(openOnce, 9000);
 
     return () => {
       window.removeEventListener("scroll", onScroll);
@@ -88,7 +101,11 @@ export function AgencyLeadModal() {
   }, [open]);
 
   function close() {
-    sessionStorage.setItem(STORAGE_DISMISS, "1");
+    try {
+      sessionStorage.setItem(STORAGE_DISMISS, "1");
+    } catch {
+      /* ignore */
+    }
     setOpen(false);
   }
 
@@ -108,7 +125,7 @@ export function AgencyLeadModal() {
     close();
   }
 
-  if (!open) return null;
+  if (!mounted || !open) return null;
 
   const cells: { label: string; value: number }[] = [
     { label: "Días", value: left.days },
@@ -117,7 +134,7 @@ export function AgencyLeadModal() {
     { label: "Segundos", value: left.seconds },
   ];
 
-  return (
+  return createPortal(
     <div className="bd-modal-root" role="dialog" aria-modal="true" aria-labelledby="bd-modal-title">
       <button type="button" className="bd-modal-backdrop" aria-label="Cerrar" onClick={close} />
       <div className="bd-modal">
@@ -170,7 +187,7 @@ export function AgencyLeadModal() {
             <textarea
               name="biz"
               rows={3}
-              placeholder="A qué se dedica"
+              placeholder="Cuéntanos brevemente sobre tu negocio"
               value={biz}
               onChange={(e) => setBiz(e.target.value)}
             />
@@ -184,7 +201,7 @@ export function AgencyLeadModal() {
               required
             >
               <option value="" disabled>
-                Presupuesto para invertir en desarrollo web
+                Selecciona tu presupuesto
               </option>
               {BUDGETS.map((b) => (
                 <option key={b} value={b}>
@@ -209,6 +226,7 @@ export function AgencyLeadModal() {
           </button>
         </form>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }

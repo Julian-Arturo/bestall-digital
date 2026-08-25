@@ -96,14 +96,14 @@ export function AgencyLanding() {
         <section id="inicio" className="bd-hero">
           <div className="bd-hero-grid">
             <div className="bd-hero-copy">
-              <p className="bd-pill">Marketing · Tecnología · Crecimiento</p>
+              <p className="bd-pill">¿Te suena familiar?</p>
               <motion.h1
                 initial={reduce ? false : { opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, ease }}
               >
-                Tu negocio necesita{" "}
-                <span>clientes</span>, no otro paquete digital.
+                Inviertes… y el teléfono{" "}
+                <span>no suena</span>.
               </motion.h1>
               <motion.p
                 className="bd-lead"
@@ -111,9 +111,10 @@ export function AgencyLanding() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.12, duration: 0.55, ease }}
               >
-                En Bestall armamos el sistema completo: páginas, tráfico, apps,
-                automatización, partner estratégico e influencer marketing.
-                El anuncio atrae, el mensaje convence y WhatsApp cierra.
+                Si ya pagaste anuncios, una página o “presencia digital” y siguen
+                sin llegar clientes, el problema no es otro logo. Es falta de
+                sistema: mensaje, tráfico, conversión y seguimiento. Bestall
+                arma eso — Marketing · Tecnología · Crecimiento.
               </motion.p>
               <motion.div
                 className="bd-actions"
@@ -122,10 +123,10 @@ export function AgencyLanding() {
                 transition={{ delay: 0.22, duration: 0.5, ease }}
               >
                 <a className="bd-btn" href={waUrl()}>
-                  Contarnos mi caso
+                  Quiero que me escriban
                 </a>
                 <a className="bd-btn-ghost" href="#servicios">
-                  Ver los 7 servicios
+                  Ver cómo lo resolvemos
                 </a>
               </motion.div>
             </div>
@@ -137,32 +138,43 @@ export function AgencyLanding() {
               transition={{ delay: 0.15, duration: 0.7, ease }}
             >
               <div className="bd-device bd-device-desk">
-                <Image
-                  src={AGENCY.demoMoto}
-                  alt="Landing Mecánica VIP — ejemplo real"
-                  fill
-                  sizes="(max-width: 900px) 90vw, 420px"
-                  className="object-cover object-top"
-                  priority
-                />
+                <div className="bd-device-chrome" aria-hidden>
+                  <i />
+                  <i />
+                  <i />
+                </div>
+                <div className="bd-device-screen">
+                  <Image
+                    src={AGENCY.heroDesk}
+                    alt="Ejemplo de landing de conversión — Mecánica VIP"
+                    fill
+                    sizes="(max-width: 900px) 90vw, 480px"
+                    className="object-cover object-top"
+                    priority
+                  />
+                </div>
               </div>
               <div className="bd-device bd-device-phone">
-                <Image
-                  src={AGENCY.demoDiabetes}
-                  alt="Landing Toma el Control — ejemplo real"
-                  fill
-                  sizes="180px"
-                  className="object-cover object-top"
-                />
+                <div className="bd-device-screen">
+                  <Image
+                    src={AGENCY.heroPhone}
+                    alt="Ejemplo móvil — programa de bienestar"
+                    fill
+                    sizes="200px"
+                    className="object-cover object-top"
+                  />
+                </div>
               </div>
               <div className="bd-device bd-device-float">
-                <Image
-                  src={AGENCY.demoCollage}
-                  alt="Ejemplos de páginas y proyectos Bestall"
-                  fill
-                  sizes="220px"
-                  className="object-cover"
-                />
+                <div className="bd-device-screen">
+                  <Image
+                    src={AGENCY.heroStrip}
+                    alt="Proyectos Bestall: taller, reunión y bienestar"
+                    fill
+                    sizes="260px"
+                    className="object-cover"
+                  />
+                </div>
               </div>
             </motion.div>
           </div>

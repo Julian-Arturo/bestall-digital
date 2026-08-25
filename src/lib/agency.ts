@@ -15,6 +15,9 @@ export const AGENCY = {
   demoMoto: "/brand/agency/demo-moto.png",
   demoDiabetes: "/brand/agency/demo-diabetes.png",
   demoCollage: "/brand/agency/demo-collage.png",
+  heroDesk: "/brand/agency/hero-desk.png",
+  heroPhone: "/brand/agency/hero-phone.png",
+  heroStrip: "/brand/agency/hero-strip.png",
   priceFrom: "$2.200.000",
   priceFromNote: "COP · según el servicio",
 } as const;
