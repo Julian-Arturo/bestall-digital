@@ -1,5 +1,5 @@
 export const DIABETES_CHECKOUT_BASE =
-  "https://pay.hotmart.com/I100734049A?off=zosnsp6a";
+  "https://pay.hotmart.com/I100734049A?checkoutMode=10";
 
 export const diabetesCta = (src: string) =>
   `${DIABETES_CHECKOUT_BASE}&src=${encodeURIComponent(src)}`;
