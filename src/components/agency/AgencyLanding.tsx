@@ -536,7 +536,7 @@ export function AgencyLanding() {
           <a href={waUrl()}>WhatsApp</a>
         </nav>
         <p>
-          © {new Date().getFullYear()} {AGENCY.name}
+          © {new Date().getFullYear()} {AGENCY.name} • Términos y Condiciones
         </p>
       </footer>
 
