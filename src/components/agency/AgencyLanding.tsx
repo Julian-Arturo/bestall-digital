@@ -49,14 +49,14 @@ export function AgencyLanding() {
   const dynamicWaUrl = waUrl(dynamicWaMessage);
 
   return (
-    <div className="bd-root">
+    <div className="bd-root w-full max-w-full overflow-x-hidden">
       <AgencyCursorLight />
       <a className="bd-skip" href="#servicios">
         Ir a servicios
       </a>
 
       {/* 1. HEADER */}
-      <header className="bd-nav">
+      <header className="bd-nav w-full max-w-full overflow-hidden">
         <Link href="/" className="bd-brand" aria-label="Bestall Digital Home">
           <Image
             src={AGENCY.mark}
@@ -77,22 +77,23 @@ export function AgencyLanding() {
           <a href="#faq">FAQ</a>
         </nav>
         <a
-          className="bd-btn bd-btn-sm"
+          className="bd-btn bd-btn-sm shrink-0 whitespace-nowrap"
           href={waUrl("Hola Bestall 👋 Quiero cotizar un proyecto por WhatsApp:")}
           target="_blank"
           rel="noopener noreferrer"
         >
-          Cotizar por WhatsApp
+          <span className="hidden sm:inline">Cotizar por </span>WhatsApp
         </a>
       </header>
 
-      <main>
+      <main className="w-full max-w-full overflow-x-hidden">
         {/* 2. HERO SECTION */}
-        <section id="inicio" className="bd-hero">
-          <div className="bd-hero-grid">
-            <div className="bd-hero-copy">
+        <section id="inicio" className="bd-hero w-full max-w-7xl mx-auto px-4 py-12 md:px-8 md:py-20 overflow-x-hidden">
+          <div className="bd-hero-grid grid grid-cols-1 lg:grid-cols-[1.15fr_0.95fr] gap-8 md:gap-12 items-center w-full">
+            <div className="bd-hero-copy order-1 w-full max-w-full">
               <span className="bd-pill">¿Inviertes y no ves resultados?</span>
               <motion.h1
+                className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight break-words"
                 initial={reduce ? false : { opacity: 0, y: 22 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, ease }}
@@ -100,7 +101,7 @@ export function AgencyLanding() {
                 Inviertes… y el teléfono <span>no suena</span>.
               </motion.h1>
               <motion.p
-                className="bd-lead"
+                className="bd-lead text-base sm:text-lg text-slate-400 mt-4 max-w-xl"
                 initial={reduce ? false : { opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1, duration: 0.55, ease }}
@@ -110,13 +111,13 @@ export function AgencyLanding() {
                 comprar directamente a tu WhatsApp.
               </motion.p>
               <motion.div
-                className="bd-actions"
+                className="bd-actions flex flex-col sm:flex-row gap-3 mt-6 w-full sm:w-auto"
                 initial={reduce ? false : { opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.5, ease }}
               >
                 <a
-                  className="bd-btn"
+                  className="bd-btn w-full sm:w-auto text-center justify-center"
                   href={waUrl(
                     "Hola Bestall 👋 Quiero auditar mi negocio y ver dónde se están perdiendo ventas.",
                   )}
@@ -125,7 +126,7 @@ export function AgencyLanding() {
                 >
                   Auditar mi negocio
                 </a>
-                <a className="bd-btn-ghost" href="#metodo">
+                <a className="bd-btn-ghost w-full sm:w-auto text-center justify-center" href="#metodo">
                   Ver metodología
                 </a>
               </motion.div>
@@ -133,29 +134,29 @@ export function AgencyLanding() {
 
             {/* Mockup en contenedor estilo navegador */}
             <motion.div
-              className="bd-hero-stage"
+              className="bd-hero-stage order-2 w-full max-w-full"
               initial={reduce ? false : { opacity: 0, scale: 0.97 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.15, duration: 0.65, ease }}
             >
-              <div className="bd-browser-frame bd-hero-mockup">
-                <div className="bd-browser-bar" aria-hidden="true">
-                  <div className="bd-browser-dots">
+              <div className="bd-browser-frame bd-hero-mockup w-full max-w-full overflow-hidden">
+                <div className="bd-browser-bar w-full" aria-hidden="true">
+                  <div className="bd-browser-dots shrink-0">
                     <i />
                     <i />
                     <i />
                   </div>
-                  <div className="bd-browser-url">
+                  <div className="bd-browser-url truncate max-w-[140px] sm:max-w-[280px]">
                     bestalldigital.com/conversion
                   </div>
-                  <span className="bd-browser-badge">Sistema Activo</span>
+                  <span className="bd-browser-badge shrink-0 text-xs">Sistema Activo</span>
                 </div>
-                <div className="bd-browser-screen">
+                <div className="bd-browser-screen relative w-full aspect-video sm:aspect-[16/10] overflow-hidden">
                   <Image
                     src={AGENCY.heroDesk}
                     alt="Interfaz web de alta conversión diseñada por Bestall Digital"
                     fill
-                    sizes="(max-width: 990px) 92vw, 540px"
+                    sizes="(max-width: 990px) 100vw, 540px"
                     className="object-cover object-top"
                     priority
                   />
@@ -166,23 +167,23 @@ export function AgencyLanding() {
         </section>
 
         {/* 3. TECH STACK & PROOF BAR */}
-        <section className="bd-proof-bar" aria-label="Métricas de confianza y stack tecnológico">
-          <div className="bd-proof-inner">
-            <div className="bd-proof-metrics">
-              {PROOF_METRICS.map((m) => (
-                <div key={m.label} className="bd-proof-metric">
-                  <span className="bd-proof-val">{m.value}</span>
-                  <span className="bd-proof-lbl">{m.label}</span>
+        <section className="bd-proof-bar w-full px-4 py-8 md:px-8 md:py-10 overflow-x-hidden" aria-label="Métricas de confianza y stack tecnológico">
+          <div className="bd-proof-inner w-full max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <div className="bd-proof-metrics grid grid-cols-2 sm:flex sm:flex-row items-center gap-4 sm:gap-8 w-full lg:w-auto">
+              {PROOF_METRICS.map((m, idx) => (
+                <div key={m.label} className={`bd-proof-metric flex items-center gap-2.5 ${idx === 2 ? "col-span-2 sm:col-span-1" : ""}`}>
+                  <span className="bd-proof-val text-xl sm:text-2xl font-extrabold text-cyan-400">{m.value}</span>
+                  <span className="bd-proof-lbl text-xs sm:text-sm text-slate-400 font-semibold leading-tight">{m.label}</span>
                 </div>
               ))}
             </div>
-            <div className="bd-proof-divider" aria-hidden="true" />
-            <div className="bd-proof-badges">
+            <div className="bd-proof-divider hidden lg:block" aria-hidden="true" />
+            <div className="bd-proof-badges flex flex-wrap items-center gap-2 sm:gap-3 w-full lg:w-auto">
               {TECH_STACK.map((tech) => (
-                <div key={tech.name} className="bd-proof-badge">
+                <div key={tech.name} className="bd-proof-badge inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs sm:text-sm">
                   <span className="bd-proof-badge-dot" aria-hidden="true" />
                   <span>{tech.name}</span>
-                  <span className="bd-proof-badge-role">{tech.badge}</span>
+                  <span className="bd-proof-badge-role text-xs text-slate-400">{tech.badge}</span>
                 </div>
               ))}
             </div>
@@ -190,22 +191,22 @@ export function AgencyLanding() {
         </section>
 
         {/* 4. SECCIÓN DE DOLORES (EL PROBLEMA REAL) */}
-        <section id="dolor" className="bd-section">
-          <div className="bd-head bd-head-center">
-            <p className="bd-kicker">El problema real</p>
-            <h2>
+        <section id="dolor" className="bd-section w-full max-w-7xl mx-auto px-4 py-12 md:px-8 md:py-20 overflow-x-hidden">
+          <div className="bd-head bd-head-center text-center max-w-2xl mx-auto mb-8 md:mb-12">
+            <p className="bd-kicker text-xs sm:text-sm font-bold uppercase tracking-wider text-cyan-400">El problema real</p>
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mt-2">
               Tu negocio probablemente está <span>perdiendo clientes</span> si…
             </h2>
-            <p className="bd-sub">
+            <p className="bd-sub text-sm sm:text-base text-slate-400 mt-3">
               La mayoría de empresas no tienen un problema de producto o precio, sino
               fricciones técnicas y mensajes dispersos que ahuyentan las ventas.
             </p>
           </div>
-          <div className="bd-pains">
+          <div className="bd-pains grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full">
             {PAINS.map((p, i) => (
               <motion.article
                 key={p.code}
-                className="bd-pain"
+                className="bd-pain w-full max-w-full overflow-hidden"
                 initial={reduce ? false : { opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-5%" }}
@@ -222,59 +223,61 @@ export function AgencyLanding() {
         </section>
 
         {/* 5. NUESTRO MÉTODO ("EL SISTEMA BESTALL" EN 4 PASOS) */}
-        <section id="metodo" className="bd-section bd-section-soft">
-          <div className="bd-head bd-head-center">
-            <p className="bd-kicker">El Sistema Bestall</p>
-            <h2>
-              Cómo convertimos tu inversión en <span>ventas reales</span> en 4 pasos
-            </h2>
-            <p className="bd-sub">
-              Un proceso quirúrgico y medible que conecta tu propuesta comercial con
-              canales directos de cierre.
-            </p>
-          </div>
-          <div className="bd-methods">
-            {METHOD_STEPS.map((m, i) => (
-              <motion.div
-                key={m.step}
-                className="bd-method-card"
-                initial={reduce ? false : { opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.5, ease }}
-              >
-                <div className="bd-method-header">
-                  <span className="bd-method-step">{m.step}</span>
-                  <span className="bd-method-badge">{m.badge}</span>
-                </div>
-                <h3>{m.title}</h3>
-                <p>{m.desc}</p>
-                <ul className="bd-method-list">
-                  {m.deliverables.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
+        <section id="metodo" className="bd-section bd-section-soft w-full px-4 py-12 md:px-8 md:py-20 overflow-x-hidden">
+          <div className="w-full max-w-7xl mx-auto">
+            <div className="bd-head bd-head-center text-center max-w-2xl mx-auto mb-8 md:mb-12">
+              <p className="bd-kicker text-xs sm:text-sm font-bold uppercase tracking-wider text-cyan-400">El Sistema Bestall</p>
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mt-2">
+                Cómo convertimos tu inversión en <span>ventas reales</span> en 4 pasos
+              </h2>
+              <p className="bd-sub text-sm sm:text-base text-slate-400 mt-3">
+                Un proceso quirúrgico y medible que conecta tu propuesta comercial con
+                canales directos de cierre.
+              </p>
+            </div>
+            <div className="bd-methods grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full">
+              {METHOD_STEPS.map((m, i) => (
+                <motion.div
+                  key={m.step}
+                  className="bd-method-card w-full max-w-full overflow-hidden p-5 sm:p-6"
+                  initial={reduce ? false : { opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08, duration: 0.5, ease }}
+                >
+                  <div className="bd-method-header">
+                    <span className="bd-method-step">{m.step}</span>
+                    <span className="bd-method-badge">{m.badge}</span>
+                  </div>
+                  <h3>{m.title}</h3>
+                  <p>{m.desc}</p>
+                  <ul className="bd-method-list">
+                    {m.deliverables.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
 
         {/* 6. PAQUETES DE SERVICIO TRANSPARENTES */}
-        <section id="servicios" className="bd-section">
-          <div className="bd-head bd-head-center">
-            <p className="bd-kicker">Paquetes de Servicio Transparentes</p>
-            <h2>
+        <section id="servicios" className="bd-section w-full max-w-7xl mx-auto px-4 py-12 md:px-8 md:py-20 overflow-x-hidden">
+          <div className="bd-head bd-head-center text-center max-w-2xl mx-auto mb-8 md:mb-12">
+            <p className="bd-kicker text-xs sm:text-sm font-bold uppercase tracking-wider text-cyan-400">Paquetes de Servicio Transparentes</p>
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mt-2">
               3 soluciones enfocadas en <span>crecimiento y rentabilidad</span>
             </h2>
-            <p className="bd-sub">
+            <p className="bd-sub text-sm sm:text-base text-slate-400 mt-3">
               Precios claros en COP, entregables itemizados y tiempos definidos sin costos ocultos.
             </p>
           </div>
-          <div className="bd-packages">
+          <div className="bd-packages grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 w-full items-stretch">
             {SERVICE_PACKAGES.map((pkg, i) => (
               <motion.div
                 key={pkg.id}
-                className={`bd-package-card${pkg.featured ? " bd-package-featured" : ""}`}
+                className={`bd-package-card w-full max-w-full overflow-hidden p-6 sm:p-8${pkg.featured ? " bd-package-featured" : ""}`}
                 initial={reduce ? false : { opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -333,7 +336,7 @@ export function AgencyLanding() {
                 </ul>
 
                 <a
-                  className="bd-btn bd-package-cta"
+                  className="bd-btn bd-package-cta w-full text-center justify-center"
                   href={waUrl(pkg.waMsg)}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -346,133 +349,135 @@ export function AgencyLanding() {
         </section>
 
         {/* 7. COTIZADOR INTERACTIVO DINÁMICO (LEAD MAGNET) */}
-        <section id="cotizador" className="bd-section bd-section-soft">
-          <div className="bd-head bd-head-center text-center mx-auto flex flex-col items-center">
-            <p className="bd-kicker text-center">Cotizador en 2 Pasos</p>
-            <h2 className="text-center">
-              Calcula tu solución y <span>consulta disponibilidad</span>
-            </h2>
-            <p className="bd-sub text-center max-w-xl mx-auto">
-              Configura lo que necesita tu empresa hoy y recibe viabilidad técnica y tarifa estimada directamente en tu WhatsApp en minutos.
-            </p>
-          </div>
-          <div className="bd-calc-wrap">
-            <div className="bd-calc-card">
-              <div className="bd-calc-steps-indicator" aria-label="Progreso de cotización">
-                <span className="bd-calc-step-pill is-active">
-                  <span className="bd-calc-step-num">1</span>
-                  Tipo de Requerimiento
-                </span>
-                <span className="bd-calc-step-pill is-active">
-                  <span className="bd-calc-step-num">2</span>
-                  Plazo de Lanzamiento
-                </span>
-              </div>
-
-              {/* Pregunta 1 */}
-              <div className="bd-calc-step-group">
-                <h3 className="bd-calc-question">
-                  <span className="bd-calc-question-badge">01</span>
-                  ¿Qué requiere tu negocio hoy?
-                </h3>
-                <div className="bd-calc-options">
-                  {QUOTE_OPTIONS.services.map((opt) => {
-                    const isSelected = selectedService === opt.id;
-                    return (
-                      <button
-                        key={opt.id}
-                        type="button"
-                        className={`bd-calc-opt${isSelected ? " is-selected" : ""}`}
-                        onClick={() => setSelectedService(opt.id)}
-                        aria-pressed={isSelected}
-                      >
-                        <span className="bd-calc-opt-pack">{opt.pack}</span>
-                        <strong>{opt.label}</strong>
-                        <p>{opt.desc}</p>
-                      </button>
-                    );
-                  })}
+        <section id="cotizador" className="bd-section bd-section-soft w-full px-4 py-12 md:px-8 md:py-20 overflow-x-hidden">
+          <div className="w-full max-w-7xl mx-auto">
+            <div className="bd-head bd-head-center text-center mx-auto flex flex-col items-center mb-8 md:mb-12">
+              <p className="bd-kicker text-xs sm:text-sm font-bold uppercase tracking-wider text-cyan-400 text-center">Cotizador en 2 Pasos</p>
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight text-center mt-2">
+                Calcula tu solución y <span>consulta disponibilidad</span>
+              </h2>
+              <p className="bd-sub text-sm sm:text-base text-slate-400 text-center max-w-xl mx-auto mt-3">
+                Configura lo que necesita tu empresa hoy y recibe viabilidad técnica y tarifa estimada directamente en tu WhatsApp en minutos.
+              </p>
+            </div>
+            <div className="bd-calc-wrap w-full max-w-4xl mx-auto">
+              <div className="bd-calc-card w-full max-w-full p-4 sm:p-8 md:p-10 rounded-2xl overflow-hidden box-border">
+                <div className="bd-calc-steps-indicator flex flex-wrap justify-center gap-2 sm:gap-4 mb-6 sm:mb-8" aria-label="Progreso de cotización">
+                  <span className="bd-calc-step-pill is-active text-xs sm:text-sm">
+                    <span className="bd-calc-step-num">1</span>
+                    Tipo de Requerimiento
+                  </span>
+                  <span className="bd-calc-step-pill is-active text-xs sm:text-sm">
+                    <span className="bd-calc-step-num">2</span>
+                    Plazo de Lanzamiento
+                  </span>
                 </div>
-              </div>
 
-              {/* Pregunta 2 */}
-              <div className="bd-calc-step-group">
-                <h3 className="bd-calc-question">
-                  <span className="bd-calc-question-badge">02</span>
-                  ¿En qué plazo planeas lanzar?
-                </h3>
-                <div className="bd-calc-options">
-                  {QUOTE_OPTIONS.timeframes.map((opt) => {
-                    const isSelected = selectedTimeframe === opt.id;
-                    return (
-                      <button
-                        key={opt.id}
-                        type="button"
-                        className={`bd-calc-opt${isSelected ? " is-selected" : ""}`}
-                        onClick={() => setSelectedTimeframe(opt.id)}
-                        aria-pressed={isSelected}
-                      >
-                        <span className="bd-calc-opt-urgency">{opt.urgency}</span>
-                        <strong>{opt.label}</strong>
-                      </button>
-                    );
-                  })}
+                {/* Pregunta 1 */}
+                <div className="bd-calc-step-group mb-6 sm:mb-8">
+                  <h3 className="bd-calc-question text-base sm:text-lg font-bold text-white flex items-center gap-2 mb-3">
+                    <span className="bd-calc-question-badge">01</span>
+                    ¿Qué requiere tu negocio hoy?
+                  </h3>
+                  <div className="bd-calc-options grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 w-full">
+                    {QUOTE_OPTIONS.services.map((opt) => {
+                      const isSelected = selectedService === opt.id;
+                      return (
+                        <button
+                          key={opt.id}
+                          type="button"
+                          className={`bd-calc-opt w-full text-left p-4 rounded-xl border transition-all${isSelected ? " is-selected" : ""}`}
+                          onClick={() => setSelectedService(opt.id)}
+                          aria-pressed={isSelected}
+                        >
+                          <span className="bd-calc-opt-pack block text-xs font-bold text-cyan-400 mb-1">{opt.pack}</span>
+                          <strong className="block text-sm sm:text-base font-bold text-white mb-1">{opt.label}</strong>
+                          <p className="text-xs sm:text-sm text-slate-400 break-words">{opt.desc}</p>
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
 
-              {/* Resumen y Salida dinámica a WhatsApp */}
-              <div className="bd-calc-summary">
-                <div className="bd-calc-summary-text">
-                  <strong>Configuración elegida:</strong>{" "}
-                  <span>{activeServiceObj.label}</span> ({activeServiceObj.pack}) • Plazo:{" "}
-                  <span>{activeTimeframeObj.label}</span>
+                {/* Pregunta 2 */}
+                <div className="bd-calc-step-group mb-6 sm:mb-8">
+                  <h3 className="bd-calc-question text-base sm:text-lg font-bold text-white flex items-center gap-2 mb-3">
+                    <span className="bd-calc-question-badge">02</span>
+                    ¿En qué plazo planeas lanzar?
+                  </h3>
+                  <div className="bd-calc-options grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 w-full">
+                    {QUOTE_OPTIONS.timeframes.map((opt) => {
+                      const isSelected = selectedTimeframe === opt.id;
+                      return (
+                        <button
+                          key={opt.id}
+                          type="button"
+                          className={`bd-calc-opt w-full text-left p-4 rounded-xl border transition-all${isSelected ? " is-selected" : ""}`}
+                          onClick={() => setSelectedTimeframe(opt.id)}
+                          aria-pressed={isSelected}
+                        >
+                          <span className="bd-calc-opt-urgency block text-xs font-bold text-emerald-400 mb-1">{opt.urgency}</span>
+                          <strong className="block text-sm sm:text-base font-bold text-white">{opt.label}</strong>
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
-                <a
-                  className="bd-btn"
-                  href={dynamicWaUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Consultar Disponibilidad y Tarifa
-                </a>
+
+                {/* Resumen y Salida dinámica a WhatsApp */}
+                <div className="bd-calc-summary flex flex-col md:flex-row items-center justify-between gap-4 p-4 sm:p-6 rounded-xl w-full">
+                  <div className="bd-calc-summary-text text-sm sm:text-base text-slate-300 w-full md:w-auto break-words">
+                    <strong className="text-white">Configuración elegida:</strong>{" "}
+                    <span className="text-cyan-400 font-bold">{activeServiceObj.label}</span> ({activeServiceObj.pack}) • Plazo:{" "}
+                    <span className="text-cyan-400 font-bold">{activeTimeframeObj.label}</span>
+                  </div>
+                  <a
+                    className="bd-btn w-full md:w-auto text-center justify-center shrink-0"
+                    href={dynamicWaUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Consultar Disponibilidad y Tarifa
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
         {/* 8. CASOS DE ÉXITO DOCUMENTADOS */}
-        <section id="casos" className="bd-section">
-          <div className="bd-head bd-head-center">
-            <p className="bd-kicker">Casos Reales Documentados</p>
-            <h2>
+        <section id="casos" className="bd-section w-full max-w-7xl mx-auto px-4 py-12 md:px-8 md:py-20 overflow-x-hidden">
+          <div className="bd-head bd-head-center text-center max-w-2xl mx-auto mb-8 md:mb-12">
+            <p className="bd-kicker text-xs sm:text-sm font-bold uppercase tracking-wider text-cyan-400">Casos Reales Documentados</p>
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mt-2">
               Resultados comprobados — <span>sin capturas recicladas ni humo</span>
             </h2>
-            <p className="bd-sub">
+            <p className="bd-sub text-sm sm:text-base text-slate-400 mt-3">
               Proyectos reales implementados para empresas reales: arquitectura limpia, pasarelas conectadas y medición estricta.
             </p>
           </div>
-          <div className="bd-cases">
+          <div className="bd-cases grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 w-full">
             {CASE_STUDIES.map((c, i) => (
               <motion.article
                 key={c.title}
-                className="bd-case-card"
+                className="bd-case-card w-full max-w-full overflow-hidden"
                 initial={reduce ? false : { opacity: 0, y: 22 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.5, ease }}
               >
                 {/* Contenedor estilo navegador */}
-                <div className="bd-browser-frame">
-                  <div className="bd-browser-bar" aria-hidden="true">
-                    <div className="bd-browser-dots">
+                <div className="bd-browser-frame w-full max-w-full overflow-hidden">
+                  <div className="bd-browser-bar w-full" aria-hidden="true">
+                    <div className="bd-browser-dots shrink-0">
                       <i />
                       <i />
                       <i />
                     </div>
-                    <div className="bd-browser-url">{c.urlPreview}</div>
-                    <span className="bd-browser-badge">En Producción</span>
+                    <div className="bd-browser-url truncate max-w-[140px] sm:max-w-[240px]">{c.urlPreview}</div>
+                    <span className="bd-browser-badge shrink-0 text-xs">En Producción</span>
                   </div>
-                  <div className="bd-browser-screen">
+                  <div className="bd-browser-screen relative w-full aspect-video sm:aspect-[16/10] overflow-hidden">
                     <Image
                       src={c.image}
                       alt={`Captura del proyecto ${c.title}`}
@@ -529,31 +534,31 @@ export function AgencyLanding() {
         </section>
 
         {/* 9. PREGUNTAS FRECUENTES (FAQ) */}
-        <section id="faq" className="bd-section">
-          <div className="bd-head bd-head-center">
-            <p className="bd-kicker">Preguntas Frecuentes</p>
-            <h2>
+        <section id="faq" className="bd-section w-full max-w-7xl mx-auto px-4 py-12 md:px-8 md:py-20 overflow-x-hidden">
+          <div className="bd-head bd-head-center text-center max-w-2xl mx-auto mb-8 md:mb-12">
+            <p className="bd-kicker text-xs sm:text-sm font-bold uppercase tracking-wider text-cyan-400">Preguntas Frecuentes</p>
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mt-2">
               Claridad total sobre <span>tiempos, código y garantías</span>
             </h2>
-            <p className="bd-sub">
-              Resolvemos de forma directa las dudas operativas antes de iniciar cualquier
-              desarrollo.
+            <p className="bd-sub text-sm sm:text-base text-slate-400 mt-3">
+              Resolvemos de forma directa las dudas operativas antes de iniciar cualquier desarrollo.
             </p>
           </div>
-          <div className="bd-faq">
+          <div className="bd-faq grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 w-full">
             {FAQS.map((item, i) => {
               const open = openFaq === i;
               return (
-                <div key={item.q} className={`bd-faq-item${open ? " is-open" : ""}`}>
+                <div key={item.q} className={`bd-faq-item w-full max-w-full overflow-hidden${open ? " is-open" : ""}`}>
                   <button
                     type="button"
                     aria-expanded={open}
                     onClick={() => setOpenFaq(open ? null : i)}
+                    className="w-full flex items-center justify-between p-4 sm:p-5 text-left"
                   >
-                    <span>{item.q}</span>
+                    <span className="text-sm sm:text-base pr-2">{item.q}</span>
                     <i aria-hidden="true">{open ? "−" : "+"}</i>
                   </button>
-                  {open ? <p>{item.a}</p> : null}
+                  {open ? <p className="text-xs sm:text-sm">{item.a}</p> : null}
                 </div>
               );
             })}
@@ -561,21 +566,24 @@ export function AgencyLanding() {
         </section>
 
         {/* FINAL CTA */}
-        <section id="contacto" className="bd-final">
+        <section id="contacto" className="bd-final w-full px-4 py-12 md:px-8 md:py-20 overflow-x-hidden">
           <motion.div
+            className="w-full max-w-3xl mx-auto text-center"
             initial={reduce ? false : { opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55, ease }}
           >
-            <h2>¿Listo para que tu inversión se traduzca en ventas?</h2>
-            <p>
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
+              ¿Listo para que tu inversión se traduzca en ventas?
+            </h2>
+            <p className="text-sm sm:text-base text-slate-400 mt-4 max-w-xl mx-auto">
               Analizamos tu caso sin rodeos ni costos ocultos. En la primera llamada te
               indicamos la ruta técnica más rápida para generar clientes.
             </p>
-            <div className="bd-actions bd-actions-center">
+            <div className="bd-actions bd-actions-center flex flex-col sm:flex-row gap-3 mt-6 justify-center w-full max-w-md mx-auto sm:max-w-none">
               <a
-                className="bd-btn"
+                className="bd-btn w-full sm:w-auto text-center justify-center"
                 href={waUrl(
                   "Hola Bestall 👋 Quiero agendar una conversación para evaluar mi sistema de ventas.",
                 )}
@@ -584,7 +592,7 @@ export function AgencyLanding() {
               >
                 Hablar por WhatsApp
               </a>
-              <a className="bd-btn-ghost" href="#servicios">
+              <a className="bd-btn-ghost w-full sm:w-auto text-center justify-center" href="#servicios">
                 Ver paquetes de servicio
               </a>
             </div>
@@ -593,40 +601,42 @@ export function AgencyLanding() {
       </main>
 
       {/* FOOTER */}
-      <footer className="bd-foot">
-        <div className="bd-foot-brand">
+      <footer className="bd-foot w-full max-w-7xl mx-auto px-4 py-8 md:px-8 md:py-10 flex flex-col md:flex-row items-center justify-between gap-6 overflow-x-hidden">
+        <div className="bd-foot-brand flex items-center gap-3">
           <Image
             src={AGENCY.mark}
             alt="Logo Bestall Digital"
             width={32}
             height={32}
+            className="shrink-0"
           />
           <div>
-            <strong>{AGENCY.name}</strong>
-            <span style={{ fontSize: "0.82rem", color: "var(--bd-mute)" }}>
+            <strong className="block text-white font-bold">{AGENCY.name}</strong>
+            <span className="block text-xs text-slate-400">
               {AGENCY.tagline}
             </span>
           </div>
         </div>
-        <nav aria-label="Enlaces secundarios y legales">
-          <Link href="/vip">Mecánica VIP</Link>
-          <Link href="/diabetes">Toma el Control (21 días)</Link>
+        <nav className="flex flex-wrap items-center justify-center gap-4 text-xs sm:text-sm text-slate-400" aria-label="Enlaces secundarios y legales">
+          <Link href="/vip" className="hover:text-cyan-400 transition-colors">Mecánica VIP</Link>
+          <Link href="/diabetes" className="hover:text-cyan-400 transition-colors">Toma el Control (21 días)</Link>
           <a
             href={waUrl("Hola Bestall 👋 Les escribo desde el pie de página:")}
             target="_blank"
             rel="noopener noreferrer"
+            className="hover:text-cyan-400 transition-colors"
           >
             WhatsApp
           </a>
           <button
             type="button"
-            className="bd-foot-link-btn"
+            className="bd-foot-link-btn hover:text-cyan-400 transition-colors bg-transparent border-0 p-0 text-inherit cursor-pointer font-inherit"
             onClick={() => setTermsOpen(true)}
           >
             Términos y Condiciones
           </button>
         </nav>
-        <p style={{ margin: 0, fontSize: "0.84rem", color: "var(--bd-mute)" }}>
+        <p className="text-xs text-slate-400 m-0 text-center md:text-right">
           © {new Date().getFullYear()} {AGENCY.name}. Todos los derechos reservados.
         </p>
       </footer>

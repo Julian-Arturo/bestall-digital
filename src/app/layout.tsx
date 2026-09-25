@@ -42,29 +42,49 @@ const DIRECTION_CONTRACT = `<!--
 -->`;
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://agencia.bestalldigital.com"),
   title: {
-    default: "Bestall Digital | Marketing y tecnología",
+    default: "Bestall Digital | Agencia de Crecimiento, Desarrollo Web y Automatización",
     template: "%s | Bestall Digital",
   },
   description:
-    "Agencia Bestall Digital: páginas web, tráfico, apps y crecimiento. Productos en vivo en bestalldigital.com.",
+    "Agencia especializada en adquisición de clientes, diseño de páginas web de alta conversión, campañas de tráfico y automatizaciones con WhatsApp en Colombia.",
+  keywords: [
+    "Agencia de marketing digital Colombia",
+    "desarrollo web alta conversion",
+    "automatizacion whatsapp",
+    "embudos de venta",
+    "Bestall Digital",
+  ],
   icons: {
     icon: [{ url: "/brand/agency/favicon.png", type: "image/png" }],
     apple: [{ url: "/brand/agency/mark.png" }],
     shortcut: ["/brand/agency/favicon.png"],
   },
   openGraph: {
-    title: "Bestall Digital",
-    description: "Marketing · Tecnología · Crecimiento",
+    title: "Bestall Digital | Marketing, Tecnología y Crecimiento",
+    description:
+      "Creamos sistemas de adquisición: páginas de alta velocidad, tráfico calificado y cierre directo en WhatsApp.",
+    url: "https://agencia.bestalldigital.com",
+    siteName: "Bestall Digital",
     locale: "es_CO",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Bestall Digital",
+    description: "Sistemas de adquisición y desarrollo web en Colombia.",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="es" className={`${display.variable} ${body.variable} h-full`}>
-      <body className="min-h-full antialiased">
+      <body className="min-h-full antialiased w-full max-w-full overflow-x-hidden">
         <div hidden dangerouslySetInnerHTML={{ __html: DIRECTION_CONTRACT }} />
         {children}
       </body>

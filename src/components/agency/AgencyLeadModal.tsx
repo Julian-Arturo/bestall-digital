@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useState, useSyncExternalStore, type FormEvent } from "react";
 import { createPortal } from "react-dom";
 import { waUrl } from "@/lib/agency";
 
@@ -31,7 +31,11 @@ const BUDGETS = [
 ] as const;
 
 export function AgencyLeadModal() {
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  );
   const [open, setOpen] = useState(false);
   const [visible, setVisible] = useState(false);
   const [left, setLeft] = useState<TimeLeft>(() => calcLeft(endOfMonthMs()));
@@ -40,10 +44,6 @@ export function AgencyLeadModal() {
   const [biz, setBiz] = useState("");
   const [budget, setBudget] = useState("");
   const [ok, setOk] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     const target = endOfMonthMs();
@@ -90,10 +90,7 @@ export function AgencyLeadModal() {
   }, []);
 
   useEffect(() => {
-    if (!open) {
-      setVisible(false);
-      return;
-    }
+    if (!open) return;
     const id = window.requestAnimationFrame(() => setVisible(true));
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") close();
