@@ -822,22 +822,16 @@ a {
   word-break: break-word;
 }
 
-/* —— PAINS SECTION (4 SYMMETRIC GRID) —— */
+/* —— PAINS SECTION (3 SYMMETRIC GRID) —— */
 .bd-pains {
   display: grid;
   gap: 1.1rem;
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .bd-pains {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1040px) {
-  .bd-pains {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -1558,15 +1552,12 @@ a {
 }
 
 .bd-faq {
-  display: grid;
-  gap: 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
   width: 100%;
-}
-
-@media (min-width: 860px) {
-  .bd-faq {
-    grid-template-columns: 1fr 1fr;
-  }
+  max-width: 48rem;
+  margin: 0 auto;
 }
 
 .bd-faq-item {

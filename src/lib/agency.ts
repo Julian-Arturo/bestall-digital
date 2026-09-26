@@ -41,23 +41,15 @@ export const TECH_STACK = [
 export const PAINS = [
   {
     code: "01",
-    title: "Inviertes en pauta y no hay retorno",
-    desc: "Pagas anuncios cada mes en redes o Google, pero el teléfono sigue en silencio o los clics nunca se traducen en clientes con dinero en mano.",
+    title: "Inviertes en pauta y no hay retorno comercial real.",
   },
   {
     code: "02",
-    title: "Tu web actual confunde y no tiene llamado claro",
-    desc: "Los prospectos entran, se pierden en textos genéricos sin dirección comercial y se van sin escribirte ni dejar sus datos.",
+    title: "Tu presencia digital confunde y no tiene un llamado claro a la acción.",
   },
   {
     code: "03",
-    title: "Pierdes ventas por demoras en responder",
-    desc: "Leads calificados se enfrían porque nadie les responde a tiempo con el mensaje, precio o cotización exacta para cerrar la compra.",
-  },
-  {
-    code: "04",
-    title: "Procesos manuales y desorden operativo",
-    desc: "Copiar y pegar información, mandar PDFs desactualizados y un WhatsApp desorganizado que satura a tu equipo e impide escalar.",
+    title: "El equipo pierde ventas por demoras en responder y tareas manuales repetitivas.",
   },
 ] as const;
 
@@ -65,8 +57,8 @@ export const METHOD_STEPS = [
   {
     step: "01",
     badge: "Fase 1",
-    title: "Diagnóstico de Oferta y Fuga de Leads",
-    desc: "Auditamos tu embudo actual, eliminamos la ambigüedad en tu propuesta de valor y definimos el gancho de venta directo que tu cliente entiende en 5 segundos.",
+    title: "Diagnóstico",
+    desc: "Auditamos la oferta y detectamos dónde se fugan tus prospectos.",
     deliverables: [
       "Auditoría comercial de tu oferta",
       "Detección de puntos de fuga de prospectos",
@@ -76,8 +68,8 @@ export const METHOD_STEPS = [
   {
     step: "02",
     badge: "Fase 2",
-    title: "Maquetación Rápida y Copywriting de Conversión",
-    desc: "Escribimos textos persuasivos centrados en beneficios y diseñamos una interfaz ultra limpia, mobile-first, sin plantillas lentas ni elementos de relleno.",
+    title: "Arquitectura & Copy",
+    desc: "Diseñamos el mensaje de conversión directo y sin humo.",
     deliverables: [
       "Copywriting comercial enfocado en objeciones",
       "Diseño modular de alta legibilidad y jerarquía",
@@ -87,19 +79,19 @@ export const METHOD_STEPS = [
   {
     step: "03",
     badge: "Fase 3",
-    title: "Integración Técnica, Píxeles y Pasarelas",
-    desc: "Conectamos tracking milimétrico de conversiones (Meta Pixel y Google Analytics), pasarelas de pago seguras y enlaces directos a WhatsApp.",
+    title: "Integración Técnica",
+    desc: "Desarrollamos en Next.js con píxeles, tracking y pasarelas listas.",
     deliverables: [
       "Configuración de eventos de conversión sin fugas",
-      "Integración de recaudo (Wompi, PSE, tarjetas si aplica)",
+      "Integración de recaudo (Wompi, PSE, tarjetas)",
       "Enlaces inteligentes con mensajes preconfigurados",
     ],
   },
   {
     step: "04",
     badge: "Fase 4",
-    title: "Activación de Tráfico y Cierre en WhatsApp",
-    desc: "Encendemos campañas de anuncios sincronizadas al embudo y estructuramos las respuestas rápidas para que tu equipo comercial cierre ventas de inmediato.",
+    title: "Activación de Ventas",
+    desc: "Campañas de tráfico dirigidas a cierre directo en WhatsApp.",
     deliverables: [
       "Campañas publicitarias segmentadas con alta intención",
       "Guiones de respuesta ágil para WhatsApp",
@@ -118,14 +110,12 @@ export const SERVICE_PACKAGES = [
     currency: "COP",
     priceNote: "Pago único",
     timeframe: "7 a 10 días hábiles",
-    desc: "Para negocios que necesitan validar o profesionalizar su oferta digital con una página ultrarrápida y enfocada en captar clientes.",
+    desc: "Página ultrarrápida en Next.js enfocada en captar prospectos y cerrar por WhatsApp.",
     deliverables: [
-      "Landing page ultrarrápida en Next.js (código propio)",
-      "Diseño responsive adaptado a móviles (mobile-first)",
-      "Copy persuasivo estructurado para venta",
-      "Dominio y hosting profesional conectado",
-      "Tracking de Meta Pixel y Google Analytics",
-      "Botón de WhatsApp optimizado con mensaje directo",
+      "Landing page ultrarrápida en Next.js (Móvil y Desktop)",
+      "Copywriting enfocado en captación directa",
+      "Tracking configurado (Meta Pixel y Google Analytics)",
+      "Entrega estimada: 7 a 10 días hábiles",
     ],
     cta: "Cotizar Pack Web ($1.2M)",
     waMsg: "Hola Bestall 👋 Quiero cotizar el Pack 1: Web de Alta Conversión ($1.200.000 COP)",
@@ -140,14 +130,12 @@ export const SERVICE_PACKAGES = [
     currency: "COP",
     priceNote: "Inversión integral",
     timeframe: "15 días hábiles",
-    desc: "La solución completa: atracción constante de prospectos calificados, presentación de alto impacto y embudo de cierre en WhatsApp.",
+    desc: "Atracción constante de prospectos calificados, presentación de alto impacto y cierre en WhatsApp.",
     deliverables: [
-      "Todo lo incluido en el Pack 1 (Web de Alta Conversión)",
-      "Configuración y optimización de campañas (Meta / Google Ads)",
-      "Estructuración de oferta irresistible y ángulos comerciales",
+      "Todo lo incluido en el Pack Web",
+      "Configuración y optimización de pauta (Meta Ads / Google)",
+      "Estructura de oferta de alto valor y creativos",
       "Flujo de captura y cierre ágil en WhatsApp",
-      "Segmentación hacia público con alto poder adquisitivo",
-      "Reporte semanal de métricas y retorno de inversión",
     ],
     cta: "Cotizar Sistema Completo ($2.2M)",
     waMsg: "Hola Bestall 👋 Quiero cotizar el Pack 2: Sistema Completo de Ventas ($2.200.000 COP)",
@@ -156,19 +144,17 @@ export const SERVICE_PACKAGES = [
     id: "pack-soluciones",
     featured: false,
     badge: "Pack 3",
-    title: "Soluciones Digitales & Automatización",
+    title: "Soluciones Digitales & Software",
     price: "Desde $3.500.000",
     currency: "COP",
     priceNote: "Según alcance técnico",
     timeframe: "A convenir según módulos",
-    desc: "Desarrollo de software y automatizaciones avanzadas para empresas con necesidades operativas, cobros o reservas complejas.",
+    desc: "Desarrollo de software y automatizaciones avanzadas para empresas con cobros o procesos complejos.",
     deliverables: [
-      "Desarrollo de aplicaciones y plataformas web a medida",
+      "Desarrollo de aplicaciones o plataformas web a medida",
       "Integración de pasarelas de pago (Wompi, PSE, tarjetas)",
-      "Cotizadores interactivos y sistemas de reserva dinámicos",
+      "Cotizadores dinámicos y paneles interactivos",
       "Automatización de flujos operativos sin fricción manual",
-      "Conexión con CRM, bases de datos y notificaciones API",
-      "Soporte técnico prioritario y evolución modular",
     ],
     cta: "Cotizar Solución a Medida ($3.5M)",
     waMsg: "Hola Bestall 👋 Quiero cotizar el Pack 3: Soluciones Digitales y Software a Medida",
@@ -180,13 +166,13 @@ export const CASE_STUDIES = [
     tag: "Reserva Digital & Pagos Wompi",
     badge: "Sector Automotriz",
     title: "CDA Automotriz (CDA Ferrocarril)",
-    subtitle: "Landing page técnica para motocicletas con selector de tarifas por año y pasarela Wompi",
+    subtitle: "Cotizador dinámico por año y recaudo seguro con Wompi",
     challenge:
-      "Filas presenciales sin confirmación, pérdida de conductores por falta de claridad en tarifas según el modelo del vehículo y ausencia de recaudo digital previo.",
+      "Automatizar cotización por año y recaudo técnico-mecánico sin llamadas.",
     solution:
-      "Desarrollo en Next.js con selector dinámico de tarifas por año/cilindraje, pasarela integrada de Wompi para agendamiento pagado y canal prioritario a WhatsApp.",
+      "Landing de alta velocidad con cotizador dinámico y checkout seguro Wompi.",
     result:
-      "Proceso de reserva ágil en menos de 60 segundos, reducción de filas en ventanilla y aumento en la confirmación de citas.",
+      "Reservas y pagos directos en línea 24/7 sin intermediación manual.",
     image: "/brand/agency/cda-hero.jpg",
     urlPreview: "cdaferrocarril.com/motos",
     ctaText: "Consultar Solución Similar",
@@ -197,13 +183,13 @@ export const CASE_STUDIES = [
     tag: "Funnel de Ventas & Tracking",
     badge: "Formación & Salud",
     title: "Plataforma de Formación y Salud",
-    subtitle: "Embudo de conversión directa con tracking de eventos y automatizaciones de contacto",
+    subtitle: "Embudo optimizado con CAPI y canal directo a WhatsApp",
     challenge:
-      "Poco retorno en campañas publicitarias por desconfianza del usuario, carritos abandonados y dificultad para explicar un programa de alto valor de forma simple.",
+      "Reducir costo de adquisición y caídas en checkout.",
     solution:
-      "Landing de lectura modular con video persuasivo, prueba social dinámica geolocalizada, pasarela de pago internacional y tracking de eventos API sin fugas.",
+      "Embudo optimizado con tracking de eventos CAPI y soporte por WhatsApp.",
     result:
-      "Incremento en la tasa de conversión sobre tráfico frío de anuncios y flujo automatizado para asesoría médica y formativa.",
+      "Trazabilidad total de compras y aumento en tasa de conversión.",
     image: "/brand/agency/demo-moto.png",
     urlPreview: "bestalldigital.com/vip",
     ctaText: "Ver Embudo de Demostración",
@@ -226,20 +212,16 @@ export const QUOTE_OPTIONS = {
 
 export const FAQS = [
   {
-    q: "¿Cuáles son los tiempos de entrega de cada paquete?",
-    a: "La Web de Alta Conversión (Pack 1) se entrega en 7 a 10 días hábiles. El Sistema Completo de Ventas (Pack 2) toma 15 días hábiles incluyendo configuración de campañas. Para Soluciones Digitales y Software a medida (Pack 3), el cronograma se define con base en los módulos acordados.",
+    q: "¿En cuánto tiempo está listo mi proyecto?",
+    a: "De 7 a 15 días hábiles según el paquete seleccionado (Web de Alta Conversión en 7-10 días, Sistema Completo en 15 días). Soluciones a medida según alcance acordado.",
   },
   {
-    q: "¿El código, hosting y dominio son 100% de mi propiedad?",
-    a: "Sí, absolutamente. El 100% del código fuente, accesos a servidores en Vercel, dominios y cuentas publicitarias se configuran a nombre de tu empresa. No retenemos claves ni existen costos ocultos de 'liberación'.",
+    q: "¿Quién es el dueño del código y del dominio?",
+    a: "El cliente es 100% propietario del código, dominio y cuentas publicitarias. No cobramos licencias recurrentes ni retenemos accesos.",
   },
   {
-    q: "¿Qué métodos de pago reciben para la contratación?",
-    a: "Aceptamos pagos electrónicos mediante Wompi (tarjetas de crédito, débito, PSE, Nequi y Daviplata) y transferencias bancarias. Trabajamos bajo esquema de anticipo y saldo contra entrega verificada.",
-  },
-  {
-    q: "¿Qué tipo de soporte recibo después del lanzamiento?",
-    a: "Todos los proyectos incluyen garantía técnica y soporte pos-lanzamiento para asegurar funcionamiento impecable. También ofrecemos acompañamiento mensual opcional para optimización continua de conversión y soporte.",
+    q: "¿Qué incluye el soporte post-lanzamiento?",
+    a: "Acompañamiento técnico, monitoreo de rendimiento y garantía operativa para asegurar que el sistema funcione sin fricciones.",
   },
 ] as const;
 

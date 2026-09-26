@@ -106,9 +106,7 @@ export function AgencyLanding() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1, duration: 0.55, ease }}
               >
-                Eliminamos la falta de sistema. Diseñamos páginas web de alta velocidad,
-                tráfico calificado y automatizaciones que llevan clientes listos para
-                comprar directamente a tu WhatsApp.
+                Construimos el sistema que le falta a tu negocio: páginas web de alta velocidad, tráfico calificado y cierre automático en WhatsApp.
               </motion.p>
               <motion.div
                 className="bd-actions flex flex-col sm:flex-row gap-3 mt-6 w-full sm:w-auto"
@@ -202,7 +200,7 @@ export function AgencyLanding() {
               fricciones técnicas y mensajes dispersos que ahuyentan las ventas.
             </p>
           </div>
-          <div className="bd-pains grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full">
+          <div className="bd-pains grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 w-full">
             {PAINS.map((p, i) => (
               <motion.article
                 key={p.code}
@@ -216,7 +214,6 @@ export function AgencyLanding() {
                   <span className="bd-pain-num">{p.code}</span>
                 </div>
                 <h3>{p.title}</h3>
-                <p>{p.desc}</p>
               </motion.article>
             ))}
           </div>
@@ -497,17 +494,17 @@ export function AgencyLanding() {
                   <p className="bd-case-subtitle">{c.subtitle}</p>
 
                   <div className="bd-case-block">
-                    <strong>El Reto:</strong>
+                    <strong>Reto:</strong>
                     <p>{c.challenge}</p>
                   </div>
 
                   <div className="bd-case-block">
-                    <strong>Solución Técnica:</strong>
+                    <strong>Solución:</strong>
                     <p>{c.solution}</p>
                   </div>
 
                   <div className="bd-case-block">
-                    <strong>Resultado Tangible:</strong>
+                    <strong>Resultado:</strong>
                     <p>{c.result}</p>
                   </div>
 
@@ -544,7 +541,7 @@ export function AgencyLanding() {
               Resolvemos de forma directa las dudas operativas antes de iniciar cualquier desarrollo.
             </p>
           </div>
-          <div className="bd-faq grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 w-full">
+          <div className="bd-faq max-w-3xl mx-auto flex flex-col gap-3 w-full">
             {FAQS.map((item, i) => {
               const open = openFaq === i;
               return (
