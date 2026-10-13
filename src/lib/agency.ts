@@ -41,61 +41,54 @@ export const TECH_STACK = [
 export const PAINS = [
   {
     code: "01",
-    title: "Inviertes en pauta y no hay retorno comercial real.",
+    title: "Leads de pauta que escriben al WhatsApp a las 8pm y quedan en visto hasta el día siguiente (y le compran a la competencia).",
   },
   {
     code: "02",
-    title: "Tu presencia digital confunde y no tiene un llamado claro a la acción.",
+    title: "Sitios web lentos o pesados que demoran más de 4 segundos en abrir en el celular (el usuario rebota antes de ver la oferta).",
   },
   {
     code: "03",
-    title: "El equipo pierde ventas por demoras en responder y tareas manuales repetitivas.",
+    title: "Cotizaciones manuales calculadas en hojas de cálculo desactualizadas que demoran el cierre comercial.",
+  },
+  {
+    code: "04",
+    title: "Presupuesto publicitario invertido en Meta Ads sin saber con certeza qué anuncio generó ventas reales.",
   },
 ] as const;
 
 export const METHOD_STEPS = [
   {
     step: "01",
-    badge: "Fase 1",
-    title: "Diagnóstico",
-    desc: "Auditamos la oferta y detectamos dónde se fugan tus prospectos.",
+    badge: "Paso 1",
+    title: "Cuéntanos el flujo o problema por WhatsApp (audio o mensaje breve)",
+    desc: "Envíanos un audio o mensaje breve explicando tu producto, dónde se traban los clientes o qué proceso requieres automatizar (sin reuniones eternas de 40 minutos).",
     deliverables: [
-      "Auditoría comercial de tu oferta",
-      "Detección de puntos de fuga de prospectos",
-      "Definición de público con alta intención de pago",
+      "Audio o mensaje breve sin formalismos innecesarios",
+      "Diagnóstico ágil de cuellos de botella comerciales",
+      "Respuesta directa con viabilidad técnica preliminar",
     ],
   },
   {
     step: "02",
-    badge: "Fase 2",
-    title: "Arquitectura & Copy",
-    desc: "Diseñamos el mensaje de conversión directo y sin humo.",
+    badge: "Paso 2",
+    title: "Te entregamos en 24h la viabilidad, el alcance técnico cerrado y la cotización fija sin sorpresas",
+    desc: "Te entregamos en 24h la viabilidad, el alcance técnico cerrado y la cotización fija sin sorpresas.",
     deliverables: [
-      "Copywriting comercial enfocado en objeciones",
-      "Diseño modular de alta legibilidad y jerarquía",
-      "Optimización de velocidad y Core Web Vitals (< 1.5s)",
+      "Alcance técnico cerrado y delimitado por escrito",
+      "Cotización fija y transparente sin sobrecostos",
+      "Cronograma exacto de entrega (7 a 15 días hábiles)",
     ],
   },
   {
     step: "03",
-    badge: "Fase 3",
-    title: "Integración Técnica",
-    desc: "Desarrollamos en Next.js con píxeles, tracking y pasarelas listas.",
+    badge: "Paso 3",
+    title: "Despliegue, conexión de pasarelas/píxeles y entrega total del repositorio y credenciales a tu nombre",
+    desc: "Despliegue, conexión de pasarelas/píxeles y entrega total del repositorio y credenciales a tu nombre.",
     deliverables: [
-      "Configuración de eventos de conversión sin fugas",
-      "Integración de recaudo (Wompi, PSE, tarjetas)",
-      "Enlaces inteligentes con mensajes preconfigurados",
-    ],
-  },
-  {
-    step: "04",
-    badge: "Fase 4",
-    title: "Activación de Ventas",
-    desc: "Campañas de tráfico dirigidas a cierre directo en WhatsApp.",
-    deliverables: [
-      "Campañas publicitarias segmentadas con alta intención",
-      "Guiones de respuesta ágil para WhatsApp",
-      "Monitoreo de costo por lead y retorno sobre inversión",
+      "Despliegue en producción con pasarelas (Wompi/PSE) y tracking (CAPI)",
+      "Entrega del 100% del código, repositorio y accesos",
+      "Verificación operativa y soporte de arranque en vivo",
     ],
   },
 ] as const;
@@ -173,6 +166,12 @@ export const CASE_STUDIES = [
       "Landing de alta velocidad con cotizador dinámico y checkout seguro Wompi.",
     result:
       "Reservas y pagos directos en línea 24/7 sin intermediación manual.",
+    architecture: [
+      "Next.js App Router",
+      "Wompi Checkout API",
+      "Cotizador Paramétrico",
+      "Vercel Edge",
+    ],
     image: "/brand/agency/cda-hero.jpg",
     urlPreview: "cdaferrocarril.com/motos",
     ctaText: "Consultar Solución Similar",
@@ -190,6 +189,12 @@ export const CASE_STUDIES = [
       "Embudo optimizado con tracking de eventos CAPI y soporte por WhatsApp.",
     result:
       "Trazabilidad total de compras y aumento en tasa de conversión.",
+    architecture: [
+      "Next.js",
+      "Meta Conversions API (CAPI)",
+      "WhatsApp Bridge",
+      "Honeypot Anti-Spam",
+    ],
     image: "/brand/agency/demo-moto.png",
     urlPreview: "bestalldigital.com/vip",
     ctaText: "Ver Embudo de Demostración",

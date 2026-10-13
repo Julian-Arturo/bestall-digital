@@ -200,7 +200,7 @@ export function AgencyLanding() {
               fricciones técnicas y mensajes dispersos que ahuyentan las ventas.
             </p>
           </div>
-          <div className="bd-pains grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 w-full">
+          <div className="bd-pains grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full">
             {PAINS.map((p, i) => (
               <motion.article
                 key={p.code}
@@ -219,20 +219,19 @@ export function AgencyLanding() {
           </div>
         </section>
 
-        {/* 5. NUESTRO MÉTODO ("EL SISTEMA BESTALL" EN 4 PASOS) */}
+        {/* 5. CÓMO TRABAJAMOS (3 PASOS DIRECTOS SIN FRICCIÓN) */}
         <section id="metodo" className="bd-section bd-section-soft w-full px-4 py-12 md:px-8 md:py-20 overflow-x-hidden">
           <div className="w-full max-w-7xl mx-auto">
             <div className="bd-head bd-head-center text-center max-w-2xl mx-auto mb-8 md:mb-12">
-              <p className="bd-kicker text-xs sm:text-sm font-bold uppercase tracking-wider text-cyan-400">El Sistema Bestall</p>
+              <p className="bd-kicker text-xs sm:text-sm font-bold uppercase tracking-wider text-cyan-400">Cómo Trabajamos</p>
               <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mt-2">
-                Cómo convertimos tu inversión en <span>ventas reales</span> en 4 pasos
+                Flujo directo de contratación <span>sin reuniones eternas de 40 minutos</span>
               </h2>
               <p className="bd-sub text-sm sm:text-base text-slate-400 mt-3">
-                Un proceso quirúrgico y medible que conecta tu propuesta comercial con
-                canales directos de cierre.
+                Sin burocracia, sin presentaciones vacías y sin humo. Del audio de WhatsApp a tu sistema de ventas en producción.
               </p>
             </div>
-            <div className="bd-methods grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full">
+            <div className="bd-methods grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
               {METHOD_STEPS.map((m, i) => (
                 <motion.div
                   key={m.step}
@@ -348,7 +347,7 @@ export function AgencyLanding() {
         {/* 7. COTIZADOR INTERACTIVO DINÁMICO (LEAD MAGNET) */}
         <section id="cotizador" className="bd-section bd-section-soft w-full px-4 py-12 md:px-8 md:py-20 overflow-x-hidden">
           <div className="w-full max-w-7xl mx-auto">
-            <div className="bd-head bd-head-center text-center mx-auto flex flex-col items-center mb-8 md:mb-12">
+            <div className="bd-head bd-head-center flex flex-col items-center text-center mx-auto max-w-xl mb-8 md:mb-12">
               <p className="bd-kicker text-xs sm:text-sm font-bold uppercase tracking-wider text-cyan-400 text-center">Cotizador en 2 Pasos</p>
               <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight text-center mt-2">
                 Calcula tu solución y <span>consulta disponibilidad</span>
@@ -508,6 +507,24 @@ export function AgencyLanding() {
                     <p>{c.result}</p>
                   </div>
 
+                  {"architecture" in c && Array.isArray(c.architecture) ? (
+                    <div className="bd-case-arch mt-4 pt-3 border-t border-slate-800/80">
+                      <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 block mb-2">
+                        Arquitectura Técnica:
+                      </span>
+                      <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                        {c.architecture.map((item) => (
+                          <span
+                            key={item}
+                            className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-mono font-medium bg-slate-900/90 text-cyan-300 border border-cyan-500/20"
+                          >
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null}
+
                   <div className="bd-case-action">
                     {"waMsg" in c && c.waMsg ? (
                       <a
@@ -614,9 +631,7 @@ export function AgencyLanding() {
             </span>
           </div>
         </div>
-        <nav className="flex flex-wrap items-center justify-center gap-4 text-xs sm:text-sm text-slate-400" aria-label="Enlaces secundarios y legales">
-          <Link href="/vip" className="hover:text-cyan-400 transition-colors">Mecánica VIP</Link>
-          <Link href="/diabetes" className="hover:text-cyan-400 transition-colors">Toma el Control (21 días)</Link>
+        <nav className="flex flex-wrap items-center justify-center gap-6 text-xs sm:text-sm text-slate-400" aria-label="Enlaces secundarios y legales">
           <a
             href={waUrl("Hola Bestall 👋 Les escribo desde el pie de página:")}
             target="_blank"
@@ -627,10 +642,12 @@ export function AgencyLanding() {
           </a>
           <button
             type="button"
+            aria-haspopup="dialog"
+            aria-expanded={termsOpen}
             className="bd-foot-link-btn hover:text-cyan-400 transition-colors bg-transparent border-0 p-0 text-inherit cursor-pointer font-inherit"
             onClick={() => setTermsOpen(true)}
           >
-            Términos y Condiciones
+            Términos del Servicio &amp; Tratamiento de Datos
           </button>
         </nav>
         <p className="text-xs text-slate-400 m-0 text-center md:text-right">

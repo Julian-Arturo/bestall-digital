@@ -48,7 +48,7 @@ export function AgencyTermsModal({ isOpen, onClose }: AgencyTermsModalProps) {
         <div className="bd-terms-header shrink-0">
           <div>
             <span className="bd-terms-kicker">Marco Legal & Transparencia</span>
-            <h2 id="terms-modal-title">Términos y Condiciones del Servicio</h2>
+            <h2 id="terms-modal-title">Términos del Servicio &amp; Tratamiento de Datos</h2>
           </div>
           <button
             type="button"

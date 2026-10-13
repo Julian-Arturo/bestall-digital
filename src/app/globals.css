@@ -822,16 +822,22 @@ a {
   word-break: break-word;
 }
 
-/* —— PAINS SECTION (3 SYMMETRIC GRID) —— */
+/* —— PAINS SECTION (4 FRICTION GRID) —— */
 .bd-pains {
   display: grid;
   gap: 1.1rem;
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .bd-pains {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .bd-pains {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -885,22 +891,16 @@ a {
   line-height: 1.5;
 }
 
-/* —— METHOD / EL SISTEMA BESTALL (4 PASOS) —— */
+/* —— METHOD / CÓMO TRABAJAMOS (3 PASOS) —— */
 .bd-methods {
   display: grid;
   gap: 1.25rem;
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .bd-methods {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1080px) {
-  .bd-methods {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
