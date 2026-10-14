@@ -76,9 +76,10 @@ export function AgencyLanding() {
             <div className="bd-hero-copy order-1 w-full max-w-full">
               <span className="bd-pill">¿Inviertes y no ves resultados?</span>
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight break-words">
-                Inviertes… y el teléfono <span>no suena</span>.
+                Inviertes en publicidad… y el teléfono <span>no suena</span>.
               </h1>
               <p className="bd-lead text-base sm:text-lg text-slate-400 mt-4 max-w-xl">
+                <strong className="text-slate-200">Agencia de marketing digital en Colombia.</strong>{" "}
                 Construimos el sistema que le falta a tu negocio: páginas web de alta velocidad, tráfico calificado y cierre automático en WhatsApp.
               </p>
               <div className="bd-actions flex flex-col sm:flex-row gap-3 mt-6 w-full sm:w-auto">
@@ -496,6 +497,12 @@ export function AgencyLanding() {
           >
             WhatsApp
           </a>
+          <Link href="/vip" className="hover:text-cyan-400 transition-colors">
+            Demo: Mecánica VIP
+          </Link>
+          <Link href="/diabetes" className="hover:text-cyan-400 transition-colors">
+            Demo: Toma el Control
+          </Link>
           <AgencyFooterTerms />
         </nav>
         <p className="text-xs text-slate-400 m-0 text-center md:text-right">

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Lexend, Source_Sans_3 } from "next/font/google";
 import { DiabetesLanding } from "@/components/diabetes/DiabetesLanding";
+import { JsonLd } from "@/components/JsonLd";
+import { DIABETES, DIABETES_CHECKOUT_BASE, DIABETES_FAQ, DIABETES_PRICE } from "@/lib/diabetes";
+import { SITE_URL } from "@/lib/site";
 
 const display = Lexend({
   variable: "--font-diabetes-display",
@@ -15,9 +18,9 @@ const body = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  title: "Toma el Control: 21 Días para Controlar la Diabetes | US$4.99",
+  title: { absolute: "Toma el Control: Plan de 21 Días para la Diabetes" },
   description:
-    "Guía práctica de 21 días con recetas simples, hábitos sostenibles y bienestar. Sin dietas extremas. Acceso digital vía Hotmart.",
+    "Guía práctica de 21 días con recetas simples, hábitos sostenibles y bienestar. Sin dietas extremas. Acceso digital por US$4.99.",
   alternates: {
     canonical: "/diabetes",
   },
@@ -32,6 +35,35 @@ export const metadata: Metadata = {
   },
 };
 
+const diabetesJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      name: DIABETES.title,
+      description: DIABETES.pitch,
+      image: `${SITE_URL}/brand/doctora.webp`,
+      url: `${SITE_URL}/diabetes`,
+      brand: { "@type": "Brand", name: DIABETES.author },
+      offers: {
+        "@type": "Offer",
+        price: Number(DIABETES_PRICE.replace(/[^d.]/g, "")),
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
+        url: DIABETES_CHECKOUT_BASE,
+      },
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: DIABETES_FAQ.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: { "@type": "Answer", text: item.a },
+      })),
+    },
+  ],
+};
+
 export default function DiabetesPage() {
   return (
     <div className={`${display.variable} ${body.variable}`}>
@@ -43,6 +75,7 @@ export default function DiabetesPage() {
         FORM: code-led wellness storefront in same Vercel app at /diabetes.
         FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
       */}
+      <JsonLd data={diabetesJsonLd} />
       <DiabetesLanding />
     </div>
   );

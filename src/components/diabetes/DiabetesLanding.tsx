@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import {
   DIABETES,
@@ -409,6 +410,12 @@ export function DiabetesLanding() {
             </p>
             <p className="m-0 text-xs">
               Esta página es de afiliado / promoción del producto. No es consejo médico.
+            </p>
+            <p className="m-0 text-xs">
+              Sitio desarrollado por{" "}
+              <Link href="/" className="font-semibold text-[var(--d-cta)] underline">
+                Bestall Digital
+              </Link>
             </p>
           </div>
         </footer>

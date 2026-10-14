@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { PrimaryCta } from "@/components/PrimaryCta";
 import { FaqList } from "@/components/FaqList";
 import { HeroVideo } from "@/components/HeroVideo";
@@ -466,12 +467,7 @@ export function LandingPage() {
             </p>
           </div>
           <div className="text-sm text-[var(--muted)]">
-            <p className="m-0 font-semibold text-[var(--ink)]">Retargeting / tracking</p>
-            <p className="mt-2 m-0">
-              CTAs con <code>?src=</code> (hero, sticky, oferta, etc.) listos para
-              Meta/TikTok/GTM.
-            </p>
-            <p className="mt-3 m-0">
+            <p className="m-0">
               Facebook:{" "}
               <a href={BRAND.facebook} className="font-semibold text-[var(--orange)]">
                 {BRAND.handle}
@@ -479,6 +475,12 @@ export function LandingPage() {
             </p>
             <p className="mt-4 m-0 text-xs">
               © {new Date().getFullYear()} {BRAND.pageName}
+            </p>
+            <p className="mt-2 m-0 text-xs">
+              Sitio desarrollado por{" "}
+              <Link href="/" className="font-semibold text-[var(--orange)]">
+                Bestall Digital
+              </Link>
             </p>
           </div>
         </div>
