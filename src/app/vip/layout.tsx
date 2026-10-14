@@ -1,5 +1,13 @@
 import type { ReactNode } from "react";
 import Script from "next/script";
+import { Barlow_Condensed } from "next/font/google";
+
+/** Tipografía de titulares solo para /vip (la home y /diabetes no la usan). */
+const display = Barlow_Condensed({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
+});
 
 export default function VipLayout({
   children,
@@ -38,7 +46,7 @@ export default function VipLayout({
         />
       </noscript>
       {/* End Meta Pixel Code */}
-      {children}
+      <div className={display.variable}>{children}</div>
     </>
   );
 }

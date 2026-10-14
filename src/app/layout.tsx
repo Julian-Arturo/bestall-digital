@@ -1,13 +1,7 @@
 import type { Metadata } from "next";
-import { Barlow_Condensed, Source_Sans_3 } from "next/font/google";
+import { Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
-
-const display = Barlow_Condensed({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["600", "700", "800"],
-});
 
 const body = Source_Sans_3({
   variable: "--font-body",
@@ -60,11 +54,6 @@ export const metadata: Metadata = {
     "embudos de venta",
     "Bestall Digital",
   ],
-  icons: {
-    icon: [{ url: "/brand/agency/favicon.png", type: "image/png" }],
-    apple: [{ url: "/brand/agency/mark.png" }],
-    shortcut: ["/brand/agency/favicon.png"],
-  },
   openGraph: {
     title: "Bestall Digital | Marketing, Tecnología y Crecimiento",
     description:
@@ -87,7 +76,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="es" className={`${display.variable} ${body.variable} h-full`}>
+    <html lang="es" className={`${body.variable} h-full`}>
       <body className="min-h-full antialiased w-full max-w-full overflow-x-hidden">
         <div hidden dangerouslySetInnerHTML={{ __html: DIRECTION_CONTRACT }} />
         {children}

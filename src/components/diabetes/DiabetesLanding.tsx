@@ -196,7 +196,7 @@ export function DiabetesLanding() {
                     src="/brand/doctora.webp"
                     alt="Doctora — imagen ilustrativa de la campaña"
                     fill
-                    priority
+                    loading="eager"
                     sizes="(max-width: 768px) 90vw, 380px"
                     className="object-cover object-[center_12%]"
                   />

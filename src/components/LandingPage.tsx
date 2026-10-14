@@ -179,7 +179,7 @@ export function LandingPage() {
           <div className="card overflow-hidden p-2">
             <div className="relative aspect-[5/4] overflow-hidden rounded-[calc(var(--radius)-2px)] bg-[var(--black)]">
               <Image
-                src="/brand/avatar.png"
+                src="/brand/avatar.webp"
                 alt="Mecánica VIP — mentor de la academia"
                 fill
                 className="object-cover object-top opacity-95"
@@ -298,7 +298,7 @@ export function LandingPage() {
 
               <div className="relative min-h-[320px] bg-[var(--bg-warm)] lg:min-h-full">
                 <Image
-                  src="/brand/logo.png"
+                  src="/brand/logo.webp"
                   alt="Logo Mecánica VIP"
                   fill
                   className="object-contain p-10 opacity-95"
@@ -419,7 +419,7 @@ export function LandingPage() {
       <section className="section-y section-pad bg-[var(--bg-soft)]">
         <div className="mx-auto max-w-3xl text-center">
           <Image
-            src="/brand/logo.png"
+            src="/brand/logo.webp"
             alt=""
             width={88}
             height={88}
@@ -444,7 +444,7 @@ export function LandingPage() {
           <div className="max-w-xl">
             <div className="flex items-center gap-3">
               <Image
-                src="/brand/logo.png"
+                src="/brand/logo.webp"
                 alt=""
                 width={48}
                 height={48}

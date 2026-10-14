@@ -2240,3 +2240,37 @@ a {
 .bd-foot-link-btn:hover {
   color: var(--bd-cyan);
 }
+/* ── Entradas sin JS de animación (LCP visible desde el HTML) ── */
+.bd-hero-copy,
+.bd-hero-stage {
+  animation: bdRise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.bd-hero-stage {
+  animation-delay: 0.1s;
+}
+@keyframes bdRise {
+  from {
+    transform: translateY(14px);
+  }
+  to {
+    transform: none;
+  }
+}
+[data-reveal] {
+  transition:
+    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0s),
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0s);
+}
+.bd-reveal-on [data-reveal]:not(.is-in) {
+  opacity: 0;
+  transform: translateY(18px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .bd-hero-copy,
+  .bd-hero-stage {
+    animation: none;
+  }
+  [data-reveal] {
+    transition: none;
+  }
+}

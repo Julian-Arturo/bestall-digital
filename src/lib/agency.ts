@@ -10,7 +10,7 @@ export const AGENCY = {
   since: "2024",
   mark: "/brand/agency/mark.webp",
   markPng: "/brand/agency/mark.png",
-  heroDesk: "/brand/agency/hero-desk.png",
+  heroDesk: "/brand/agency/hero-desk.webp",
   heroPhone: "/brand/agency/hero-phone.png",
   heroStrip: "/brand/agency/hero-strip.png",
   priceFrom: "$1.200.000",

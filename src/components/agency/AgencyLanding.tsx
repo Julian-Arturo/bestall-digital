@@ -1,56 +1,39 @@
-"use client";
-
 /*
   Bestall Digital — B2B High-Conversion Agency Funnel.
-  Restructured wireframe & information hierarchy.
+  Server Component: el contenido sale completo en el HTML; solo el cotizador,
+  el FAQ, los modales y el fondo animado son islas cliente.
 */
 
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
 import {
   AGENCY,
   CASE_STUDIES,
-  FAQS,
   METHOD_STEPS,
   PAINS,
   PROOF_METRICS,
-  QUOTE_OPTIONS,
   SERVICE_PACKAGES,
   TECH_STACK,
   waUrl,
 } from "@/lib/agency";
 import { AgencyCursorLight } from "./AgencyCursorLight";
+import { AgencyFaq } from "./AgencyFaq";
+import { AgencyFooterTerms } from "./AgencyFooterTerms";
 import { AgencyLeadModal } from "./AgencyLeadModal";
-import { AgencyTermsModal } from "./AgencyTermsModal";
+import { AgencyQuoteCalculator } from "./AgencyQuoteCalculator";
+import { AgencyReveal } from "./AgencyReveal";
 
-const ease = [0.22, 1, 0.36, 1] as const;
+/** Retraso escalonado para los bloques con `data-reveal`. */
+function revealDelay(seconds: number) {
+  return { "--reveal-delay": `${seconds}s` } as CSSProperties;
+}
 
 export function AgencyLanding() {
-  const reduce = useReducedMotion();
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const [termsOpen, setTermsOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState<string>("sistema");
-  const [selectedTimeframe, setSelectedTimeframe] = useState<string>("urgente");
-
-  const activeServiceObj =
-    QUOTE_OPTIONS.services.find((s) => s.id === selectedService) ??
-    QUOTE_OPTIONS.services[1];
-  const activeTimeframeObj =
-    QUOTE_OPTIONS.timeframes.find((t) => t.id === selectedTimeframe) ??
-    QUOTE_OPTIONS.timeframes[0];
-
-  const dynamicWaMessage = `Hola Bestall 👋 Quiero consultar disponibilidad y tarifa para mi negocio:
-• Requerimiento: ${activeServiceObj.label} (${activeServiceObj.pack})
-• Plazo estimado de lanzamiento: ${activeTimeframeObj.label} (${activeTimeframeObj.urgency})
-¿Tienen cupo disponible en su agenda para coordinar?`;
-
-  const dynamicWaUrl = waUrl(dynamicWaMessage);
-
   return (
     <div className="bd-root w-full max-w-full overflow-x-hidden">
       <AgencyCursorLight />
+      <AgencyReveal />
       <a className="bd-skip" href="#servicios">
         Ir a servicios
       </a>
@@ -64,7 +47,7 @@ export function AgencyLanding() {
             width={34}
             height={34}
             className="bd-mark"
-            priority
+            loading="eager"
           />
           <span>bestall</span>
         </Link>
@@ -92,28 +75,13 @@ export function AgencyLanding() {
           <div className="bd-hero-grid grid grid-cols-1 lg:grid-cols-[1.15fr_0.95fr] gap-8 md:gap-12 items-center w-full">
             <div className="bd-hero-copy order-1 w-full max-w-full">
               <span className="bd-pill">¿Inviertes y no ves resultados?</span>
-              <motion.h1
-                className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight break-words"
-                initial={reduce ? false : { opacity: 0, y: 22 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.65, ease }}
-              >
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight break-words">
                 Inviertes… y el teléfono <span>no suena</span>.
-              </motion.h1>
-              <motion.p
-                className="bd-lead text-base sm:text-lg text-slate-400 mt-4 max-w-xl"
-                initial={reduce ? false : { opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1, duration: 0.55, ease }}
-              >
+              </h1>
+              <p className="bd-lead text-base sm:text-lg text-slate-400 mt-4 max-w-xl">
                 Construimos el sistema que le falta a tu negocio: páginas web de alta velocidad, tráfico calificado y cierre automático en WhatsApp.
-              </motion.p>
-              <motion.div
-                className="bd-actions flex flex-col sm:flex-row gap-3 mt-6 w-full sm:w-auto"
-                initial={reduce ? false : { opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.5, ease }}
-              >
+              </p>
+              <div className="bd-actions flex flex-col sm:flex-row gap-3 mt-6 w-full sm:w-auto">
                 <a
                   className="bd-btn w-full sm:w-auto text-center justify-center"
                   href={waUrl(
@@ -127,16 +95,11 @@ export function AgencyLanding() {
                 <a className="bd-btn-ghost w-full sm:w-auto text-center justify-center" href="#metodo">
                   Ver metodología
                 </a>
-              </motion.div>
+              </div>
             </div>
 
             {/* Mockup en contenedor estilo navegador */}
-            <motion.div
-              className="bd-hero-stage order-2 w-full max-w-full"
-              initial={reduce ? false : { opacity: 0, scale: 0.97 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.15, duration: 0.65, ease }}
-            >
+            <div className="bd-hero-stage order-2 w-full max-w-full">
               <div className="bd-browser-frame bd-hero-mockup w-full max-w-full overflow-hidden">
                 <div className="bd-browser-bar w-full" aria-hidden="true">
                   <div className="bd-browser-dots shrink-0">
@@ -156,11 +119,12 @@ export function AgencyLanding() {
                     fill
                     sizes="(max-width: 990px) 100vw, 540px"
                     className="object-cover object-top"
-                    priority
+                    preload
+                    fetchPriority="high"
                   />
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -202,19 +166,17 @@ export function AgencyLanding() {
           </div>
           <div className="bd-pains grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full">
             {PAINS.map((p, i) => (
-              <motion.article
+              <article
                 key={p.code}
                 className="bd-pain w-full max-w-full overflow-hidden"
-                initial={reduce ? false : { opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-5%" }}
-                transition={{ delay: i * 0.05, duration: 0.45, ease }}
+                data-reveal
+                style={revealDelay(i * 0.05)}
               >
                 <div className="bd-pain-top">
                   <span className="bd-pain-num">{p.code}</span>
                 </div>
                 <h3>{p.title}</h3>
-              </motion.article>
+              </article>
             ))}
           </div>
         </section>
@@ -233,13 +195,11 @@ export function AgencyLanding() {
             </div>
             <div className="bd-methods grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
               {METHOD_STEPS.map((m, i) => (
-                <motion.div
+                <div
                   key={m.step}
                   className="bd-method-card w-full max-w-full overflow-hidden p-5 sm:p-6"
-                  initial={reduce ? false : { opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.08, duration: 0.5, ease }}
+                  data-reveal
+                  style={revealDelay(i * 0.08)}
                 >
                   <div className="bd-method-header">
                     <span className="bd-method-step">{m.step}</span>
@@ -252,7 +212,7 @@ export function AgencyLanding() {
                       <li key={item}>{item}</li>
                     ))}
                   </ul>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -271,13 +231,11 @@ export function AgencyLanding() {
           </div>
           <div className="bd-packages grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 w-full items-stretch">
             {SERVICE_PACKAGES.map((pkg, i) => (
-              <motion.div
+              <div
                 key={pkg.id}
                 className={`bd-package-card w-full max-w-full overflow-hidden p-6 sm:p-8${pkg.featured ? " bd-package-featured" : ""}`}
-                initial={reduce ? false : { opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.5, ease }}
+                data-reveal
+                style={revealDelay(i * 0.08)}
               >
                 <div className="bd-package-top">
                   <span className="bd-package-badge">{pkg.badge}</span>
@@ -339,7 +297,7 @@ export function AgencyLanding() {
                 >
                   {pkg.cta}
                 </a>
-              </motion.div>
+              </div>
             ))}
           </div>
         </section>
@@ -357,86 +315,7 @@ export function AgencyLanding() {
               </p>
             </div>
             <div className="bd-calc-wrap w-full max-w-4xl mx-auto">
-              <div className="bd-calc-card w-full max-w-full p-4 sm:p-8 md:p-10 rounded-2xl overflow-hidden box-border">
-                <div className="bd-calc-steps-indicator flex flex-wrap justify-center gap-2 sm:gap-4 mb-6 sm:mb-8" aria-label="Progreso de cotización">
-                  <span className="bd-calc-step-pill is-active text-xs sm:text-sm">
-                    <span className="bd-calc-step-num">1</span>
-                    Tipo de Requerimiento
-                  </span>
-                  <span className="bd-calc-step-pill is-active text-xs sm:text-sm">
-                    <span className="bd-calc-step-num">2</span>
-                    Plazo de Lanzamiento
-                  </span>
-                </div>
-
-                {/* Pregunta 1 */}
-                <div className="bd-calc-step-group mb-6 sm:mb-8">
-                  <h3 className="bd-calc-question text-base sm:text-lg font-bold text-white flex items-center gap-2 mb-3">
-                    <span className="bd-calc-question-badge">01</span>
-                    ¿Qué requiere tu negocio hoy?
-                  </h3>
-                  <div className="bd-calc-options grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 w-full">
-                    {QUOTE_OPTIONS.services.map((opt) => {
-                      const isSelected = selectedService === opt.id;
-                      return (
-                        <button
-                          key={opt.id}
-                          type="button"
-                          className={`bd-calc-opt w-full text-left p-4 rounded-xl border transition-all${isSelected ? " is-selected" : ""}`}
-                          onClick={() => setSelectedService(opt.id)}
-                          aria-pressed={isSelected}
-                        >
-                          <span className="bd-calc-opt-pack block text-xs font-bold text-cyan-400 mb-1">{opt.pack}</span>
-                          <strong className="block text-sm sm:text-base font-bold text-white mb-1">{opt.label}</strong>
-                          <p className="text-xs sm:text-sm text-slate-400 break-words">{opt.desc}</p>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                {/* Pregunta 2 */}
-                <div className="bd-calc-step-group mb-6 sm:mb-8">
-                  <h3 className="bd-calc-question text-base sm:text-lg font-bold text-white flex items-center gap-2 mb-3">
-                    <span className="bd-calc-question-badge">02</span>
-                    ¿En qué plazo planeas lanzar?
-                  </h3>
-                  <div className="bd-calc-options grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 w-full">
-                    {QUOTE_OPTIONS.timeframes.map((opt) => {
-                      const isSelected = selectedTimeframe === opt.id;
-                      return (
-                        <button
-                          key={opt.id}
-                          type="button"
-                          className={`bd-calc-opt w-full text-left p-4 rounded-xl border transition-all${isSelected ? " is-selected" : ""}`}
-                          onClick={() => setSelectedTimeframe(opt.id)}
-                          aria-pressed={isSelected}
-                        >
-                          <span className="bd-calc-opt-urgency block text-xs font-bold text-emerald-400 mb-1">{opt.urgency}</span>
-                          <strong className="block text-sm sm:text-base font-bold text-white">{opt.label}</strong>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                {/* Resumen y Salida dinámica a WhatsApp */}
-                <div className="bd-calc-summary flex flex-col md:flex-row items-center justify-between gap-4 p-4 sm:p-6 rounded-xl w-full">
-                  <div className="bd-calc-summary-text text-sm sm:text-base text-slate-300 w-full md:w-auto break-words">
-                    <strong className="text-white">Configuración elegida:</strong>{" "}
-                    <span className="text-cyan-400 font-bold">{activeServiceObj.label}</span> ({activeServiceObj.pack}) • Plazo:{" "}
-                    <span className="text-cyan-400 font-bold">{activeTimeframeObj.label}</span>
-                  </div>
-                  <a
-                    className="bd-btn w-full md:w-auto text-center justify-center shrink-0"
-                    href={dynamicWaUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Consultar Disponibilidad y Tarifa
-                  </a>
-                </div>
-              </div>
+              <AgencyQuoteCalculator />
             </div>
           </div>
         </section>
@@ -454,13 +333,11 @@ export function AgencyLanding() {
           </div>
           <div className="bd-cases grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 w-full">
             {CASE_STUDIES.map((c, i) => (
-              <motion.article
+              <article
                 key={c.title}
                 className="bd-case-card w-full max-w-full overflow-hidden"
-                initial={reduce ? false : { opacity: 0, y: 22 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.5, ease }}
+                data-reveal
+                style={revealDelay(i * 0.08)}
               >
                 {/* Contenedor estilo navegador */}
                 <div className="bd-browser-frame w-full max-w-full overflow-hidden">
@@ -542,7 +419,7 @@ export function AgencyLanding() {
                     ) : null}
                   </div>
                 </div>
-              </motion.article>
+              </article>
             ))}
           </div>
         </section>
@@ -558,35 +435,14 @@ export function AgencyLanding() {
               Resolvemos de forma directa las dudas operativas antes de iniciar cualquier desarrollo.
             </p>
           </div>
-          <div className="bd-faq max-w-3xl mx-auto flex flex-col gap-3 w-full">
-            {FAQS.map((item, i) => {
-              const open = openFaq === i;
-              return (
-                <div key={item.q} className={`bd-faq-item w-full max-w-full overflow-hidden${open ? " is-open" : ""}`}>
-                  <button
-                    type="button"
-                    aria-expanded={open}
-                    onClick={() => setOpenFaq(open ? null : i)}
-                    className="w-full flex items-center justify-between p-4 sm:p-5 text-left"
-                  >
-                    <span className="text-sm sm:text-base pr-2">{item.q}</span>
-                    <i aria-hidden="true">{open ? "−" : "+"}</i>
-                  </button>
-                  {open ? <p className="text-xs sm:text-sm">{item.a}</p> : null}
-                </div>
-              );
-            })}
-          </div>
+          <AgencyFaq />
         </section>
 
         {/* FINAL CTA */}
         <section id="contacto" className="bd-final w-full px-4 py-12 md:px-8 md:py-20 overflow-x-hidden">
-          <motion.div
+          <div
             className="w-full max-w-3xl mx-auto text-center"
-            initial={reduce ? false : { opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.55, ease }}
+            data-reveal
           >
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
               ¿Listo para que tu inversión se traduzca en ventas?
@@ -610,7 +466,7 @@ export function AgencyLanding() {
                 Ver paquetes de servicio
               </a>
             </div>
-          </motion.div>
+          </div>
         </section>
       </main>
 
@@ -640,15 +496,7 @@ export function AgencyLanding() {
           >
             WhatsApp
           </a>
-          <button
-            type="button"
-            aria-haspopup="dialog"
-            aria-expanded={termsOpen}
-            className="bd-foot-link-btn hover:text-cyan-400 transition-colors bg-transparent border-0 p-0 text-inherit cursor-pointer font-inherit"
-            onClick={() => setTermsOpen(true)}
-          >
-            Términos del Servicio &amp; Tratamiento de Datos
-          </button>
+          <AgencyFooterTerms />
         </nav>
         <p className="text-xs text-slate-400 m-0 text-center md:text-right">
           © {new Date().getFullYear()} {AGENCY.name}. Todos los derechos reservados.
@@ -675,7 +523,6 @@ export function AgencyLanding() {
       </a>
 
       <AgencyLeadModal />
-      <AgencyTermsModal isOpen={termsOpen} onClose={() => setTermsOpen(false)} />
     </div>
   );
 }

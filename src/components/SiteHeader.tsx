@@ -25,12 +25,12 @@ export function SiteHeader() {
       <div className="section-pad mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between gap-3">
         <a href="#top" className="flex items-center gap-2.5 no-underline">
           <Image
-            src="/brand/logo.png"
+            src="/brand/logo.webp"
             alt="Logo Mecánica VIP Academia"
             width={48}
             height={48}
             className="h-11 w-11 rounded-full object-cover"
-            priority
+            loading="eager"
           />
           <span className="leading-none">
             <span className="font-display block text-[1.35rem] font-extrabold tracking-tight text-[var(--ink)]">

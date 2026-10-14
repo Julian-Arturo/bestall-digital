@@ -1,7 +1,14 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useSyncExternalStore } from "react";
+
+const REDUCE_QUERY = "(prefers-reduced-motion: reduce)";
+
+function subscribeReduce(onChange: () => void) {
+  const mq = window.matchMedia(REDUCE_QUERY);
+  mq.addEventListener("change", onChange);
+  return () => mq.removeEventListener("change", onChange);
+}
 
 type Star = {
   x: number;
@@ -24,7 +31,11 @@ type Spark = {
 
 /** Starfield sky + mouse as a subtle comet. */
 export function AgencyCursorLight() {
-  const reduce = useReducedMotion();
+  const reduce = useSyncExternalStore(
+    subscribeReduce,
+    () => window.matchMedia(REDUCE_QUERY).matches,
+    () => false,
+  );
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
