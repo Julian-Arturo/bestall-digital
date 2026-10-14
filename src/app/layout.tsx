@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Barlow_Condensed, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const display = Barlow_Condensed({
   variable: "--font-display",
@@ -42,7 +43,10 @@ const DIRECTION_CONTRACT = `<!--
 -->`;
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://agencia.bestalldigital.com"),
+  metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: "/",
+  },
   title: {
     default: "Bestall Digital | Agencia de Crecimiento, Desarrollo Web y Automatización",
     template: "%s | Bestall Digital",
@@ -65,8 +69,8 @@ export const metadata: Metadata = {
     title: "Bestall Digital | Marketing, Tecnología y Crecimiento",
     description:
       "Creamos sistemas de adquisición: páginas de alta velocidad, tráfico calificado y cierre directo en WhatsApp.",
-    url: "https://agencia.bestalldigital.com",
-    siteName: "Bestall Digital",
+    url: "/",
+    siteName: SITE_NAME,
     locale: "es_CO",
     type: "website",
   },

@@ -18,7 +18,12 @@ export const metadata: Metadata = {
   title: "Toma el Control: 21 Días para Controlar la Diabetes | US$4.99",
   description:
     "Guía práctica de 21 días con recetas simples, hábitos sostenibles y bienestar. Sin dietas extremas. Acceso digital vía Hotmart.",
+  alternates: {
+    canonical: "/diabetes",
+  },
   openGraph: {
+    url: "/diabetes",
+    siteName: "Bestall Digital",
     title: "Toma el Control — 21 días para controlar la diabetes",
     description:
       "Plan práctico para estabilizar tu rutina y recuperar energía. US$4.99.",
