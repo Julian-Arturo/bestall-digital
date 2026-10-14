@@ -6,7 +6,7 @@
 export const AGENCY = {
   name: "Bestall Digital",
   tagline: "Marketing · Tecnología · Crecimiento",
-  whatsapp: "573003550714",
+  whatsapp: "573122525840",
   since: "2024",
   mark: "/brand/agency/mark.webp",
   markPng: "/brand/agency/mark.png",
@@ -21,7 +21,7 @@ export const WA_PREFILL =
   "Hola Bestall Digital 👋 Vi su página y quiero auditar mi negocio para implementar un sistema de ventas. Les cuento mi caso:";
 
 export function waUrl(text?: string) {
-  const phone = (AGENCY.whatsapp || "573003550714").replace(/\D/g, "");
+  const phone = (AGENCY.whatsapp || "573122525840").replace(/\D/g, "");
   const message = (text ?? WA_PREFILL).trim();
   return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 }

@@ -41,7 +41,7 @@ Diseño tecnológico, contrastado y estructurado para empresas y fundadores que 
 - Botones primarios en Verde Esmeralda (`#10B981`); acciones secundarias tipo ghost con hover cian.
 - Mostrar proyectos reales desacoplados (CDA Automotriz, Mecánica VIP, Toma el Control 21 Días) especificando Reto, Solución Técnica y Demo.
 - Mantener la jerarquía del wireframe: Header -> Hero con dolor comercial -> Tech Stack Banner -> Dolores -> Método (3 pasos) -> Paquetes (3 focos) -> Casos Reales -> Inversión Transparente -> FAQ -> Footer.
-- WhatsApp `573003550715` con mensajes preconfigurados según el punto de contacto.
+- WhatsApp `573122525840` con mensajes preconfigurados según el punto de contacto.
 
 ## Don'ts
 
